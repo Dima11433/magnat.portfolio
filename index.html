@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAGNAT — Разработчик экосистемы ботов | Glock Projects</title>
+  <meta name="description" content="Персональный сайт MAGNAT: 17 лет, 11 класс, разработчик экосистемы Telegram-ботов Glock Projects. Python, HTML, кодинг под музыку.">
+
+  <!-- Google Fonts: Unbounded & Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Unbounded:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Ambient Glowing Background Elements -->
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+  <div class="bg-ambient-orb orb-3"></div>
+  <div class="bg-grid-overlay"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">&lt;M&gt;</div>
+        <div class="logo-text">MAGNAT<span>.DEV</span></div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#about" class="nav-link">Обо мне</a></li>
+          <li><a href="#skills" class="nav-link">Стек</a></li>
+          <li><a href="#projects" class="nav-link">Мои боты</a></li>
+          <li><a href="#music" class="nav-link">Музыка</a></li>
+          <li><a href="#quotes" class="nav-link">Цитаты</a></li>
+          <li><a href="#goals" class="nav-link">Цели</a></li>
+          <li><a href="#contact" class="nav-link">Связь</a></li>
+        </ul>
+      </nav>
+
+      <!-- CTA Button to Telegram & Hamburger -->
+      <div class="nav-actions">
+        <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+          <span>Telegram: @ggg468q</span>
+          <span>↗</span>
+        </a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Открыть мобильное меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <a href="#about" class="mobile-nav-link">Обо мне</a>
+    <a href="#skills" class="mobile-nav-link">Стек</a>
+    <a href="#projects" class="mobile-nav-link">Мои боты</a>
+    <a href="#music" class="mobile-nav-link">Музыка</a>
+    <a href="#quotes" class="mobile-nav-link">Цитаты</a>
+    <a href="#goals" class="mobile-nav-link">Цели</a>
+    <a href="#contact" class="mobile-nav-link">Связь</a>
+    <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 15px;">
+      <span>Telegram: @ggg468q ↗</span>
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- 1. Hero Section -->
+    <section class="hero-section" id="about">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Information -->
+          <div class="hero-content reveal">
+            <div class="hero-status">
+              <span class="status-indicator"></span>
+              🎧 Кодинг под музыку • В сети 24/7
+            </div>
+
+            <h1 class="hero-title">
+              Я MAGNAT — Создатель <span class="gradient-text">Glock Projects</span>
+            </h1>
+
+            <div class="hero-subtitle">
+              <span>Мне 17 лет, учусь в 11 классе •</span>
+              <strong style="color: #38bdf8;">Python &amp; Bot Developer</strong>
+            </div>
+
+            <p class="hero-bio">
+              Моё главное хобби — кодинг. Всё своё свободное время посвящаю программированию под хорошую музыку 🎧. Разрабатываю многофункциональных Telegram-ботов, платежные решения и строю масштабную цифровую монополию в рамках проекта <strong>Glock Projects</strong>.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="#projects" class="btn btn-primary">
+                <span>🔥 Мои боты и проекты</span>
+                <span>↓</span>
+              </a>
+              <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-secondary">
+                <span>💬 Написать в Telegram</span>
+                <span>↗</span>
+              </a>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="hero-stats">
+              <div class="stat-item">
+                <div class="stat-number">17<span>лет</span></div>
+                <div class="stat-label">11 класс • Молодой разработчик</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">Glock<span>⚡</span></div>
+                <div class="stat-label">Собственная экосистема</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">Python<span>&amp;HTML</span></div>
+                <div class="stat-label">Основной технологический стек</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">100<span>%</span></div>
+                <div class="stat-label">Кодинг под музыку &amp; Дисциплина</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Visual: Real User Photo with Floating Tech Badges -->
+          <div class="hero-visual reveal delay-2">
+            <div class="avatar-card-wrapper">
+              
+              <!-- Floating badges -->
+              <div class="float-badge badge-react">
+                <span style="color: #38bdf8;">🐍</span> Python
+              </div>
+              <div class="float-badge badge-js">
+                <span style="color: #f59e0b;">🌐</span> HTML5
+              </div>
+              <div class="float-badge badge-figma">
+                <span style="color: #a855f7;">⚡</span> Glock Projects
+              </div>
+
+              <!-- Main Card with user photo -->
+              <div class="avatar-main-card">
+                <div class="avatar-img-box">
+                  <img src="assets/images/magnat.jpg" alt="MAGNAT — Разработчик Glock Projects">
+                </div>
+                <div class="avatar-caption">
+                  <div>
+                    <div class="dev-name-label">MAGNAT</div>
+                    <div class="dev-role-label">Founder • Glock Projects</div>
+                  </div>
+                  <div class="tech-tag" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.3); color: #34d399;">
+                    DEV 2026
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. About Me / Principles -->
+    <section class="about-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Обо мне и моем стиле</div>
+          <h2 class="section-title">Кодинг, музыка и <span class="gradient-text">стремление к масштабу</span></h2>
+          <p class="section-desc">Каждый день я совершенствую навыки и создаю инструменты, которые приносят реальную пользу.</p>
+        </div>
+
+        <div class="about-features-grid">
+          <div class="about-feature-card reveal delay-1">
+            <div class="feature-icon-box">🎧</div>
+            <h3 class="feature-title">Кодинг под музыку</h3>
+            <p class="feature-text">Всё свободное время провожу за кодом. Музыка создает идеальный ритм, фокус и максимальное погружение в разработку алгоритмов.</p>
+          </div>
+
+          <div class="about-feature-card reveal delay-2">
+            <div class="feature-icon-box">🐍</div>
+            <h3 class="feature-title">Python &amp; Telegram API</h3>
+            <p class="feature-text">Создание надежных ботов на Python: асинхронность, базы данных, обработка платежей, мгновенный отклик и защита от сбоев.</p>
+          </div>
+
+          <div class="about-feature-card reveal delay-3">
+            <div class="feature-icon-box">🏰</div>
+            <h3 class="feature-title">Цифровая монополия</h3>
+            <p class="feature-text">Развиваю масштабную сеть ботов: гаранты сделок, выпуск карт, автоматические магазины и единый хаб Glock Projects.</p>
+          </div>
+
+          <div class="about-feature-card reveal delay-4">
+            <div class="feature-icon-box">🚀</div>
+            <h3 class="feature-title">17 лет и дисциплина</h3>
+            <p class="feature-text">Учусь в 11 классе, совмещая учебу с практической разработкой коммерческих систем. Результат говорит громче любых слов.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Skills Section -->
+    <section class="skills-section" id="skills">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Технологический стек</div>
+          <h2 class="section-title">Инструменты, которые я <span class="gradient-text">использую</span></h2>
+          <p class="section-desc">Практический стек для создания Telegram-ботов, автоматизации и веб-интерфейсов.</p>
+        </div>
+
+        <div class="skills-categories-grid">
+          
+          <!-- Category 1: Python & Bots -->
+          <div class="skill-category-card reveal delay-1">
+            <div class="category-header">
+              <div class="category-icon">🐍</div>
+              <h3 class="category-title">Python &amp; Бот-инженерия</h3>
+            </div>
+            <div class="skills-items-list">
+              <div class="skill-item">
+                <div class="skill-item-info">
+                  <span>Python (Логика &amp; Алгоритмы)</span>
+                  <span>95%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 95%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-info">
+                  <span>Telegram Bot API &amp; Асинхронность</span>
+                  <span>96%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 96%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-info">
+                  <span>Платежные шлюзы &amp; Escrow</span>
+                  <span>90%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-info">
+                  <span>Базы данных (SQLite / JSON)</span>
+                  <span>88%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 88%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Web & HTML -->
+          <div class="skill-category-card reveal delay-2">
+            <div class="category-header">
+              <div class="category-icon">🌐</div>
+              <h3 class="category-title">Веб &amp; Вёрстка</h3>
+            </div>
+            <div class="skills-items-list">
+              <div class="skill-item">
+                <div class="skill-item-info">
+                  <span>HTML5 (Семантика &amp; Каркас)</span>
+                  <span>92%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 92%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-info">
+                  <span>CSS3 (Стилизация &amp; Адаптив)</span>
+                  <span>86%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 86%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-info">
+                  <span>Telegram Web Apps (Mini Apps)</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-info">
+                  <span>Адаптивность под мобильные</span>
+                  <span>90%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: GitHub & Workflow -->
+          <div class="skill-category-card reveal delay-3">
+            <div class="category-header">
+              <div class="category-icon">🐙</div>
+              <h3 class="category-title">GitHub &amp; Рабочий процесс</h3>
+            </div>
+            <div class="skills-items-list">
+              <div class="skill-item">
+                <div class="skill-item-info">
+                  <span>GitHub &amp; Git (Контроль версий)</span>
+                  <span>90%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-info">
+                  <span>Деплой ботов 24/7 &amp; Uptime</span>
+                  <span>94%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 94%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-info">
+                  <span>Кодинг под музыку (Фокус)</span>
+                  <span>100%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 100%;"></div>
+                </div>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-info">
+                  <span>Дисциплина &amp; Усердие</span>
+                  <span>99%</span>
+                </div>
+                <div class="skill-bar-track">
+                  <div class="skill-bar-fill" style="width: 99%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Projects Section (Glock Bots) -->
+    <section class="projects-section" id="projects">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Экосистема Glock</div>
+          <h2 class="section-title">Мои топ боты и <span class="gradient-text">проекты</span></h2>
+          <p class="section-desc">Реально работающие сервисы в Telegram с постоянной аудиторией и автоматизированной логикой.</p>
+        </div>
+
+        <!-- Filters Bar -->
+        <div class="projects-filter-bar reveal">
+          <button class="filter-btn active" data-filter="all">Все проекты (4)</button>
+          <button class="filter-btn" data-filter="hub">Экосистема</button>
+          <button class="filter-btn" data-filter="security">Безопасность</button>
+          <button class="filter-btn" data-filter="fintech">Финансы</button>
+          <button class="filter-btn" data-filter="shop">Шоп</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" style="grid-template-columns: repeat(2, 1fr);">
+          
+          <!-- Project 1: Glock Projects Hub -->
+          <article class="project-card reveal delay-1" data-category="hub">
+            <div class="project-preview">
+              <img src="assets/images/glock-projects.jpg" alt="Glock Projects">
+              <span class="project-badge-tag">Экосистема</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Glock Projects — Главный хаб</h3>
+              <p class="project-desc">
+                Центральный проект и официальный канал сети Glock. Здесь публикуются обновления, анонсы новых ботов, инструкции и новости развития всей монополии.
+              </p>
+              <div class="project-tech-tags">
+                <span class="tech-tag">Telegram Channel</span>
+                <span class="tech-tag">Ecosystem</span>
+                <span class="tech-tag">Community</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://t.me/glock_projects" target="_blank" rel="noopener" class="btn btn-primary project-btn" style="flex: 1;">
+                  <span>Перейти в канал ↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Бот Гарант -->
+          <article class="project-card reveal delay-2" data-category="security">
+            <div class="project-preview">
+              <img src="assets/images/glock-garant.jpg" alt="Glock Garant Bot">
+              <span class="project-badge-tag">Безопасность</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Бот Гарант — Безопасные сделки</h3>
+              <p class="project-desc">
+                Автоматизированный бот для безопасного проведения P2P-сделок в Telegram. Надежный эскроу-сервис с удержанием средств до подтверждения обеих сторон.
+              </p>
+              <div class="project-tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Escrow API</span>
+                <span class="tech-tag">P2P Security</span>
+                <span class="tech-tag">24/7 Auto</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://t.me/glock_garant_bot?start=tr_scandalbio" target="_blank" rel="noopener" class="btn btn-primary project-btn" style="flex: 1;">
+                  <span>Запустить бота ↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Выдача Карт -->
+          <article class="project-card reveal delay-3" data-category="fintech">
+            <div class="project-preview">
+              <img src="assets/images/glock-payments.jpg" alt="Выдача Карт Бот">
+              <span class="project-badge-tag">Финансы</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Выдача Карт — Платежный сервис</h3>
+              <p class="project-desc">
+                Удобный финансовый бот для моментального выпуска виртуальных карт, пополнения баланса и проведения платежей без лишних сложностей.
+              </p>
+              <div class="project-tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Payments API</span>
+                <span class="tech-tag">Virtual Cards</span>
+                <span class="tech-tag">Авто-выдача</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://t.me/glock_payments_bot?start=ref_6667583896" target="_blank" rel="noopener" class="btn btn-primary project-btn" style="flex: 1;">
+                  <span>Запустить бота ↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: Модели Шоп -->
+          <article class="project-card reveal delay-4" data-category="shop">
+            <div class="project-preview">
+              <img src="assets/images/glock-models.jpg" alt="Модели Шоп Бот">
+              <span class="project-badge-tag">Шоп</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Модели Шоп — Бот автоматических продаж</h3>
+              <p class="project-desc">
+                Автоматизированный магазин в Telegram с удобным каталогом товаров, быстрой оплатой и моментальной выдачей цифрового контента.
+              </p>
+              <div class="project-tech-tags">
+                <span class="tech-tag">E-Commerce</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Shop Bot</span>
+                <span class="tech-tag">Мгновенно</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://t.me/glock_models_bot?start=ref_6667583896" target="_blank" rel="noopener" class="btn btn-primary project-btn" style="flex: 1;">
+                  <span>Запустить бота ↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- Music & Top Tracks Section -->
+    <section class="music-section" id="music">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">🎧 Саундтрек кодинга</div>
+          <h2 class="section-title">Мои топ треки <span class="gradient-text">на репите</span></h2>
+          <p class="section-desc">Музыка, под которую я пишу код, создаю ботов и строю экосистему Glock Projects.</p>
+        </div>
+
+        <div class="tracks-grid">
+          
+          <!-- Track 1: WORKAL -->
+          <div class="track-card reveal delay-1">
+            <div class="track-cover">
+              <img src="assets/images/track-workal.png" alt="WORKAL">
+              <div class="track-spotify-badge">
+                <span>🟢</span> Spotify
+              </div>
+            </div>
+            <div class="track-info">
+              <h3 class="track-title">WORKAL</h3>
+              <div class="track-tagline">
+                <div class="music-wave">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+                <span>Кодинг на максимальном фокусе</span>
+              </div>
+              <a href="https://open.spotify.com/track/01Fnhg9DGs2LfS95lSDoVq?si=070bbc8391cf447b" target="_blank" rel="noopener" class="btn btn-spotify">
+                <span>Слушать в Spotify</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Track 2: 1 000 000 ₽ -->
+          <div class="track-card reveal delay-2">
+            <div class="track-cover">
+              <img src="assets/images/track-1000000.png" alt="1 000 000 ₽">
+              <div class="track-spotify-badge">
+                <span>🟢</span> Spotify
+              </div>
+            </div>
+            <div class="track-info">
+              <h3 class="track-title">1 000 000 ₽</h3>
+              <div class="track-tagline">
+                <div class="music-wave">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+                <span>Вайб монополии и дисциплины</span>
+              </div>
+              <a href="https://open.spotify.com/track/2iqXJeFj27ZuRrJvieUpP2?si=6a6a69c2ead74782" target="_blank" rel="noopener" class="btn btn-spotify">
+                <span>Слушать в Spotify</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Track 3: Инста модель -->
+          <div class="track-card reveal delay-3">
+            <div class="track-cover">
+              <img src="assets/images/track-instamodel.png" alt="Инста модель">
+              <div class="track-spotify-badge">
+                <span>🟢</span> Spotify
+              </div>
+            </div>
+            <div class="track-info">
+              <h3 class="track-title">Инста модель</h3>
+              <div class="track-tagline">
+                <div class="music-wave">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+                <span>Атмосфера ночного кодинга</span>
+              </div>
+              <a href="https://open.spotify.com/track/1x04RtkJ7OJV1rosXbl75a?si=d543dcdb866c490c" target="_blank" rel="noopener" class="btn btn-spotify">
+                <span>Слушать в Spotify</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Quotes Section (User's Top Quotes + Photo) -->
+    <section class="quotes-section" id="quotes">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Мои принципы</div>
+          <h2 class="section-title">Цитаты, которые задают <span class="gradient-text">мой вектор</span></h2>
+          <p class="section-desc">Дисциплина, усердие и постоянная работа над собой каждый день.</p>
+        </div>
+
+        <!-- 3 User's Top Quotes -->
+        <div class="quotes-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="quote-card reveal delay-1">
+            <div class="quote-mark">“</div>
+            <p class="quote-text">Твой главный актив — твоя голова и твое усердие. Инвестируй в них каждый день.</p>
+            <div class="quote-author">
+              <span>—</span> MAGNAT
+            </div>
+          </div>
+
+          <div class="quote-card reveal delay-2">
+            <div class="quote-mark">“</div>
+            <p class="quote-text">Работай так, чтобы твой кошелек говорил громче любых слов.</p>
+            <div class="quote-author">
+              <span>—</span> MAGNAT
+            </div>
+          </div>
+
+          <div class="quote-card reveal delay-3">
+            <div class="quote-mark">“</div>
+            <p class="quote-text">Хочешь изменить жизнь — начни с дисциплины, а не с понедельника.</p>
+            <div class="quote-author">
+              <span>—</span> MAGNAT
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Banner with user's photo instead of David Goggins -->
+        <div class="quotes-banner reveal">
+          <div class="quotes-banner-text">
+            <h3>Дисциплина определяет масштаб</h3>
+            <p>
+              Кодинг под музыку, постоянное движение вперед и создание продуктов, которые работают на тебя 24/7.
+            </p>
+
+            <div class="quote-generator-box">
+              <div class="dynamic-quote-text" id="dynamicQuoteText">
+                "Твой главный актив — твоя голова и твое усердие. Инвестируй в них каждый день."
+              </div>
+              <div class="dynamic-quote-author" id="dynamicQuoteAuthor">
+                — MAGNAT • Glock Projects
+              </div>
+            </div>
+
+            <button class="btn btn-primary" id="nextQuoteBtn">
+              <span>⚡ Следующая цитата</span>
+            </button>
+          </div>
+
+          <div class="quotes-banner-img" style="max-height: 380px;">
+            <img src="assets/images/magnat.jpg" alt="MAGNAT — Glock Projects" style="width: 100%; height: 380px; object-fit: cover;">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. Goals Section -->
+    <section class="goals-section" id="goals">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Цели и стратегия</div>
+          <h2 class="section-title">Планы на будущее и <span class="gradient-text">построение монополии</span></h2>
+          <p class="section-desc">Четкий вектор развития и планомерное движение к лидерству в нише.</p>
+        </div>
+
+        <div class="roadmap-timeline">
+          
+          <div class="timeline-item reveal delay-1">
+            <div class="timeline-dot in-progress"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3 class="timeline-title">1. Сделать популярным свой проект Glock Projects</h3>
+                <span class="timeline-badge badge-progress">⚡ В активном процессе</span>
+              </div>
+              <p class="timeline-desc">
+                Масштабирование официального канала <a href="https://t.me/glock_projects" target="_blank" rel="noopener" style="color: #38bdf8; font-weight: 600;">t.me/glock_projects</a>, привлечение широкой аудитории и укрепление бренда экосистемы.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal delay-2">
+            <div class="timeline-dot in-progress"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3 class="timeline-title">2. Сделать большую монополию ботов</h3>
+                <span class="timeline-badge badge-progress">⚡ В процессе</span>
+              </div>
+              <p class="timeline-desc">
+                Создание разветвленной сетки сервисов (гаранты, платежи, магазины, инструменты автоматизации) с взаимным перенаправлением трафика и максимальным охватом потребностей пользователей.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal delay-3">
+            <div class="timeline-dot done"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3 class="timeline-title">3. Стать лучшим в своей сфере</h3>
+                <span class="timeline-badge badge-done">🎯 Главный фокус</span>
+              </div>
+              <p class="timeline-desc">
+                Выйти на топовый уровень мастерства в архитектуре высоконагруженных ботов, разработке на Python и предоставлении качественных онлайн-сервисов.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Contact Section (ONLY Telegram @ggg468q) -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Прямая связь</div>
+          <h2 class="section-title">Связаться со мной в <span class="gradient-text">Telegram</span></h2>
+          <p class="section-desc">По всем вопросам сотрудничества, предложениям и проектам пишите напрямую:</p>
+        </div>
+
+        <!-- Clean, Centered Direct Telegram Card -->
+        <div style="max-width: 680px; margin: 0 auto;" class="reveal">
+          <div style="background: var(--bg-surface); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: var(--radius-xl); padding: 44px 36px; text-align: center; backdrop-filter: blur(20px); box-shadow: var(--shadow-md), 0 0 50px rgba(56, 189, 248, 0.15);">
+            
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(56, 189, 248, 0.15); border: 2px solid #38bdf8; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; margin: 0 auto 20px auto; color: #38bdf8; box-shadow: 0 0 30px rgba(56, 189, 248, 0.35);">
+              ✈️
+            </div>
+
+            <h3 style="font-size: 2rem; margin-bottom: 8px;">Telegram: @ggg468q</h3>
+            <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 28px;">
+              Единственный официальный контакт для быстрой связи
+            </p>
+
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px;">
+              <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 14px 32px; font-size: 1.05rem;">
+                <span>Написать в Telegram (@ggg468q)</span>
+                <span>↗</span>
+              </a>
+              <button class="btn btn-secondary copy-trigger" data-copy="@ggg468q" style="padding: 14px 28px; font-size: 1.05rem;">
+                <span>Скопировать юзернейм</span>
+              </button>
+            </div>
+
+            <!-- Ecosystem Channel Link -->
+            <div style="padding-top: 24px; border-top: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.95rem; color: var(--text-secondary);">
+              <span>Официальный канал:</span>
+              <a href="https://t.me/glock_projects" target="_blank" rel="noopener" style="color: #38bdf8; font-weight: 700; text-decoration: underline;">
+                t.me/glock_projects ↗
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">&lt;M&gt;</div>
+        <div class="logo-text">MAGNAT<span>.DEV</span></div>
+      </a>
+
+      <div class="footer-text">
+        © 2026 <strong>MAGNAT</strong> • Все проекты защищены • <strong>Glock Projects</strong>
+      </div>
+
+      <div style="font-size: 0.85rem; color: var(--text-dim);">
+        Python • HTML • Telegram Bots • Coding Under Music 🎧
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Scroll To Top Button with Circular Progress Ring -->
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Вернуться наверх">
+    <svg class="progress-ring">
+      <circle class="progress-ring-circle" stroke="#6366f1" stroke-width="3" fill="transparent" r="25" cx="27" cy="27"/>
+    </svg>
+    <span>↑</span>
+  </button>
+
+  <!-- Toast Notification -->
+  <div id="siteToast" class="toast-msg"></div>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="f1Bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0507" />
+      <stop offset="50%" stop-color="#180c10" />
+      <stop offset="100%" stop-color="#0f070a" />
+    </linearGradient>
+    <linearGradient id="f1Red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#991b1b" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="380" fill="url(#f1Bg)" rx="16" />
+
+  <!-- Browser Header -->
+  <rect width="600" height="40" fill="#13080d" rx="16" />
+  <rect y="25" width="600" height="15" fill="#13080d" />
+  <circle cx="25" cy="20" r="5" fill="#ef4444" />
+  <circle cx="42" cy="20" r="5" fill="#eab308" />
+  <circle cx="59" cy="20" r="5" fill="#22c55e" />
+  <text x="85" y="24" fill="#64748b" font-family="monospace" font-size="11">https://verstappen-f1-tribute.com</text>
+
+  <!-- Formula 1 Brand Badge -->
+  <g transform="translate(40, 65)">
+    <rect width="80" height="30" rx="4" fill="url(#f1Red)" />
+    <text x="40" y="21" fill="#ffffff" font-family="Impact, sans-serif" font-size="18" font-style="italic" text-anchor="middle">F1 GP</text>
+    <text x="95" y="21" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="14" font-weight="800">4X WORLD CHAMPION</text>
+  </g>
+
+  <!-- Speed lines -->
+  <line x1="30" y1="120" x2="350" y2="120" stroke="#ef4444" stroke-width="2" stroke-dasharray="12 8" opacity="0.6" />
+  <line x1="60" y1="130" x2="420" y2="130" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="20 12" opacity="0.5" />
+
+  <!-- F1 Bolide Silhouette -->
+  <g transform="translate(100, 150)">
+    <!-- Aerodynamic body -->
+    <path d="M50,110 L150,105 L260,85 L320,80 L350,90 L390,95 L410,110 L30,110 Z" fill="url(#f1Red)" />
+    <!-- Rear wing -->
+    <rect x="40" y="65" width="30" height="40" fill="#0f172a" />
+    <rect x="25" y="60" width="60" height="8" rx="2" fill="#ef4444" />
+    <!-- Front wing -->
+    <path d="M380,105 L420,105 L410,118 L370,118 Z" fill="#0f172a" />
+    <!-- Cockpit & Halo -->
+    <path d="M220,85 C240,65 270,65 285,85 Z" fill="#090d16" stroke="#ef4444" stroke-width="2" />
+    <!-- Helmet -->
+    <circle cx="255" cy="80" r="10" fill="#f59e0b" />
+    <!-- Wheels -->
+    <circle cx="110" cy="115" r="26" fill="#090d16" stroke="#334155" stroke-width="6" />
+    <circle cx="110" cy="115" r="12" fill="#ef4444" />
+    <circle cx="360" cy="115" r="24" fill="#090d16" stroke="#334155" stroke-width="6" />
+    <circle cx="360" cy="115" r="11" fill="#ef4444" />
+  </g>
+
+  <!-- Telemetry stats -->
+  <g transform="translate(40, 290)">
+    <rect width="160" height="60" rx="8" fill="#1b1218" stroke="#371e27" stroke-width="1" />
+    <text x="15" y="24" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">MAX SPEED</text>
+    <text x="15" y="48" fill="#ef4444" font-family="system-ui, sans-serif" font-size="20" font-weight="900">354.8 KM/H</text>
+  </g>
+
+  <g transform="translate(220, 290)">
+    <rect width="160" height="60" rx="8" fill="#1b1218" stroke="#371e27" stroke-width="1" />
+    <text x="15" y="24" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">POLE POSITIONS</text>
+    <text x="15" y="48" fill="#f59e0b" font-family="system-ui, sans-serif" font-size="20" font-weight="900">40+ WINS</text>
+  </g>
+
+  <g transform="translate(400, 290)">
+    <rect width="160" height="60" rx="8" fill="#1b1218" stroke="#371e27" stroke-width="1" />
+    <text x="15" y="24" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">LAP RECORD</text>
+    <text x="15" y="48" fill="#22c55e" font-family="system-ui, sans-serif" font-size="20" font-weight="900">1:18.149</text>
+  </g>
+</svg>

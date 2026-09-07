@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cardProfileBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="neonPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="380" fill="url(#cardProfileBg)" rx="16" />
+
+  <!-- Browser bar -->
+  <rect width="600" height="40" fill="#090d16" rx="16" />
+  <rect y="25" width="600" height="15" fill="#090d16" />
+  <circle cx="25" cy="20" r="5" fill="#ef4444" />
+  <circle cx="42" cy="20" r="5" fill="#eab308" />
+  <circle cx="59" cy="20" r="5" fill="#22c55e" />
+  <text x="85" y="24" fill="#64748b" font-family="monospace" font-size="11">https://neo-profile-card.dev</text>
+
+  <!-- Central 3D Card Mockup -->
+  <g transform="translate(160, 60)">
+    <rect width="280" height="290" rx="18" fill="#14182b" stroke="url(#neonPink)" stroke-width="2" opacity="0.95" />
+    <!-- Mini cover photo -->
+    <rect x="15" y="15" width="250" height="80" rx="12" fill="url(#neonPink)" opacity="0.6" />
+    <!-- Avatar inside card -->
+    <circle cx="140" cy="95" r="32" fill="#0f172a" stroke="#ffffff" stroke-width="3" />
+    <circle cx="140" cy="95" r="28" fill="#6366f1" />
+    <text x="140" y="103" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" text-anchor="middle">⚡</text>
+
+    <text x="140" y="150" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Даниил Шейко</text>
+    <text x="140" y="170" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">Frontend Developer • UI Enthusiast</text>
+
+    <!-- Social links pills -->
+    <rect x="35" y="195" width="210" height="30" rx="15" fill="#1e2540" />
+    <text x="140" y="215" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">🔗 t.me/developer</text>
+
+    <rect x="35" y="235" width="210" height="30" rx="15" fill="#1e2540" />
+    <text x="140" y="255" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">💻 github.com/developer</text>
+  </g>
+</svg>

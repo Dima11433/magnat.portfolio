@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="fitBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0d12" />
+      <stop offset="100%" stop-color="#141824" />
+    </linearGradient>
+    <linearGradient id="fitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="380" fill="url(#fitBg)" rx="16" />
+
+  <!-- Browser bar -->
+  <rect width="600" height="40" fill="#11131c" rx="16" />
+  <rect y="25" width="600" height="15" fill="#11131c" />
+  <circle cx="25" cy="20" r="5" fill="#ef4444" />
+  <circle cx="42" cy="20" r="5" fill="#eab308" />
+  <circle cx="59" cy="20" r="5" fill="#22c55e" />
+  <text x="85" y="24" fill="#64748b" font-family="monospace" font-size="11">https://kropp-crossfit-club.ru</text>
+
+  <!-- Big Hero Title -->
+  <text x="40" y="90" fill="#ffffff" font-family="Impact, sans-serif" font-size="36" letter-spacing="2">KROPP CROSSFIT</text>
+  <text x="40" y="115" fill="#10b981" font-family="system-ui, sans-serif" font-size="14" font-weight="700">ТВОЯ ТРАНСФОРМАЦИЯ НАЧИНАЕТСЯ СЕГОДНЯ</text>
+
+  <!-- Workout Schedule Grid -->
+  <g transform="translate(40, 140)">
+    <rect width="245" height="120" rx="10" fill="#161b2e" stroke="#252f50" stroke-width="1" />
+    <text x="20" y="32" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="bold">Силовая тренировка</text>
+    <text x="20" y="55" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Пн, Ср, Пт • 19:00 - 20:30</text>
+    <text x="20" y="78" fill="#10b981" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Тренер: Александр Смирнов</text>
+    <rect x="20" y="92" width="100" height="18" rx="4" fill="url(#fitGrad)" />
+    <text x="70" y="105" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Записаться</text>
+  </g>
+
+  <g transform="translate(315, 140)">
+    <rect width="245" height="120" rx="10" fill="#161b2e" stroke="#252f50" stroke-width="1" />
+    <text x="20" y="32" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="bold">HIIT &amp; Выносливость</text>
+    <text x="20" y="55" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Вт, Чт, Сб • 10:00 - 11:30</text>
+    <text x="20" y="78" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Свободно 4 места</text>
+    <rect x="20" y="92" width="100" height="18" rx="4" fill="url(#fitGrad)" />
+    <text x="70" y="105" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Записаться</text>
+  </g>
+
+  <!-- Dumbbell graphics below -->
+  <g transform="translate(40, 280)">
+    <rect width="520" height="70" rx="10" fill="#131726" stroke="#222942" stroke-width="1" />
+    <text x="30" y="32" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="14" font-weight="bold">🔥 Абонемент «Безлимит 2026»</text>
+    <text x="30" y="52" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12">Включает доступ в тренажёрный зал, СПА и групповые занятия</text>
+    <text x="440" y="42" fill="#10b981" font-family="system-ui, sans-serif" font-size="18" font-weight="900">3 500 ₽/мес</text>
+  </g>
+</svg>
