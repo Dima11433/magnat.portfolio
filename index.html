@@ -46,8 +46,23 @@
       </nav>
 
       <!-- CTA Button to Telegram & Hamburger -->
+            <!-- Theme Switcher, Sound SFX Toggle & CTA -->
       <div class="nav-actions">
-        <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+        <!-- Theme Dots Switcher -->
+        <div class="theme-switcher" title="Выбрать цвет темы">
+          <button class="theme-dot dot-violet active" data-theme="violet" aria-label="Фиолетовая тема"></button>
+          <button class="theme-dot dot-cyan" data-theme="cyan" aria-label="Циановая тема"></button>
+          <button class="theme-dot dot-emerald" data-theme="emerald" aria-label="Изумрудная тема"></button>
+          <button class="theme-dot dot-red" data-theme="red" aria-label="Красная тема"></button>
+          <button class="theme-dot dot-gold" data-theme="gold" aria-label="Золотая тема"></button>
+        </div>
+
+        <!-- Sound SFX Button -->
+        <button class="sfx-toggle-btn" id="sfxToggleBtn" title="Включить / Выключить звуки интерфейса" aria-label="Звуки интерфейса">
+          <span class="sfx-icon">🔊</span>
+        </button>
+
+        <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-primary btn-sm nav-tg-btn">
           <span>Telegram: @ggg468q</span>
           <span>↗</span>
         </a>
@@ -70,7 +85,18 @@
     <a href="#quotes" class="mobile-nav-link">Цитаты</a>
     <a href="#goals" class="mobile-nav-link">Цели</a>
     <a href="#contact" class="mobile-nav-link">Связь</a>
-    <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 15px;">
+        <!-- Mobile Theme & Sound Controls -->
+    <div class="mobile-theme-bar">
+      <span style="font-size: 0.85rem; color: var(--text-muted);">Тема оформления:</span>
+      <div class="theme-switcher">
+        <button class="theme-dot dot-violet active" data-theme="violet"></button>
+        <button class="theme-dot dot-cyan" data-theme="cyan"></button>
+        <button class="theme-dot dot-emerald" data-theme="emerald"></button>
+        <button class="theme-dot dot-red" data-theme="red"></button>
+        <button class="theme-dot dot-gold" data-theme="gold"></button>
+      </div>
+    </div>
+    <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 10px; width: 100%;">
       <span>Telegram: @ggg468q ↗</span>
     </a>
   </div>

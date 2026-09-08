@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initInteractiveTerminal();
   initGlockEasterEgg();
+  initSoundToggle();
+  initThemeSwitcher();
+  init3DTilt();
 });
 
 /* ==========================================================================
@@ -513,5 +516,194 @@ function initGlockEasterEgg() {
         fxOverlay.classList.remove('active');
       }, 1600);
     }
+  });
+}
+
+
+/* ==========================================================================
+   26. CYBER UI SOUND FX (WEB AUDIO API SYNTHESIZER)
+   ========================================================================== */
+const SoundFX = (() => {
+  let audioCtx = null;
+  let isMuted = localStorage.getItem('magnat_sfx_muted') === 'true';
+
+  function initCtx() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  }
+
+  function playTone(freq, type, duration, gainVal = 0.2) {
+    if (isMuted) return;
+    try {
+      initCtx();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    } catch(e) {}
+  }
+
+  return {
+    click: () => {
+      // Tactile cyber click
+      playTone(680, 'sine', 0.05, 0.15);
+    },
+    hover: () => {
+      // Very subtle blip
+      playTone(1200, 'triangle', 0.02, 0.04);
+    },
+    theme: () => {
+      // Two-tone chime
+      playTone(480, 'sine', 0.08, 0.15);
+      setTimeout(() => playTone(720, 'triangle', 0.12, 0.15), 60);
+    },
+    copy: () => {
+      // Ascending chirp
+      playTone(520, 'sine', 0.05, 0.15);
+      setTimeout(() => playTone(660, 'sine', 0.06, 0.15), 50);
+      setTimeout(() => playTone(880, 'triangle', 0.1, 0.2), 110);
+    },
+    toggleMute: () => {
+      isMuted = !isMuted;
+      localStorage.setItem('magnat_sfx_muted', isMuted);
+      return isMuted;
+    },
+    isMuted: () => isMuted
+  };
+})();
+
+function initSoundToggle() {
+  const toggleBtns = document.querySelectorAll('.sfx-toggle-btn');
+
+  function updateIcon() {
+    const muted = SoundFX.isMuted();
+    toggleBtns.forEach(btn => {
+      btn.innerHTML = `<span class="sfx-icon">${muted ? '🔇' : '🔊'}</span>`;
+      if (muted) btn.classList.add('muted');
+      else btn.classList.remove('muted');
+    });
+  }
+
+  updateIcon();
+
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const muted = SoundFX.toggleMute();
+      updateIcon();
+      showToast(muted ? 'Звуки интерфейса выключены 🔇' : 'Звуки интерфейса включены 🔊');
+      if (!muted) SoundFX.click();
+    });
+  });
+
+  // Attach click sound to interactive buttons and links
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('button, .btn, .nav-link, .mobile-nav-link, .filter-btn, .quick-cmd-btn');
+    if (target && !target.classList.contains('sfx-toggle-btn')) {
+      SoundFX.click();
+    }
+  });
+
+  // Attach hover sound on desktop
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.project-card, .track-card, .quote-card, .btn').forEach(el => {
+      el.addEventListener('mouseenter', () => SoundFX.hover());
+    });
+  }
+}
+
+/* ==========================================================================
+   27. COLOR THEME SWITCHER
+   ========================================================================== */
+function initThemeSwitcher() {
+  const themeDots = document.querySelectorAll('.theme-dot');
+  const savedTheme = localStorage.getItem('magnat_theme') || 'violet';
+
+  function applyTheme(themeName, playSound = false) {
+    document.documentElement.setAttribute('data-theme', themeName);
+    localStorage.setItem('magnat_theme', themeName);
+
+    themeDots.forEach(dot => {
+      if (dot.getAttribute('data-theme') === themeName) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+
+    if (playSound) {
+      SoundFX.theme();
+      const themeNamesRu = {
+        violet: 'Фиолетовая (Glock)',
+        cyan: 'Неоновый Циан',
+        emerald: 'Изумрудная',
+        red: 'Красный Неон',
+        gold: 'Золотая (MAGNAT)'
+      };
+      showToast(`Тема переключена: ${themeNamesRu[themeName] || themeName} ✨`);
+    }
+  }
+
+  applyTheme(savedTheme, false);
+
+  themeDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const theme = dot.getAttribute('data-theme');
+      applyTheme(theme, true);
+    });
+  });
+}
+
+/* ==========================================================================
+   22. 3D TILT EFFECT FOR CARDS
+   ========================================================================== */
+function init3DTilt() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  const tiltCards = document.querySelectorAll('.project-card, .track-card, .quote-card, .avatar-main-card');
+
+  tiltCards.forEach(card => {
+    // Add subtle glare element
+    let glare = card.querySelector('.tilt-glare');
+    if (!glare) {
+      glare = document.createElement('div');
+      glare.className = 'tilt-glare';
+      card.appendChild(glare);
+    }
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const deltaX = (x - centerX) / centerX;
+      const deltaY = (y - centerY) / centerY;
+
+      const rotateX = -(deltaY * 10).toFixed(2);
+      const rotateY = (deltaX * 10).toFixed(2);
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+
+      // Update glare position
+      glare.style.opacity = '1';
+      glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.18) 0%, transparent 65%)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      glare.style.opacity = '0';
+    });
   });
 }
