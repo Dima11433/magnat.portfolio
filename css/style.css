@@ -2447,3 +2447,113 @@ a {
     z-index: 5;
   }
 }
+
+
+/* ==========================================================================
+   PERFECT HEADER RESPONSIVENESS & NO-WRAP FIX
+   ========================================================================== */
+.site-header {
+  height: 72px !important;
+}
+.site-header.scrolled {
+  height: 64px !important;
+}
+
+.site-header .nav-container {
+  max-width: 1440px !important;
+  width: 100% !important;
+  padding: 0 28px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  box-sizing: border-box !important;
+}
+
+.logo {
+  flex-shrink: 0 !important;
+  gap: 10px !important;
+  font-size: 1.15rem !important;
+}
+.logo-icon {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 10px !important;
+  font-size: 0.9rem !important;
+}
+
+/* Nav Menu: Zero Wrap, Fluid Spacing */
+.desktop-nav {
+  display: flex !important;
+  align-items: center !important;
+}
+.nav-menu {
+  display: flex !important;
+  align-items: center !important;
+  gap: clamp(10px, 1.25vw, 20px) !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.nav-link {
+  white-space: nowrap !important;
+  font-size: 0.88rem !important;
+  padding: 6px 3px !important;
+  letter-spacing: -0.1px !important;
+}
+
+/* Nav Actions Compact Layout */
+.nav-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-shrink: 0 !important;
+}
+
+.theme-switcher {
+  padding: 3px 7px !important;
+  gap: 5px !important;
+}
+.theme-dot {
+  width: 13px !important;
+  height: 13px !important;
+}
+
+.sfx-toggle-btn {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 0.82rem !important;
+  border-radius: 8px !important;
+}
+
+.nav-tg-btn {
+  padding: 7px 14px !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  border-radius: 20px !important;
+  white-space: nowrap !important;
+  gap: 6px !important;
+}
+
+/* Smooth Switch to Mobile Menu when width < 1140px */
+@media (max-width: 1140px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .nav-tg-btn {
+    display: none !important;
+  }
+  .hamburger {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 1141px) {
+  .hamburger {
+    display: none !important;
+  }
+  .desktop-nav {
+    display: flex !important;
+  }
+}
