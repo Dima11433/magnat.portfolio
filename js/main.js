@@ -104,25 +104,66 @@ function initMobileMenu() {
 
   if (!hamburger || !mobileOverlay) return;
 
+  let scrollPosition = 0;
+
+  function openMenu() {
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    hamburger.classList.add('open');
+    mobileOverlay.classList.add('open');
+    document.documentElement.classList.add('menu-open');
+    document.body.classList.add('menu-open');
+    document.body.style.top = `-${scrollPosition}px`;
+  }
+
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    document.documentElement.classList.remove('menu-open');
+    document.body.classList.remove('menu-open');
+    document.body.style.top = '';
+    window.scrollTo(0, scrollPosition);
+  }
+
   function toggleMenu() {
-    hamburger.classList.toggle('open');
-    mobileOverlay.classList.toggle('open');
-    document.body.style.overflow = mobileOverlay.classList.contains('open') ? 'hidden' : '';
+    if (mobileOverlay.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   }
 
   hamburger.addEventListener('click', toggleMenu);
 
   mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
       if (mobileOverlay.classList.contains('open')) {
-        toggleMenu();
+        closeMenu();
+        if (targetId && targetId.startsWith('#')) {
+          e.preventDefault();
+          const targetElem = document.querySelector(targetId);
+          if (targetElem) {
+            setTimeout(() => {
+              targetElem.scrollIntoView({ behavior: 'smooth' });
+            }, 60);
+          }
+        }
       }
     });
   });
 
+  // Block touchmove on background when menu is open
+  document.addEventListener('touchmove', (e) => {
+    if (mobileOverlay.classList.contains('open')) {
+      if (!mobileOverlay.contains(e.target) || mobileOverlay === e.target) {
+        e.preventDefault();
+      }
+    }
+  }, { passive: false });
+
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileOverlay.classList.contains('open')) {
-      toggleMenu();
+      closeMenu();
     }
   });
 }
