@@ -1947,3 +1947,24 @@ a {
     display: none !important;
   }
 }
+
+
+.contact-telegram-icon {
+  width: 86px !important;
+  height: 86px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  border: 2px solid rgba(255, 255, 255, 0.25) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 20px auto !important;
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.2), 0 0 20px rgba(99, 102, 241, 0.35) !important;
+  background: #000000 !important;
+}
+.contact-telegram-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
