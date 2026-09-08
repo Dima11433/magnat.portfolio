@@ -2146,60 +2146,7 @@ a {
   border-color: rgba(56, 189, 248, 0.4);
 }
 
-/* ==========================================================================
-   EASTER EGG (GLOCK LASER MODAL)
-   ========================================================================== */
-.easter-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(5, 7, 13, 0.92);
-  backdrop-filter: blur(20px);
-  z-index: 400;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: var(--transition-normal);
-}
-.easter-modal-overlay.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-.easter-modal-box {
-  background: linear-gradient(145deg, #131728 0%, #0a0d17 100%);
-  border: 2px solid #ef4444;
-  border-radius: var(--radius-xl);
-  padding: 36px 30px;
-  max-width: 480px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 0 60px rgba(239, 68, 68, 0.35), 0 20px 40px rgba(0, 0, 0, 0.8);
-  position: relative;
-  overflow: hidden;
-  transform: scale(0.9);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.easter-modal-overlay.active .easter-modal-box {
-  transform: scale(1);
-}
-.laser-crosshair {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 320px;
-  height: 320px;
-  transform: translate(-50%, -50%);
-  border: 1px dashed rgba(239, 68, 68, 0.2);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: rotateLaser 12s linear infinite;
-}
-@keyframes rotateLaser {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
+
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 .easter-badge {
@@ -2261,4 +2208,100 @@ a {
     font-size: 0.82rem;
     padding: 16px 12px;
   }
+}
+
+
+/* ==========================================================================
+   FULLSCREEN LASER & SHOCKWAVE FX (PURE CINEMATIC ANIMATION, NO TEXT)
+   ========================================================================== */
+.screen-laser-fx {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+.screen-laser-fx.active {
+  opacity: 1;
+  visibility: visible;
+  animation: fxFadeOut 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Horizontal Laser Sweep Beam */
+.laser-beam {
+  position: absolute;
+  top: -15%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(90deg, transparent 0%, #06b6d4 25%, #ffffff 50%, #8b5cf6 75%, transparent 100%);
+  box-shadow: 0 0 25px #06b6d4, 0 0 50px #8b5cf6, 0 0 80px #ffffff;
+  filter: blur(1px);
+}
+.screen-laser-fx.active .laser-beam {
+  animation: laserSweep 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@keyframes laserSweep {
+  0% { top: -10%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 110%; opacity: 0; }
+}
+
+/* Expanding Neon Shockwave Ring */
+.laser-shockwave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%) scale(0.1);
+  border-radius: 50%;
+  border: 3px solid #06b6d4;
+  box-shadow: 0 0 40px #06b6d4, inset 0 0 40px #8b5cf6;
+  opacity: 0;
+}
+.screen-laser-fx.active .laser-shockwave {
+  animation: shockwaveExpand 1.4s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+@keyframes shockwaveExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 1;
+    border-width: 6px;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(18);
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+/* Fullscreen Cyber Flash Vignette */
+.laser-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.25) 70%, rgba(239, 68, 68, 0.15) 100%);
+  box-shadow: inset 0 0 100px rgba(6, 182, 212, 0.5);
+  opacity: 0;
+}
+.screen-laser-fx.active .laser-vignette {
+  animation: vignetteFlash 1.2s ease-out forwards;
+}
+@keyframes vignetteFlash {
+  0% { opacity: 0; }
+  25% { opacity: 0.85; }
+  100% { opacity: 0; }
+}
+@keyframes fxFadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
 }

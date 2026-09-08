@@ -443,50 +443,49 @@ function initInteractiveTerminal() {
 }
 
 /* ==========================================================================
-   EASTER EGG (GLOCK SOUND & LASER ACHIEVEMENT)
+   EASTER EGG (PURE CINEMATIC LASER FX, NO TEXT)
    ========================================================================== */
 function initGlockEasterEgg() {
   const logo = document.querySelector('.logo');
-  const easterModal = document.getElementById('easterModal');
-  const closeBtn = document.getElementById('easterCloseBtn');
+  const fxOverlay = document.getElementById('laserScreenFx');
 
-  if (!logo || !easterModal) return;
+  if (!logo || !fxOverlay) return;
 
   let clickCount = 0;
   let timer = null;
 
-  // Web Audio API Glock Reload Sound Generator (Zero latency, works offline)
+  // Web Audio API Glock Reload & Laser Sound Generator
   function playGlockSound() {
     try {
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       
-      // Metallic slide click 1
+      // Metallic slide click
       const osc1 = audioCtx.createOscillator();
       const gain1 = audioCtx.createGain();
       osc1.type = 'sawtooth';
-      osc1.frequency.setValueAtTime(800, audioCtx.currentTime);
-      osc1.frequency.exponentialRampToValueAtTime(160, audioCtx.currentTime + 0.08);
-      gain1.gain.setValueAtTime(0.3, audioCtx.currentTime);
-      gain1.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+      osc1.frequency.setValueAtTime(900, audioCtx.currentTime);
+      osc1.frequency.exponentialRampToValueAtTime(180, audioCtx.currentTime + 0.09);
+      gain1.gain.setValueAtTime(0.35, audioCtx.currentTime);
+      gain1.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.09);
       osc1.connect(gain1);
       gain1.connect(audioCtx.destination);
       osc1.start();
-      osc1.stop(audioCtx.currentTime + 0.08);
+      osc1.stop(audioCtx.currentTime + 0.09);
 
-      // Heavy bolt chamber click 2
+      // Heavy bolt chamber click + laser pulse
       setTimeout(() => {
         const osc2 = audioCtx.createOscillator();
         const gain2 = audioCtx.createGain();
-        osc2.type = 'triangle';
-        osc2.frequency.setValueAtTime(220, audioCtx.currentTime);
-        osc2.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.15);
-        gain2.gain.setValueAtTime(0.5, audioCtx.currentTime);
-        gain2.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(320, audioCtx.currentTime);
+        osc2.frequency.exponentialRampToValueAtTime(60, audioCtx.currentTime + 0.22);
+        gain2.gain.setValueAtTime(0.55, audioCtx.currentTime);
+        gain2.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.22);
         osc2.connect(gain2);
         gain2.connect(audioCtx.destination);
         osc2.start();
-        osc2.stop(audioCtx.currentTime + 0.15);
-      }, 110);
+        osc2.stop(audioCtx.currentTime + 0.22);
+      }, 100);
     } catch(e) {
       console.log('AudioContext not supported');
     }
@@ -504,20 +503,15 @@ function initGlockEasterEgg() {
     if (clickCount >= 5) {
       clickCount = 0;
       playGlockSound();
-      showToast('🔫 GLOCK ПАСХАЛКА АКТИВИРОВАНА!');
-      easterModal.classList.add('active');
-    }
-  });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      easterModal.classList.remove('active');
-    });
-  }
+      // Trigger pure fullscreen laser & shockwave animation
+      fxOverlay.classList.remove('active');
+      void fxOverlay.offsetWidth; // force reflow
+      fxOverlay.classList.add('active');
 
-  easterModal.addEventListener('click', (e) => {
-    if (e.target === easterModal) {
-      easterModal.classList.remove('active');
+      setTimeout(() => {
+        fxOverlay.classList.remove('active');
+      }, 1600);
     }
   });
 }
