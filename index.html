@@ -35,6 +35,7 @@
       <nav>
         <ul class="nav-menu">
           <li><a href="#about" class="nav-link">Обо мне</a></li>
+          <li><a href="#terminal" class="nav-link">Терминал</a></li>
           <li><a href="#skills" class="nav-link">Стек</a></li>
           <li><a href="#projects" class="nav-link">Мои боты</a></li>
           <li><a href="#music" class="nav-link">Музыка</a></li>
@@ -62,6 +63,7 @@
   <!-- Mobile Drawer Menu -->
   <div class="mobile-nav-overlay" id="mobileNavOverlay">
     <a href="#about" class="mobile-nav-link">Обо мне</a>
+    <a href="#terminal" class="mobile-nav-link">Терминал</a>
     <a href="#skills" class="mobile-nav-link">Стек</a>
     <a href="#projects" class="mobile-nav-link">Мои боты</a>
     <a href="#music" class="mobile-nav-link">Музыка</a>
@@ -203,6 +205,64 @@
             <div class="feature-icon-box">🚀</div>
             <h3 class="feature-title">17 лет и дисциплина</h3>
             <p class="feature-text">Учусь в 11 классе, совмещая учебу с практической разработкой коммерческих систем. Результат говорит громче любых слов.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- Interactive Developer Terminal Section -->
+    <section class="terminal-section" id="terminal">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">💻 Терминал разработчика</div>
+          <h2 class="section-title">Живой статус <span class="gradient-text">серверов Glock</span></h2>
+          <p class="section-desc">Интерактивная консоль мониторинга процессов, ботов и статуса экосистемы.</p>
+        </div>
+
+        <div class="terminal-wrapper reveal">
+          <div class="terminal-window">
+            
+            <!-- Terminal Titlebar -->
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot-red"></span>
+                <span class="dot-yellow"></span>
+                <span class="dot-green"></span>
+              </div>
+              <div class="terminal-title">bash: magnat@glock-server:~ (Python 3.14 / Uptime 99.9%)</div>
+              <div class="terminal-badge-live">● LIVE</div>
+            </div>
+
+            <!-- Terminal Screen / Log -->
+            <div class="terminal-body" id="terminalBody">
+              <div class="terminal-line"><span class="term-prompt">magnat@glock-server:~$</span> <span class="term-cmd">status</span></div>
+              <div class="terminal-line term-success">[✓] Glock Garant Bot: Active 🟢 (Escrow 24/7)</div>
+              <div class="terminal-line term-success">[✓] Glock Payments: Online 🟢 (Virtual Cards Issue)</div>
+              <div class="terminal-line term-success">[✓] Glock Models Shop: 24/7 🟢 (Auto-Delivery)</div>
+              <div class="terminal-line term-cyan">[✓] Soundtrack: WORKAL 🎧 (Focus Mode ON)</div>
+              <div class="terminal-line term-dim">Ecosystem load: 100% Operational • 0 errors detected</div>
+              <div class="terminal-line" style="margin-top: 10px;"><span class="term-prompt">magnat@glock-server:~$</span> <span class="term-cursor">_</span></div>
+            </div>
+
+            <!-- Terminal Interactive Input -->
+            <form class="terminal-input-bar" id="terminalForm">
+              <span class="term-input-prompt">magnat@glock:~$</span>
+              <input type="text" class="terminal-input" id="terminalInput" placeholder="Введите команду (например: status, bots, music, stack, clear)..." autocomplete="off">
+              <button type="submit" class="terminal-send-btn">Выполнить ↵</button>
+            </form>
+
+            <!-- Quick Command Chips -->
+            <div class="terminal-quick-cmds">
+              <span class="quick-cmd-label">Быстрые команды:</span>
+              <button type="button" class="quick-cmd-btn" data-cmd="status">status</button>
+              <button type="button" class="quick-cmd-btn" data-cmd="bots">bots</button>
+              <button type="button" class="quick-cmd-btn" data-cmd="stack">stack</button>
+              <button type="button" class="quick-cmd-btn" data-cmd="music">music</button>
+              <button type="button" class="quick-cmd-btn" data-cmd="goals">goals</button>
+              <button type="button" class="quick-cmd-btn" data-cmd="clear">clear</button>
+            </div>
+
           </div>
         </div>
       </div>
@@ -778,5 +838,25 @@
 
   <!-- JavaScript -->
   <script src="js/main.js"></script>
+
+  <!-- Secret Easter Egg Glock Modal -->
+  <div class="easter-modal-overlay" id="easterModal">
+    <div class="easter-modal-box">
+      <div class="laser-crosshair"></div>
+      <div class="easter-badge">🏆 СЕКРЕТНОЕ ДОСТИЖЕНИЕ РАЗБЛОКИРОВАНО</div>
+      <div class="easter-icon">🔫⚡</div>
+      <h2 class="easter-title">GLOCK PROJECTS пасхалка найдена!</h2>
+      <p class="easter-quote">«Код — наше главное оружие.»</p>
+      <div class="easter-details">
+        <div><strong>Пользователь:</strong> MAGNAT [11 КЛАСС]</div>
+        <div><strong>Статус:</strong> ROOT ACCESS GRANTED</div>
+        <div><strong>Монополия:</strong> 100% ЗАГРУЗКА</div>
+      </div>
+      <button class="btn btn-primary" id="easterCloseBtn" style="margin-top: 20px; width: 100%;">
+        <span>Продолжить кодинг 🔥</span>
+      </button>
+    </div>
+  </div>
+
 </body>
 </html>
