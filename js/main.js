@@ -1,5 +1,5 @@
 /**
- * PORTFOLIO SCRIPTS — MAGNAT & GLOCK PROJECTS 2026
+ * PORTFOLIO SCRIPTS — MAGNAT 2026
  * Interactive features, filtering, quotes, clipboard
  */
 
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initClipboardActions();
   initScrollReveal();
   initInteractiveTerminal();
-  initGlockEasterEgg();
+  initCyberEasterEgg();
   initSoundToggle();
   initThemeSwitcher();
   init3DTilt();
@@ -174,7 +174,7 @@ function initMobileMenu() {
 }
 
 /* ==========================================================================
-   4. PROJECTS FILTERING (GLOCK BOTS)
+   4. PROJECTS FILTERING
    ========================================================================== */
 function initProjectFiltering() {
   const filterButtons = document.querySelectorAll('.filter-btn');
@@ -227,7 +227,7 @@ const quotesCollection = [
   },
   {
     text: "Кодинг под хорошую музыку превращает чистый энтузиазм в масштабную монополию.",
-    author: "Glock Philosophy"
+    author: "MAGNAT Philosophy"
   },
   {
     text: "Результат создается не разговорами, а тысячами строк чистого работающего кода.",
@@ -340,25 +340,24 @@ function initInteractiveTerminal() {
     help: [
       'Доступные команды:',
       '  status  - статус всех ботов экосистемы',
-      '  bots    - список и ссылки на ботов Glock',
+      '  bots    - список и ссылки на ботов',
       '  stack   - используемые технологии',
       '  music   - любимые треки под кодинг',
       '  goals   - цели монополии',
       '  clear   - очистить экран терминала'
     ],
     status: [
-      '[✓] Glock Garant Bot: Active 🟢 (Escrow 24/7)',
-      '[✓] Glock Payments: Online 🟢 (Virtual Cards Issue)',
-      '[✓] Glock Models Shop: 24/7 🟢 (Auto-Delivery)',
+      '[✓] Garant Bot: Active 🟢 (Escrow 24/7)',
+      '[✓] Payments Bot: Online 🟢 (Virtual Cards Issue)',
+      '[✓] Models Shop Bot: 24/7 🟢 (Auto-Delivery)',
       '[✓] Soundtrack: WORKAL 🎧 (Focus Mode ON)',
       'Ecosystem load: 100% Operational • 0 errors'
     ],
     bots: [
-      'Экосистема Glock Projects:',
-      '  1. Glock Projects -> t.me/glock_projects',
-      '  2. Бот Гарант    -> t.me/glock_garant_bot?start=tr_scandalbio',
-      '  3. Выдача Карт   -> t.me/glock_payments_bot?start=ref_6667583896',
-      '  4. Модели Шоп    -> t.me/glock_models_bot?start=ref_6667583896'
+      'Боты и сервисы:',
+      '  1. Бот Гарант    -> t.me/glock_garant_bot?start=tr_scandalbio',
+      '  2. Выдача Карт   -> t.me/glock_payments_bot?start=ref_6667583896',
+      '  3. Модели Шоп    -> t.me/glock_models_bot?start=ref_6667583896'
     ],
     stack: [
       'Технологический стек MAGNAT:',
@@ -374,9 +373,9 @@ function initInteractiveTerminal() {
       '  3. Инста модель (Night Coding)'
     ],
     goals: [
-      'Цели MAGNAT & Glock Projects:',
-      '  1. Сделать популярным Glock Projects',
-      '  2. Построить масштабную монополию ботов',
+      'Цели MAGNAT:',
+      '  1. Развивать независимые IT-продукты',
+      '  2. Построить масштабную сеть ботов',
       '  3. Стать лучшим в своей сфере'
     ]
   };
@@ -388,14 +387,14 @@ function initInteractiveTerminal() {
     // Add user command line
     const userLine = document.createElement('div');
     userLine.className = 'terminal-line';
-    userLine.innerHTML = `<span class="term-prompt">magnat@glock-server:~$</span> <span class="term-cmd">${escapeHtml(rawCmd)}</span>`;
+    userLine.innerHTML = `<span class="term-prompt">magnat@server:~$</span> <span class="term-cmd">${escapeHtml(rawCmd)}</span>`;
     body.appendChild(userLine);
 
     if (rawCmd === 'clear') {
       body.innerHTML = '';
       const promptLine = document.createElement('div');
       promptLine.className = 'terminal-line';
-      promptLine.innerHTML = `<span class="term-prompt">magnat@glock-server:~$</span> <span class="term-cursor">_</span>`;
+      promptLine.innerHTML = `<span class="term-prompt">magnat@server:~$</span> <span class="term-cursor">_</span>`;
       body.appendChild(promptLine);
       return;
     }
@@ -448,7 +447,7 @@ function initInteractiveTerminal() {
 /* ==========================================================================
    EASTER EGG (PURE CINEMATIC LASER FX, NO TEXT)
    ========================================================================== */
-function initGlockEasterEgg() {
+function initCyberEasterEgg() {
   const logo = document.querySelector('.logo');
   const fxOverlay = document.getElementById('laserScreenFx');
 
@@ -457,8 +456,8 @@ function initGlockEasterEgg() {
   let clickCount = 0;
   let timer = null;
 
-  // Web Audio API Glock Reload & Laser Sound Generator
-  function playGlockSound() {
+  // Web Audio API Reload & Laser Sound Generator
+  function playCyberSound() {
     try {
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       
@@ -505,7 +504,7 @@ function initGlockEasterEgg() {
 
     if (clickCount >= 5) {
       clickCount = 0;
-      playGlockSound();
+      playCyberSound();
 
       // Trigger pure fullscreen laser & shockwave animation
       fxOverlay.classList.remove('active');
@@ -643,7 +642,7 @@ function initThemeSwitcher() {
     if (playSound) {
       SoundFX.theme();
       const themeNamesRu = {
-        violet: 'Фиолетовая (Glock)',
+        violet: 'Фиолетовая (Неон)',
         cyan: 'Неоновый Циан',
         emerald: 'Изумрудная',
         red: 'Красный Неон',
