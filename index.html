@@ -36,8 +36,7 @@
       <nav class="desktop-nav">
         <ul class="nav-menu">
           <li><a href="#about" class="nav-link">Обо мне</a></li>
-          <li><a href="#terminal" class="nav-link">Терминал</a></li>
-          <li><a href="#skills" class="nav-link">Стек</a></li>
+                    <li><a href="#skills" class="nav-link">Стек</a></li>
           <li><a href="#projects" class="nav-link">Проекты</a></li>
           <li><a href="#music" class="nav-link">Музыка</a></li>
           <li><a href="#quotes" class="nav-link">Цитаты</a></li>
@@ -46,21 +45,7 @@
         </ul>
       </nav>
 
-      <!-- Theme Switcher, Sound SFX Toggle & Compact CTA -->
       <div class="nav-actions">
-        <!-- Theme Dots Switcher -->
-        <div class="theme-switcher" title="Выбрать цвет темы">
-          <button class="theme-dot dot-violet active" data-theme="violet" aria-label="Фиолетовая тема"></button>
-          <button class="theme-dot dot-cyan" data-theme="cyan" aria-label="Циановая тема"></button>
-          <button class="theme-dot dot-emerald" data-theme="emerald" aria-label="Изумрудная тема"></button>
-          <button class="theme-dot dot-red" data-theme="red" aria-label="Красная тема"></button>
-          <button class="theme-dot dot-gold" data-theme="gold" aria-label="Золотая тема"></button>
-        </div>
-
-        <!-- Sound SFX Button -->
-        <button class="sfx-toggle-btn" id="sfxToggleBtn" title="Включить / Выключить звуки интерфейса" aria-label="Звуки интерфейса">
-          <span class="sfx-icon">🔊</span>
-        </button>
 
         <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-primary nav-tg-btn">
           <span>@ggg468q</span>
@@ -79,24 +64,13 @@
   <!-- Mobile Drawer Menu -->
   <div class="mobile-nav-overlay" id="mobileNavOverlay">
     <a href="#about" class="mobile-nav-link">Обо мне</a>
-    <a href="#terminal" class="mobile-nav-link">Терминал</a>
-    <a href="#skills" class="mobile-nav-link">Стек</a>
+        <a href="#skills" class="mobile-nav-link">Стек</a>
     <a href="#projects" class="mobile-nav-link">Проекты</a>
     <a href="#music" class="mobile-nav-link">Музыка</a>
     <a href="#quotes" class="mobile-nav-link">Цитаты</a>
     <a href="#goals" class="mobile-nav-link">Цели</a>
     <a href="#contact" class="mobile-nav-link">Связь</a>
-        <!-- Mobile Theme & Sound Controls -->
-    <div class="mobile-theme-bar">
-      <span style="font-size: 0.85rem; color: var(--text-muted);">Тема оформления:</span>
-      <div class="theme-switcher">
-        <button class="theme-dot dot-violet active" data-theme="violet"></button>
-        <button class="theme-dot dot-cyan" data-theme="cyan"></button>
-        <button class="theme-dot dot-emerald" data-theme="emerald"></button>
-        <button class="theme-dot dot-red" data-theme="red"></button>
-        <button class="theme-dot dot-gold" data-theme="gold"></button>
-      </div>
-    </div>
+        
     <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 10px; width: 100%;">
       <span>Telegram: @ggg468q ↗</span>
     </a>
@@ -238,62 +212,7 @@
     </section>
 
     
-    <!-- Interactive Developer Terminal Section -->
-    <section class="terminal-section" id="terminal">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">💻 Терминал разработчика</div>
-          <h2 class="section-title">Живой статус <span class="gradient-text">серверов</span></h2>
-          <p class="section-desc">Интерактивная консоль мониторинга процессов, ботов и статуса экосистемы.</p>
-        </div>
-
-        <div class="terminal-wrapper reveal">
-          <div class="terminal-window">
-            
-            <!-- Terminal Titlebar -->
-            <div class="terminal-header">
-              <div class="terminal-dots">
-                <span class="dot-red"></span>
-                <span class="dot-yellow"></span>
-                <span class="dot-green"></span>
-              </div>
-              <div class="terminal-title">bash: magnat@server:~ (Python 3.14 / Uptime 99.9%)</div>
-              <div class="terminal-badge-live">● LIVE</div>
-            </div>
-
-            <!-- Terminal Screen / Log -->
-            <div class="terminal-body" id="terminalBody">
-              <div class="terminal-line"><span class="term-prompt">magnat@server:~$</span> <span class="term-cmd">status</span></div>
-              <div class="terminal-line term-success">[✓] Garant Bot: Active 🟢 (Escrow 24/7)</div>
-              <div class="terminal-line term-success">[✓] Payments Bot: Online 🟢 (Virtual Cards Issue)</div>
-              <div class="terminal-line term-success">[✓] Models Shop Bot: 24/7 🟢 (Auto-Delivery)</div>
-              <div class="terminal-line term-cyan">[✓] Soundtrack: WORKAL 🎧 (Focus Mode ON)</div>
-              <div class="terminal-line term-dim">Ecosystem load: 100% Operational • 0 errors detected</div>
-              <div class="terminal-line" style="margin-top: 10px;"><span class="term-prompt">magnat@server:~$</span> <span class="term-cursor">_</span></div>
-            </div>
-
-            <!-- Terminal Interactive Input -->
-            <form class="terminal-input-bar" id="terminalForm">
-              <span class="term-input-prompt">magnat@server:~$</span>
-              <input type="text" class="terminal-input" id="terminalInput" placeholder="Введите команду (например: status, bots, music, stack, clear)..." autocomplete="off">
-              <button type="submit" class="terminal-send-btn">Выполнить ↵</button>
-            </form>
-
-            <!-- Quick Command Chips -->
-            <div class="terminal-quick-cmds">
-              <span class="quick-cmd-label">Быстрые команды:</span>
-              <button type="button" class="quick-cmd-btn" data-cmd="status">status</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="projects">projects</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="stack">stack</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="music">music</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="goals">goals</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="clear">clear</button>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
     <!-- 3. Skills Section -->
     <section class="skills-section" id="skills">

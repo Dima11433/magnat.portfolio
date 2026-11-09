@@ -527,7 +527,7 @@ function initCyberEasterEgg() {
    ========================================================================== */
 const SoundFX = (() => {
   let audioCtx = null;
-  let isMuted = localStorage.getItem('magnat_sfx_muted') === 'true';
+  let isMuted = true;
 
   function initCtx() {
     if (!audioCtx) {
