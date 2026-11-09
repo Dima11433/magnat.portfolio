@@ -347,23 +347,20 @@ function initInteractiveTerminal() {
       '  clear    - очистить экран терминала'
     ],
     status: [
-      '[✓] Crypto 3D Converter: Online 🟢 (GitHub Pages)',
-      '[✓] Cortez Family Portal: Online 🟢 (GitHub Pages)',
-      '[✓] Diana Nails: Online 🟢 (GitHub)',
+      '[✓] Крипто Обменник: Online 🟢 (GitHub Pages)',
+      '[✓] CORTEZ FAMq: Online 🟢 (GitHub Pages)',
       '[✓] Soundtrack: WORKAL 🎧 (Focus Mode ON)',
       'Status: 100% Operational • All projects active'
     ],
     projects: [
-      'Избранные веб-проекты на GitHub:',
-      '  1. 3D Crypto Converter -> dima11433.github.io/crypto-3d-converter',
-      '  2. Cortez Family Site  -> dima11433.github.io/cortez-family-site',
-      '  3. Diana Nails         -> github.com/Dima11433/diana-nails'
+      'Избранные сайты на GitHub:',
+      '  1. Крипто Обменник -> dima11433.github.io/crypto-3d-converter',
+      '  2. CORTEZ FAMq     -> dima11433.github.io/cortez-family-site'
     ],
     bots: [
-      'Избранные веб-проекты на GitHub:',
-      '  1. 3D Crypto Converter -> dima11433.github.io/crypto-3d-converter',
-      '  2. Cortez Family Site  -> dima11433.github.io/cortez-family-site',
-      '  3. Diana Nails         -> github.com/Dima11433/diana-nails'
+      'Избранные сайты на GitHub:',
+      '  1. Крипто Обменник -> dima11433.github.io/crypto-3d-converter',
+      '  2. CORTEZ FAMq     -> dima11433.github.io/cortez-family-site'
     ],
     stack: [
       'Технологический стек MAGNAT:',
