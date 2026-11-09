@@ -339,25 +339,31 @@ function initInteractiveTerminal() {
   const commands = {
     help: [
       'Доступные команды:',
-      '  status  - статус всех ботов экосистемы',
-      '  bots    - список и ссылки на ботов',
-      '  stack   - используемые технологии',
-      '  music   - любимые треки под кодинг',
-      '  goals   - цели монополии',
-      '  clear   - очистить экран терминала'
+      '  status   - статус проектов и серверов',
+      '  projects - список открытых веб-проектов',
+      '  stack    - используемые технологии',
+      '  music    - любимые треки под кодинг',
+      '  goals    - цели и ориентиры',
+      '  clear    - очистить экран терминала'
     ],
     status: [
-      '[✓] Garant Bot: Active 🟢 (Escrow 24/7)',
-      '[✓] Payments Bot: Online 🟢 (Virtual Cards Issue)',
-      '[✓] Models Shop Bot: 24/7 🟢 (Auto-Delivery)',
+      '[✓] Crypto 3D Converter: Online 🟢 (GitHub Pages)',
+      '[✓] Cortez Family Portal: Online 🟢 (GitHub Pages)',
+      '[✓] Diana Nails: Online 🟢 (GitHub)',
       '[✓] Soundtrack: WORKAL 🎧 (Focus Mode ON)',
-      'Ecosystem load: 100% Operational • 0 errors'
+      'Status: 100% Operational • All projects active'
+    ],
+    projects: [
+      'Избранные веб-проекты на GitHub:',
+      '  1. 3D Crypto Converter -> dima11433.github.io/crypto-3d-converter',
+      '  2. Cortez Family Site  -> dima11433.github.io/cortez-family-site',
+      '  3. Diana Nails         -> github.com/Dima11433/diana-nails'
     ],
     bots: [
-      'Боты и сервисы:',
-      '  1. Бот Гарант    -> t.me/glock_garant_bot?start=tr_scandalbio',
-      '  2. Выдача Карт   -> t.me/glock_payments_bot?start=ref_6667583896',
-      '  3. Модели Шоп    -> t.me/glock_models_bot?start=ref_6667583896'
+      'Избранные веб-проекты на GitHub:',
+      '  1. 3D Crypto Converter -> dima11433.github.io/crypto-3d-converter',
+      '  2. Cortez Family Site  -> dima11433.github.io/cortez-family-site',
+      '  3. Diana Nails         -> github.com/Dima11433/diana-nails'
     ],
     stack: [
       'Технологический стек MAGNAT:',

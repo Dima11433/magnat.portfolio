@@ -38,7 +38,7 @@
           <li><a href="#about" class="nav-link">Обо мне</a></li>
           <li><a href="#terminal" class="nav-link">Терминал</a></li>
           <li><a href="#skills" class="nav-link">Стек</a></li>
-          <li><a href="#projects" class="nav-link">Мои боты</a></li>
+          <li><a href="#projects" class="nav-link">Проекты</a></li>
           <li><a href="#music" class="nav-link">Музыка</a></li>
           <li><a href="#quotes" class="nav-link">Цитаты</a></li>
           <li><a href="#goals" class="nav-link">Цели</a></li>
@@ -81,7 +81,7 @@
     <a href="#about" class="mobile-nav-link">Обо мне</a>
     <a href="#terminal" class="mobile-nav-link">Терминал</a>
     <a href="#skills" class="mobile-nav-link">Стек</a>
-    <a href="#projects" class="mobile-nav-link">Мои боты</a>
+    <a href="#projects" class="mobile-nav-link">Проекты</a>
     <a href="#music" class="mobile-nav-link">Музыка</a>
     <a href="#quotes" class="mobile-nav-link">Цитаты</a>
     <a href="#goals" class="mobile-nav-link">Цели</a>
@@ -132,7 +132,7 @@
 
             <div class="hero-buttons">
               <a href="#projects" class="btn btn-primary">
-                <span>🔥 Мои боты и проекты</span>
+                <span>🔥 Мои проекты</span>
                 <span>↓</span>
               </a>
               <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-secondary">
@@ -283,7 +283,7 @@
             <div class="terminal-quick-cmds">
               <span class="quick-cmd-label">Быстрые команды:</span>
               <button type="button" class="quick-cmd-btn" data-cmd="status">status</button>
-              <button type="button" class="quick-cmd-btn" data-cmd="bots">bots</button>
+              <button type="button" class="quick-cmd-btn" data-cmd="projects">projects</button>
               <button type="button" class="quick-cmd-btn" data-cmd="stack">stack</button>
               <button type="button" class="quick-cmd-btn" data-cmd="music">music</button>
               <button type="button" class="quick-cmd-btn" data-cmd="goals">goals</button>
@@ -457,96 +457,101 @@
       </div>
     </section>
 
-    <!-- 4. Projects Section (Telegram Bots) -->
+    <!-- 4. Projects Section -->
     <section class="projects-section" id="projects">
       <div class="container">
         <div class="section-header reveal">
-          <div class="section-tag">Мои разработки</div>
-          <h2 class="section-title">Мои топ боты и <span class="gradient-text">проекты</span></h2>
-          <p class="section-desc">Реально работающие сервисы в Telegram с постоянной аудиторией и автоматизированной логикой.</p>
+          <div class="section-tag">Мои проекты</div>
+          <h2 class="section-title">Избранные веб-проекты и <span class="gradient-text">разработки</span></h2>
+          <p class="section-desc">Интерактивные 3D-приложения, веб-порталы и сервисы с открытым исходным кодом на GitHub.</p>
         </div>
 
         <!-- Filters Bar -->
         <div class="projects-filter-bar reveal">
           <button class="filter-btn active" data-filter="all">Все проекты (3)</button>
-          <button class="filter-btn" data-filter="security">Безопасность</button>
-          <button class="filter-btn" data-filter="fintech">Финансы</button>
-          <button class="filter-btn" data-filter="shop">Шоп</button>
+          <button class="filter-btn" data-filter="fintech">Финтех &amp; 3D</button>
+          <button class="filter-btn" data-filter="web">Веб-порталы</button>
         </div>
 
         <!-- Projects Grid -->
         <div class="projects-grid">
 
-          <!-- Project 2: Бот Гарант -->
-          <article class="project-card reveal delay-2" data-category="security">
+          <!-- Project 1: 3D Crypto & Currency Protocol -->
+          <article class="project-card reveal delay-1" data-category="fintech">
             <div class="project-preview">
-              <img src="assets/images/glock-garant.jpg" alt="Бот Гарант">
-              <span class="project-badge-tag">Безопасность</span>
+              <img src="assets/images/project-crypto.svg" alt="3D Crypto Converter">
+              <span class="project-badge-tag">Финтех &amp; 3D</span>
             </div>
             <div class="project-body">
-              <h3 class="project-title">Бот Гарант — Безопасные сделки</h3>
+              <h3 class="project-title">3D Crypto &amp; Currency Protocol</h3>
               <p class="project-desc">
-                Автоматизированный бот для безопасного проведения P2P-сделок в Telegram. Надежный эскроу-сервис с удержанием средств до подтверждения обеих сторон.
+                Интерактивный 3D-конвертер криптовалют и фиатных валют на Three.js (WebGL) с реальными курсами Wise API, физическими материалами токенов и звуковым движком Web Audio API.
               </p>
               <div class="project-tech-tags">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">Escrow API</span>
-                <span class="tech-tag">P2P Security</span>
-                <span class="tech-tag">24/7 Auto</span>
+                <span class="tech-tag">Three.js</span>
+                <span class="tech-tag">WebGL</span>
+                <span class="tech-tag">Crypto API</span>
+                <span class="tech-tag">Web Audio</span>
               </div>
-              <div class="project-actions">
-                <a href="https://t.me/glock_garant_bot?start=tr_scandalbio" target="_blank" rel="noopener" class="btn btn-primary project-btn" style="flex: 1;">
-                  <span>Запустить бота ↗</span>
+              <div class="project-actions" style="display: flex; gap: 10px;">
+                <a href="https://dima11433.github.io/crypto-3d-converter/" target="_blank" rel="noopener" class="btn btn-primary project-btn" style="flex: 1;">
+                  <span>Демо сайта ↗</span>
+                </a>
+                <a href="https://github.com/Dima11433/crypto-3d-converter" target="_blank" rel="noopener" class="btn btn-secondary project-btn" style="padding: 10px 14px;">
+                  <span>GitHub ↗</span>
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- Project 3: Выдача Карт -->
-          <article class="project-card reveal delay-3" data-category="fintech">
+          <!-- Project 2: Cortez & Flory Syndicate Portals -->
+          <article class="project-card reveal delay-2" data-category="web">
             <div class="project-preview">
-              <img src="assets/images/glock-payments.jpg" alt="Выдача Карт Бот">
-              <span class="project-badge-tag">Финансы</span>
+              <img src="assets/images/project-saas.svg" alt="Cortez Family Syndicate Portal">
+              <span class="project-badge-tag">Веб-порталы</span>
             </div>
             <div class="project-body">
-              <h3 class="project-title">Выдача Карт — Платежный сервис</h3>
+              <h3 class="project-title">Majestic RP Syndicate Portals</h3>
               <p class="project-desc">
-                Удобный финансовый бот для моментального выпуска виртуальных карт, пополнения баланса и проведения платежей без лишних сложностей.
+                Кинематографичные игровые порталы синдикатов CORTEZ и FLORY с фоновым Full-Viewport видеорядом, интерактивной статистикой, бонусами и формами заявок.
               </p>
               <div class="project-tech-tags">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">Payments API</span>
-                <span class="tech-tag">Virtual Cards</span>
-                <span class="tech-tag">Авто-выдача</span>
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3 / Grid</span>
+                <span class="tech-tag">Video Hero</span>
+                <span class="tech-tag">Interactive</span>
               </div>
-              <div class="project-actions">
-                <a href="https://t.me/glock_payments_bot?start=ref_6667583896" target="_blank" rel="noopener" class="btn btn-primary project-btn" style="flex: 1;">
-                  <span>Запустить бота ↗</span>
+              <div class="project-actions" style="display: flex; gap: 10px;">
+                <a href="https://dima11433.github.io/cortez-family-site/" target="_blank" rel="noopener" class="btn btn-primary project-btn" style="flex: 1;">
+                  <span>Демо сайта ↗</span>
+                </a>
+                <a href="https://github.com/Dima11433/cortez-family-site" target="_blank" rel="noopener" class="btn btn-secondary project-btn" style="padding: 10px 14px;">
+                  <span>GitHub ↗</span>
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- Project 4: Модели Шоп -->
-          <article class="project-card reveal delay-4" data-category="shop">
+          <!-- Project 3: Diana Nails Portfolio -->
+          <article class="project-card reveal delay-3" data-category="web">
             <div class="project-preview">
-              <img src="assets/images/glock-models.jpg" alt="Модели Шоп Бот">
-              <span class="project-badge-tag">Шоп</span>
+              <img src="assets/images/project-ecommerce.svg" alt="Diana Nails Portfolio">
+              <span class="project-badge-tag">Сайт-портфолио</span>
             </div>
             <div class="project-body">
-              <h3 class="project-title">Модели Шоп — Бот автоматических продаж</h3>
+              <h3 class="project-title">Diana Nails — Портфолио мастера</h3>
               <p class="project-desc">
-                Автоматизированный магазин в Telegram с удобным каталогом товаров, быстрой оплатой и моментальной выдачей цифрового контента.
+                Элегантный адаптивный сайт-портфолио мастера маникюра с интерактивной галереей выполненных работ, прайс-листом услуг и быстрой онлайн-записью через мессенджеры.
               </p>
               <div class="project-tech-tags">
-                <span class="tech-tag">E-Commerce</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">Shop Bot</span>
-                <span class="tech-tag">Мгновенно</span>
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS Grid</span>
+                <span class="tech-tag">UI/UX</span>
+                <span class="tech-tag">Mobile First</span>
               </div>
               <div class="project-actions">
-                <a href="https://t.me/glock_models_bot?start=ref_6667583896" target="_blank" rel="noopener" class="btn btn-primary project-btn" style="flex: 1;">
-                  <span>Запустить бота ↗</span>
+                <a href="https://github.com/Dima11433/diana-nails" target="_blank" rel="noopener" class="btn btn-primary project-btn" style="flex: 1;">
+                  <span>Репозиторий на GitHub ↗</span>
                 </a>
               </div>
             </div>
