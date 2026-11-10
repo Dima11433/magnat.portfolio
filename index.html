@@ -615,6 +615,40 @@
       50% { opacity: 0.4; transform: scale(0.85); }
     }
 
+    
+    /* Project Category Filter Tabs */
+    .project-filters {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: transparent;
+      color: #a1a1aa;
+      border: 1px solid var(--rule);
+      padding: 10px 22px;
+      border-radius: 2px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .filter-btn:hover {
+      color: #ffffff;
+      border-color: var(--rule-bold);
+      transform: translateY(-1px);
+    }
+    .filter-btn.is-active {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+    }
+    .work-card.is-hidden {
+      display: none !important;
+    }
+
     /* Selected Works Grid */
     .works-grid {
       display: grid;
@@ -1181,7 +1215,8 @@
       <!-- Actions Navigation -->
       <nav class="actions">
         <a href="#about" class="btn-top-link" aria-label="Обо мне">ОБО МНЕ</a>
-        <a href="#projects" class="btn-top-link" aria-label="Сайты">САЙТЫ</a>
+        <a href="#projects" class="btn-top-link nav-filter-link" data-filter="sites" aria-label="Сайты">САЙТЫ</a>
+        <a href="#projects" class="btn-top-link nav-filter-link" data-filter="shops" aria-label="Магазины">МАГАЗИНЫ</a>
         <a href="#skills" class="btn-top-link" aria-label="Стек">СТЕК</a>
         <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn-top-link btn-top-tg" aria-label="Telegram">TELEGRAM ↗</a>
         <button type="button" class="menu" id="menuToggleBtn" aria-expanded="false" aria-label="Открыть навигацию">
@@ -1224,28 +1259,33 @@
           <span class="nav-item__title">Личность &amp; Дисциплина</span>
           <span class="nav-item__sub">Разработчик • 17 y.o. • Focus 🎧</span>
         </a>
-        <a href="#projects" class="nav-overlay__item">
+        <a href="#projects" class="nav-overlay__item nav-filter-link" data-filter="sites">
           <span class="nav-item__num">02 // САЙТЫ</span>
-          <span class="nav-item__title">Избранные проекты</span>
+          <span class="nav-item__title">Веб-разработка &amp; 3D</span>
           <span class="nav-item__sub">Крипто Обменник • CORTEZ FAMq • Diana Nails</span>
         </a>
+        <a href="#projects" class="nav-overlay__item nav-filter-link" data-filter="shops">
+          <span class="nav-item__num">03 // МАГАЗИНЫ</span>
+          <span class="nav-item__title">Telegram Шопы &amp; Боты</span>
+          <span class="nav-item__sub">MAGNAT [GMT] • MAGNAT SHOP • MAGNAT VPN</span>
+        </a>
         <a href="#skills" class="nav-overlay__item">
-          <span class="nav-item__num">03 // СТЕК</span>
+          <span class="nav-item__num">04 // СТЕК</span>
           <span class="nav-item__title">Технологический стек</span>
           <span class="nav-item__sub">Python • Aiogram • Three.js • WebGL</span>
         </a>
         <a href="#music" class="nav-overlay__item">
-          <span class="nav-item__num">04 // АУДИО</span>
+          <span class="nav-item__num">05 // АУДИО</span>
           <span class="nav-item__title">Саундтреки для кода</span>
           <span class="nav-item__sub">WORKAL • 1 000 000 ₽ • Инста модель</span>
         </a>
         <a href="#quotes" class="nav-overlay__item">
-          <span class="nav-item__num">05 // МАНИФЕСТ</span>
+          <span class="nav-item__num">06 // МАНИФЕСТ</span>
           <span class="nav-item__title">Принципы &amp; Мышление</span>
           <span class="nav-item__sub">Философия продуктивности</span>
         </a>
         <a href="#contact" class="nav-overlay__item">
-          <span class="nav-item__num">06 // СВЯЗЬ</span>
+          <span class="nav-item__num">07 // СВЯЗЬ</span>
           <span class="nav-item__title">Канал коммуникации</span>
           <span class="nav-item__sub">Прямой диалог в Telegram @ggg468q</span>
         </a>
@@ -1307,16 +1347,23 @@
   </section>
 
   <!-- ========================================================================
-       3. SELECTED WORKS SECTION (САЙТЫ)
+       3. SELECTED WORKS SECTION (САЙТЫ & МАГАЗИНЫ)
        ======================================================================== -->
   <section class="section-wrap" id="projects" style="background: #050505;">
     <div class="container">
-      <div class="section-num">02 / Сайты &amp; Избранные работы</div>
-      <h2 class="section-heading">Сайты</h2>
+      <div class="section-num">02 / Проекты &amp; Разработки</div>
+      <h2 class="section-heading">Проекты</h2>
+
+      <!-- Category Filter Tabs -->
+      <div class="project-filters">
+        <button type="button" class="filter-btn is-active" data-filter="all">Все проекты (6)</button>
+        <button type="button" class="filter-btn" data-filter="sites">Сайты (3)</button>
+        <button type="button" class="filter-btn" data-filter="shops">Магазины (3)</button>
+      </div>
 
       <div class="works-grid">
         <!-- Work 1: Крипто Обменник -->
-        <article class="work-card">
+        <article class="work-card" data-category="sites">
           <div class="work-thumb">
             <img src="assets/images/crypto-obmennik.jpg" alt="Крипто Обменник 3D">
             <span class="work-tag">01 // ФИНТЕХ &amp; 3D</span>
@@ -1346,7 +1393,7 @@
         </article>
 
         <!-- Work 2: CORTEZ FAMq -->
-        <article class="work-card">
+        <article class="work-card" data-category="sites">
           <div class="work-thumb">
             <img src="assets/images/cortez-famq.jpg" alt="CORTEZ FAMq Syndicate Portal">
             <span class="work-tag">02 // ВЕБ-ПОРТАЛ</span>
@@ -1376,7 +1423,7 @@
         </article>
 
         <!-- Work 3: Diana Nails -->
-        <article class="work-card">
+        <article class="work-card" data-category="sites">
           <div class="work-thumb">
             <img src="assets/images/diana-nails-preview.jpg?v=3" alt="Diana Nails — Портфолио мастера">
             <span class="work-tag">03 // САЙТ-ПОРТФОЛИО</span>
@@ -1404,6 +1451,96 @@
             </div>
           </div>
         </article>
+        <!-- Work 4: MAGNAT [GMT] -->
+        <article class="work-card" data-category="shops">
+          <div class="work-thumb">
+            <img src="assets/images/shop-magnat-gmt.jpg" alt="MAGNAT [GMT] — Telegram-аккаунты">
+            <span class="work-tag">МАГАЗИН // TELEGRAM-АККАУНТЫ</span>
+          </div>
+          <div class="work-content">
+            <h3 class="work-title">MAGNAT [GMT]</h3>
+            <p class="work-desc">
+              Здесь можно приобрести Telegram-аккаунты разных стран и форматов выдачи. Высокое качество, строгая проверка на валидность и автоматическая моментальная выдача.
+            </p>
+            <div class="work-tags-list">
+              <span class="work-pill">Telegram Bot</span>
+              <span class="work-pill">Python / Aiogram</span>
+              <span class="work-pill">Auto-Delivery</span>
+              <span class="work-pill">Accounts API</span>
+              <span class="work-pill">24/7 Uptime</span>
+            </div>
+            <div class="work-actions">
+              <a href="https://t.me/magnat_gmt_bot" target="_blank" rel="noopener" class="btn-work-main">
+                <span>Запустить бота</span>
+                <span>↗</span>
+              </a>
+              <a href="https://t.me/magnat_gmt_bot" target="_blank" rel="noopener" class="btn-work-sub">
+                <span>@magnat_gmt_bot</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Work 5: MAGNAT SHOP -->
+        <article class="work-card" data-category="shops">
+          <div class="work-thumb">
+            <img src="assets/images/shop-magnat-stars.jpg" alt="MAGNAT SHOP — Цифровые товары">
+            <span class="work-tag">МАГАЗИН // ЦИФРОВЫЕ ТОВАРЫ</span>
+          </div>
+          <div class="work-content">
+            <h3 class="work-title">MAGNAT SHOP</h3>
+            <p class="work-desc">
+              Магазин цифровых товаров. Моментальное оформление заказов, удобное пополнение баланса, интеграции платёжных шлюзов и автоматизированное обслуживание клиентов.
+            </p>
+            <div class="work-tags-list">
+              <span class="work-pill">Telegram Bot</span>
+              <span class="work-pill">Digital Goods</span>
+              <span class="work-pill">Payments API</span>
+              <span class="work-pill">Fast Delivery</span>
+              <span class="work-pill">Billing System</span>
+            </div>
+            <div class="work-actions">
+              <a href="https://t.me/www_stars01_bot" target="_blank" rel="noopener" class="btn-work-main">
+                <span>Запустить бота</span>
+                <span>↗</span>
+              </a>
+              <a href="https://t.me/www_stars01_bot" target="_blank" rel="noopener" class="btn-work-sub">
+                <span>@www_stars01_bot</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Work 6: MAGNAT VPN -->
+        <article class="work-card" data-category="shops">
+          <div class="work-thumb">
+            <img src="assets/images/shop-magnat-vpn.jpg" alt="MAGNAT VPN — Proxy & VPN">
+            <span class="work-tag">МАГАЗИН // PROXY &amp; VPN</span>
+          </div>
+          <div class="work-content">
+            <h3 class="work-title">MAGNAT VPN</h3>
+            <p class="work-desc">
+              Продажа Proxy и VPN. Высокоскоростные протоколы, надёжное шифрование, защита сетевого трафика и стабильное подключение без блокировок и логов.
+            </p>
+            <div class="work-tags-list">
+              <span class="work-pill">Telegram Bot</span>
+              <span class="work-pill">Proxy &amp; VPN</span>
+              <span class="work-pill">WireGuard / VLESS</span>
+              <span class="work-pill">Security</span>
+              <span class="work-pill">High Speed</span>
+            </div>
+            <div class="work-actions">
+              <a href="https://t.me/magnat_vpn0_bot" target="_blank" rel="noopener" class="btn-work-main">
+                <span>Запустить бота</span>
+                <span>↗</span>
+              </a>
+              <a href="https://t.me/magnat_vpn0_bot" target="_blank" rel="noopener" class="btn-work-sub">
+                <span>@magnat_vpn0_bot</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
@@ -1710,6 +1847,48 @@
         if (e.key === 'Escape' && navOverlay && navOverlay.classList.contains('is-open')) {
           closeNav();
         }
+      });
+
+      
+      // Project Category Filters
+      var filterBtns = document.querySelectorAll('.filter-btn');
+      var workCards = document.querySelectorAll('.work-card');
+
+      function setFilter(category) {
+        filterBtns.forEach(function (btn) {
+          if (btn.getAttribute('data-filter') === category) {
+            btn.classList.add('is-active');
+          } else {
+            btn.classList.remove('is-active');
+          }
+        });
+
+        workCards.forEach(function (card) {
+          var cardCat = card.getAttribute('data-category');
+          if (category === 'all' || cardCat === category) {
+            card.classList.remove('is-hidden');
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+      }
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var cat = btn.getAttribute('data-filter');
+          setFilter(cat);
+        });
+      });
+
+      // Links in header & drawer that switch filter
+      var navFilterLinks = document.querySelectorAll('.nav-filter-link');
+      navFilterLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          var targetFilter = link.getAttribute('data-filter');
+          if (targetFilter) {
+            setFilter(targetFilter);
+          }
+        });
       });
 
       // Copy username action
