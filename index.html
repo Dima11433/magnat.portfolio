@@ -1180,6 +1180,153 @@
         width: calc(100% + 20px);
       }
     }
+
+    /* ------------------------------------------------------------------------
+       SERVICES & ADVANTAGES SECTION
+       ------------------------------------------------------------------------ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .service-card {
+      border: 1px solid var(--rule);
+      background: #050505;
+      padding: 36px 32px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+      position: relative;
+    }
+    .service-card:hover {
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+    }
+    .service-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .service-card-num {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.8rem;
+      color: var(--ink-dim);
+      letter-spacing: 0.05em;
+    }
+    .service-card-badge {
+      font-family: var(--font-mono, monospace);
+      color: #ffffff;
+      border: 1px solid var(--rule);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2px 8px;
+      border-radius: 2px;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+    .service-card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+    .service-card-desc {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #b5b0a8;
+      margin-bottom: 24px;
+    }
+    .service-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .service-tag {
+      font-size: 0.76rem;
+      font-family: var(--font-mono, monospace);
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #d4d0ca;
+      border-radius: 2px;
+    }
+
+    .advantages-title {
+      font-size: 0.85rem;
+      font-family: var(--font-mono, monospace);
+      color: var(--ink-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .advantages-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .advantage-card {
+      border: 1px solid var(--rule);
+      background: #060606;
+      padding: 28px 24px;
+      border-radius: 4px;
+      transition: border-color 0.2s ease;
+    }
+    .advantage-card:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+    .advantage-icon {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.85rem;
+      color: #ffffff;
+      margin-bottom: 14px;
+      display: inline-block;
+      border: 1px solid var(--rule);
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .advantage-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+    .advantage-text {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--ink-dim);
+    }
+
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+    }
+    @media (max-width: 600px) {
+      .advantages-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1215,6 +1362,7 @@
       <!-- Actions Navigation -->
       <nav class="actions">
         <a href="#about" class="btn-top-link" aria-label="Обо мне">ОБО МНЕ</a>
+        <a href="#services" class="btn-top-link" aria-label="Услуги">УСЛУГИ</a>
         <a href="#projects" class="btn-top-link nav-filter-link" data-filter="sites" aria-label="Сайты">САЙТЫ</a>
         <a href="#projects" class="btn-top-link nav-filter-link" data-filter="shops" aria-label="Магазины">МАГАЗИНЫ</a>
         <a href="#skills" class="btn-top-link" aria-label="Стек">СТЕК</a>
@@ -1259,33 +1407,38 @@
           <span class="nav-item__title">Личность &amp; Дисциплина</span>
           <span class="nav-item__sub">Разработчик • 17 y.o. • Focus 🎧</span>
         </a>
+        <a href="#services" class="nav-overlay__item">
+          <span class="nav-item__num">02 // УСЛУГИ</span>
+          <span class="nav-item__title">Спектр услуг &amp; Преимущества</span>
+          <span class="nav-item__sub">Боты • Web • Автоматизация • Гарантии</span>
+        </a>
         <a href="#projects" class="nav-overlay__item nav-filter-link" data-filter="sites">
-          <span class="nav-item__num">02 // САЙТЫ</span>
+          <span class="nav-item__num">03 // САЙТЫ</span>
           <span class="nav-item__title">Веб-разработка &amp; 3D</span>
           <span class="nav-item__sub">Крипто Обменник • CORTEZ FAMq • Diana Nails</span>
         </a>
         <a href="#projects" class="nav-overlay__item nav-filter-link" data-filter="shops">
-          <span class="nav-item__num">03 // МАГАЗИНЫ</span>
+          <span class="nav-item__num">04 // МАГАЗИНЫ</span>
           <span class="nav-item__title">Telegram Шопы &amp; Боты</span>
           <span class="nav-item__sub">MAGNAT [GMT] • MAGNAT SHOP • MAGNAT VPN</span>
         </a>
         <a href="#skills" class="nav-overlay__item">
-          <span class="nav-item__num">04 // СТЕК</span>
+          <span class="nav-item__num">05 // СТЕК</span>
           <span class="nav-item__title">Технологический стек</span>
-          <span class="nav-item__sub">Python • Aiogram • Three.js • WebGL</span>
+          <span class="nav-item__sub">Python 3 • aiogram 3.x • HTML5/CSS3/JS • SQL</span>
         </a>
         <a href="#music" class="nav-overlay__item">
-          <span class="nav-item__num">05 // АУДИО</span>
+          <span class="nav-item__num">06 // АУДИО</span>
           <span class="nav-item__title">Саундтреки для кода</span>
           <span class="nav-item__sub">WORKAL • 1 000 000 ₽ • Инста модель</span>
         </a>
         <a href="#quotes" class="nav-overlay__item">
-          <span class="nav-item__num">06 // МАНИФЕСТ</span>
+          <span class="nav-item__num">07 // МАНИФЕСТ</span>
           <span class="nav-item__title">Принципы &amp; Мышление</span>
           <span class="nav-item__sub">Философия продуктивности</span>
         </a>
         <a href="#contact" class="nav-overlay__item">
-          <span class="nav-item__num">07 // СВЯЗЬ</span>
+          <span class="nav-item__num">08 // СВЯЗЬ</span>
           <span class="nav-item__title">Канал коммуникации</span>
           <span class="nav-item__sub">Прямой диалог в Telegram @ggg468q</span>
         </a>
@@ -1315,6 +1468,11 @@
           <p class="about-lead" style="font-size: 1.05rem; color: var(--ink-dim);">
             Всё свободное время посвящаю программированию под музыку 🎧. Дисциплина, внимание к каждой микродетали интерфейса и создание систем, работающих автономно 24/7.
           </p>
+
+          <div style="margin: 24px 0 28px 0; padding: 14px 18px; border: 1px solid var(--rule); background: rgba(255,255,255,0.02); border-radius: 4px; font-family: var(--font-mono, monospace); font-size: 0.88rem; color: #cfcbca; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <span style="color: #ffffff; font-weight: 600;">СТЕК:</span>
+            <span>Python 3</span> • <span>aiogram 3.x</span> • <span>HTML5 / CSS3 / JS</span> • <span>Asyncio</span> • <span>SQL</span>
+          </div>
 
           <div class="about-metrics">
             <div class="metric-item">
@@ -1546,22 +1704,142 @@
   </section>
 
   <!-- ========================================================================
+       3.5 SERVICES & ADVANTAGES
+       ======================================================================== -->
+  <section class="section-wrap" id="services">
+    <div class="container">
+      <div class="section-num">03 / Услуги &amp; Решения</div>
+      <h2 class="section-heading">Спектр услуг &amp; Преимущества</h2>
+
+      <p class="about-lead" style="font-size: 1.15rem; color: #cfcbca; max-width: 860px; margin-bottom: 40px;">
+        Качественная разработка цифровых решений от <strong>MAGNAT</strong>. Ищете разработчика, который доведёт проект от идеи до готового продукта? Работаю на результат и строго соблюдаю дедлайны.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div>
+            <div class="service-card-header">
+              <span class="service-card-num">01 // BOT DEVELOPMENT</span>
+              <span class="service-card-badge">aiogram 3.x</span>
+            </div>
+            <h3 class="service-card-title">Telegram-боты</h3>
+            <p class="service-card-desc">
+              Торговые боты, реферальные системы, модерация чатов, автоматизация продаж. Высокая пропускная способность, удобные панели администратора и надежная защита.
+            </p>
+          </div>
+          <div class="service-card-tags">
+            <span class="service-tag">Торговые боты</span>
+            <span class="service-tag">Реферальные системы</span>
+            <span class="service-tag">Модерация чатов</span>
+            <span class="service-tag">Автоматизация продаж</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div>
+            <div class="service-card-header">
+              <span class="service-card-num">02 // WEB &amp; FRONTEND</span>
+              <span class="service-card-badge">HTML5 / CSS3 / JS</span>
+            </div>
+            <h3 class="service-card-title">Web-разработка</h3>
+            <p class="service-card-desc">
+              Адаптивные сайты, визитки, WebApp-интерфейсы прямо внутри Telegram. Современный визуал, плавная анимация, эффекты Liquid Glass и быстрая загрузка на любых экранах.
+            </p>
+          </div>
+          <div class="service-card-tags">
+            <span class="service-tag">Адаптивные сайты</span>
+            <span class="service-tag">Сайты-визитки</span>
+            <span class="service-tag">WebApp в Telegram</span>
+            <span class="service-tag">3D WebGL</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div>
+            <div class="service-card-header">
+              <span class="service-card-num">03 // AUTOMATION &amp; SCRIPTS</span>
+              <span class="service-card-badge">Python 3 • Asyncio</span>
+            </div>
+            <h3 class="service-card-title">Софт &amp; Автоматизация</h3>
+            <p class="service-card-desc">
+              Парсеры данных, автопостинг, скрипты, чекеры. Быстрая обработка массивов информации в многопоточном и асинхронном режиме без блокировок.
+            </p>
+          </div>
+          <div class="service-card-tags">
+            <span class="service-tag">Парсеры данных</span>
+            <span class="service-tag">Автопостинг</span>
+            <span class="service-tag">Скрипты</span>
+            <span class="service-tag">Чекеры</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div>
+            <div class="service-card-header">
+              <span class="service-card-num">04 // INTEGRATIONS &amp; PAYMENTS</span>
+              <span class="service-card-badge">SQL • REST API</span>
+            </div>
+            <h3 class="service-card-title">Интеграции &amp; Эквайринг</h3>
+            <p class="service-card-desc">
+              Базы данных, сторонние API, эквайринг и криптоэквайринг. Бесшовная связка внешних сервисов, прием фиатных платежей и крипты (CryptoBot, Stars, P2P).
+            </p>
+          </div>
+          <div class="service-card-tags">
+            <span class="service-tag">Базы данных (SQL)</span>
+            <span class="service-tag">Сторонние API</span>
+            <span class="service-tag">Эквайринг</span>
+            <span class="service-tag">Криптоэквайринг</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="advantages-title">// Преимущества и стандарты работы</div>
+
+      <div class="advantages-grid">
+        <div class="advantage-card">
+          <div class="advantage-icon">✦ 01</div>
+          <h4 class="advantage-name">Индивидуальный подход</h4>
+          <p class="advantage-text">Внимательное погружение в каждое ТЗ. Без шаблонных решений — продуманная архитектура точно под ваши бизнес-задачи.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">✦ 02</div>
+          <h4 class="advantage-name">Полное сопровождение</h4>
+          <p class="advantage-text">Веду разработку от первоначальной идеи до финального деплоя на сервер и передачи всех исходников с документацией.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">✦ 03</div>
+          <h4 class="advantage-name">Работа через гаранта</h4>
+          <p class="advantage-text">Для вашей 100% безопасности готов проводить сделки через любого проверенного и авторитетного гаранта.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">✦ 04</div>
+          <h4 class="advantage-name">Гарантия &amp; Поддержка</h4>
+          <p class="advantage-text">Гарантия стабильной работы 24/7, чистый тестированный код и оперативная техническая поддержка после сдачи проекта.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
        4. TECH STACK & ARCHITECTURE
        ======================================================================== -->
   <section class="section-wrap" id="skills">
     <div class="container">
-      <div class="section-num">03 / Технологический стек</div>
+      <div class="section-num">04 / Технологический стек</div>
       <h2 class="section-heading">Стек &amp; Архитектура</h2>
 
       <div class="stack-grid">
         <div class="stack-col">
           <h3 class="stack-col-title">Бэкенд и боты <span>01</span></h3>
           <div class="stack-item">
-            <span class="stack-item-name">Python 3.12+ (Asyncio)</span>
+            <span class="stack-item-name">Python 3 • Asyncio архитектура</span>
             <span class="stack-item-val">98%</span>
           </div>
           <div class="stack-item">
-            <span class="stack-item-name">Telegram Bot API (Aiogram)</span>
+            <span class="stack-item-name">aiogram 3.x (Telegram Bot API)</span>
             <span class="stack-item-val">97%</span>
           </div>
           <div class="stack-item">
@@ -1569,7 +1847,7 @@
             <span class="stack-item-val">92%</span>
           </div>
           <div class="stack-item">
-            <span class="stack-item-name">PostgreSQL / SQLite</span>
+            <span class="stack-item-name">SQL (PostgreSQL / SQLite)</span>
             <span class="stack-item-val">88%</span>
           </div>
           <div class="stack-item">
@@ -1634,7 +1912,7 @@
        ======================================================================== -->
   <section class="section-wrap" id="music" style="background: #000000;">
     <div class="container">
-      <div class="section-num">04 / Частота &amp; Аудио</div>
+      <div class="section-num">05 / Частота &amp; Аудио</div>
       <h2 class="section-heading">Саундтреки для кода</h2>
 
       <div class="music-grid">
@@ -1679,7 +1957,7 @@
        ======================================================================== -->
   <section class="section-wrap" id="quotes">
     <div class="container">
-      <div class="section-num">05 / Принципы &amp; Мышление</div>
+      <div class="section-num">06 / Принципы &amp; Мышление</div>
       <h2 class="section-heading">Манифест</h2>
 
       <div class="quotes-grid">
@@ -1712,7 +1990,7 @@
        ======================================================================== -->
   <section class="section-wrap" id="contact" style="background: #050505; padding-bottom: 120px;">
     <div class="container">
-      <div class="section-num">06 / Канал связи</div>
+      <div class="section-num">07 / Канал связи</div>
       <h2 class="section-heading">Контакты разработчика</h2>
 
       <div class="contact-hero">
