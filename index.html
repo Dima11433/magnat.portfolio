@@ -1,751 +1,729 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MAGNAT — Разработчик Telegram-ботов и веб-сервисов</title>
-  <meta name="description" content="Персональный сайт MAGNAT: 17 лет, 11 класс, разработчик Telegram-ботов и веб-сервисов. Python, HTML, кодинг под музыку.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0905">
+  <title>Atelier Unit — Craftwork, Technology, Design</title>
+  <style>
+    @font-face {
+      font-family: "AU Grotesk";
+      src: url(assets/au-grotesk-regular.woff2) format("woff2");
+      font-weight: 400;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "AU Grotesk";
+      src: url(assets/au-grotesk-bold.woff2) format("woff2");
+      font-weight: 700;
+      font-display: block;
+    }
 
-  <!-- Google Fonts: Unbounded & Inter & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Unbounded:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    :root {
+      --vh: 1vh;
+      --ink: #ffffff;
+      --base-bot: #130e09;
+      --rule: rgba(255,255,255,0.115);
+      --grid: rgba(255,255,255,0.0265);
+      --menu-bg: #fcfcfc;
+      --menu-ink: #141414;
+      --small-min: 10px;
+      --u: min(100vw / 1280, var(--vh) * 100 / 800);
+      --small: max(var(--small-min), 12.6 * var(--u));
+      --e-expo: cubic-bezier(.16, 1, .3, 1);
+      --e-quint: cubic-bezier(.22, 1, .36, 1);
+      --e-sweep: cubic-bezier(.76, 0, .24, 1);
+    }
+    @supports (height: 1dvh) {
+      :root {
+        --vh: 1dvh;
+      }
+    }
+    @media (min-height: 480px) {
+      :root {
+        --small-min: 11.28px;
+      }
+    }
 
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animations.css">
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #130e09;
+      color: #ffffff;
+      font-family: "AU Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
+      font-kerning: normal;
+    }
+
+    a, button {
+      color: inherit;
+      font-family: inherit;
+    }
+    a {
+      text-decoration: none;
+    }
+    button {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    :focus-visible {
+      outline: 1px solid white;
+      outline-offset: 3px;
+    }
+
+    /* Stage */
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      min-height: 320px;
+      background: linear-gradient(180deg, #0d0905 0%, #0f0a05 15%, #0d0a05 30%, #0d0905 45%, #0e0a06 60%, #0f0c07 75%, #130e08 90%, #130e09 100%);
+    }
+
+    /* Background video */
+    .hero__photo {
+      position: absolute;
+      z-index: -3;
+      --pw: max(min(100vw, 1536 * var(--u)), var(--vh) * 160);
+      --fade: clamp(0px, 100vw - var(--pw), var(--pw) * .08);
+      top: var(--photo-top, 0px);
+      left: calc((100vw - var(--pw)) * 0.5293);
+      width: var(--pw);
+      aspect-ratio: 16 / 10;
+      mask-image: linear-gradient(to right, transparent, black var(--fade), black calc(100% - var(--fade)), transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black var(--fade), black calc(100% - var(--fade)), transparent);
+    }
+    .hero__photo video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* Grid */
+    .grid {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      display: flex;
+      mask-image: radial-gradient(ellipse 62% 95% at 50% 62%, rgba(0,0,0,0.83) 0%, #000 100%);
+      -webkit-mask-image: radial-gradient(ellipse 62% 95% at 50% 62%, rgba(0,0,0,0.83) 0%, #000 100%);
+    }
+    .grid i {
+      flex: 1 1 0;
+      height: 100%;
+      position: relative;
+    }
+    .grid i::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(75% - 0.5px);
+      width: 2px;
+      background: var(--grid);
+    }
+
+    /* Top bar */
+    .logo {
+      position: absolute;
+      left: calc(20.65 * var(--u));
+      top: calc(12.8 * var(--u));
+      width: max(calc(142.60 * var(--u)), 96px);
+      display: block;
+    }
+    .logo svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .small {
+      font-size: var(--small);
+      line-height: 1;
+      font-weight: 400;
+      margin: 0;
+      -webkit-text-stroke: 0.022em currentColor;
+    }
+
+    .tagline {
+      position: absolute;
+      left: calc(100% * 386.5 / 1280);
+      top: calc(12.6 * var(--u));
+      display: flex;
+      flex-direction: column;
+    }
+    .tagline span {
+      display: block;
+      letter-spacing: var(--ls, -0.051em);
+    }
+
+    .contact {
+      position: absolute;
+      left: calc(100% * 798.5 / 1280);
+      top: calc(12.5 * var(--u));
+      font-style: normal;
+      display: flex;
+      flex-direction: column;
+    }
+    .contact a, .contact span {
+      display: block;
+      letter-spacing: var(--ls, -0.051em);
+    }
+
+    .actions {
+      position: absolute;
+      right: calc(32 * var(--u));
+      top: calc(13 * var(--u));
+      display: flex;
+      align-items: center;
+      gap: 1.22em;
+      font-size: var(--small);
+      -webkit-text-stroke: 0.022em currentColor;
+    }
+    .actions .lang {
+      letter-spacing: -0.064em;
+      line-height: 1;
+      transform: translate(0em, 0.139em);
+      -webkit-text-stroke-width: 0.01em;
+    }
+    .actions .menu {
+      letter-spacing: -0.055em;
+      width: 6.349em;
+      height: 1.508em;
+      background: #fcfcfc;
+      color: #141414;
+      text-align: left;
+      padding-left: 0.33em;
+      line-height: 1.508em;
+      transition: background-color 0.15s;
+    }
+    .actions .menu span {
+      display: inline-block;
+      transform: translateY(0);
+    }
+    @media (hover: hover) {
+      .actions .menu:hover {
+        background: #ffffff;
+      }
+    }
+
+    /* Services and rule */
+    .services {
+      list-style: none;
+      position: absolute;
+      width: 100%;
+      top: calc(211.75 * var(--u));
+      font-size: max(calc(var(--small-min) * 1.06), calc(13.3 * var(--u)));
+      line-height: 1;
+      margin: 0;
+      padding: 0;
+    }
+    .services li {
+      position: absolute;
+      white-space: nowrap;
+      -webkit-text-stroke-width: 0.008em;
+      letter-spacing: var(--ls, -0.051em);
+      clip-path: inset(-0.25em -0.4em -0.35em -0.4em);
+    }
+    .services .rv {
+      display: inline-block;
+      will-change: translate, transform;
+    }
+
+    .rule {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: calc(239 * var(--u));
+      height: 1px;
+      background: var(--rule);
+      z-index: -1;
+      box-shadow: 0 -1px 0 rgba(255,255,255,.038), 0 1px 0 rgba(255,255,255,.014);
+      transform-origin: 0 50%;
+      will-change: transform;
+    }
+
+    /* Headline */
+    .hl {
+      position: absolute;
+      left: 50%;
+      bottom: 0.49140em;
+      margin: 0;
+      width: 0;
+      height: 0;
+      font-size: calc(170.94 * var(--u));
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    .hl__line {
+      position: absolute;
+      left: 0;
+      bottom: var(--b);
+    }
+    .hl__clip {
+      display: block;
+      clip-path: inset(-0.8em -3.6em -0.05em -3.6em);
+    }
+    .hl__track {
+      display: block;
+      position: relative;
+      will-change: translate, transform;
+    }
+    .hl__track span {
+      position: absolute;
+      left: var(--x);
+      top: -0.909em;
+      transform-origin: 0 0;
+      transform: translateY(calc(0.909em + var(--dy, 0em))) scale(var(--sx), var(--sy)) translateY(-0.909em) translateY(0.5445em) scaleY(var(--k, 1)) translateY(-0.5445em);
+    }
+
+    /* Entrance animations */
+    @keyframes au-rise {
+      from { translate: 0 var(--rise); }
+      to { translate: 0 0; }
+    }
+    @keyframes au-soft {
+      from { translate: 0 var(--rise); opacity: 0; }
+      to { translate: 0 0; opacity: 1; }
+    }
+    @keyframes au-draw {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    @keyframes au-wipe {
+      from { clip-path: inset(0 100% 0 0); }
+      to { clip-path: inset(0 0 0 0); }
+    }
+    @keyframes au-on {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    html.is-entering {
+      --au-state: paused;
+    }
+    html.is-entering.is-playing {
+      --au-state: running;
+    }
+
+    html.is-entering .rule {
+      animation: au-draw 0.85s var(--e-sweep) 0.24s var(--au-state) both;
+    }
+    html.is-entering .hl__line:nth-child(1) .hl__track {
+      --rise: 1em;
+      animation: au-rise 1.05s var(--e-expo) 0.10s var(--au-state) both;
+    }
+    html.is-entering .hl__line:nth-child(2) .hl__track {
+      --rise: 1em;
+      animation: au-rise 1.05s var(--e-expo) 0.18s var(--au-state) both;
+    }
+    html.is-entering .hl__line:nth-child(3) .hl__track {
+      --rise: 1em;
+      animation: au-rise 1.05s var(--e-expo) 0.26s var(--au-state) both;
+    }
+    html.is-entering .services li:nth-child(1) .rv {
+      --rise: calc(100% + 0.6em);
+      animation: au-rise 0.8s var(--e-quint) 0.56s var(--au-state) both;
+    }
+    html.is-entering .services li:nth-child(2) .rv {
+      --rise: calc(100% + 0.6em);
+      animation: au-rise 0.8s var(--e-quint) 0.62s var(--au-state) both;
+    }
+    html.is-entering .services li:nth-child(3) .rv {
+      --rise: calc(100% + 0.6em);
+      animation: au-rise 0.8s var(--e-quint) 0.68s var(--au-state) both;
+    }
+    html.is-entering .logo rect:nth-child(1) { animation: au-on 0.14s ease-out 0.700s var(--au-state) both; }
+    html.is-entering .logo rect:nth-child(2) { animation: au-on 0.14s ease-out 0.735s var(--au-state) both; }
+    html.is-entering .logo rect:nth-child(3) { animation: au-on 0.14s ease-out 0.840s var(--au-state) both; }
+    html.is-entering .logo rect:nth-child(4) { animation: au-on 0.14s ease-out 0.910s var(--au-state) both; }
+    html.is-entering .logo rect:nth-child(5) { animation: au-on 0.14s ease-out 0.805s var(--au-state) both; }
+    html.is-entering .logo rect:nth-child(6) { animation: au-on 0.14s ease-out 0.945s var(--au-state) both; }
+    html.is-entering .logo rect:nth-child(7) { animation: au-on 0.14s ease-out 0.700s var(--au-state) both; }
+
+    html.is-entering .tagline span:nth-child(1) {
+      --rise: 0.55em;
+      animation: au-soft 0.75s var(--e-quint) 0.78s var(--au-state) both;
+    }
+    html.is-entering .tagline span:nth-child(2) {
+      --rise: 0.55em;
+      animation: au-soft 0.75s var(--e-quint) 0.83s var(--au-state) both;
+    }
+    html.is-entering .tagline span:nth-child(3) {
+      --rise: 0.55em;
+      animation: au-soft 0.75s var(--e-quint) 0.88s var(--au-state) both;
+    }
+    html.is-entering .contact a {
+      --rise: 0.55em;
+      animation: au-soft 0.75s var(--e-quint) 0.88s var(--au-state) both;
+    }
+    html.is-entering .contact span {
+      --rise: 0.55em;
+      animation: au-soft 0.75s var(--e-quint) 0.93s var(--au-state) both;
+    }
+    html.is-entering .actions .lang {
+      --rise: 0.55em;
+      animation: au-soft 0.6s var(--e-quint) 0.98s var(--au-state) both;
+    }
+    html.is-entering .actions .menu {
+      animation: au-wipe 0.6s cubic-bezier(.25, 1, .5, 1) 1.02s var(--au-state) both;
+    }
+
+    /* Responsive */
+    @media (max-aspect-ratio: 114/100) {
+      :root {
+        --small-min: 12px;
+        --m: clamp(16px, 3.2vw, 32px);
+        --bar-top: calc(var(--m) * .64);
+        --pw: calc(var(--vh) * 138.6);
+        --photo-top: calc(var(--vh) * 15);
+      }
+      .logo {
+        left: var(--m);
+        top: var(--bar-top);
+      }
+      .tagline {
+        top: var(--bar-top);
+      }
+      .contact {
+        top: var(--bar-top);
+      }
+      .actions {
+        right: var(--m);
+        top: var(--bar-top);
+      }
+      .hero__photo {
+        top: var(--photo-top);
+        mask-image: linear-gradient(to bottom, transparent 0, #000 11%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 11%);
+      }
+      .services {
+        top: calc(var(--vh) * 44);
+      }
+      .services li:nth-child(1) {
+        left: var(--m) !important;
+      }
+      .services li:nth-child(2) {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+      }
+      .services li:nth-child(3) {
+        right: var(--m) !important;
+      }
+      .rule {
+        top: calc(var(--vh) * 44 + 2.1em);
+        font-size: var(--small);
+      }
+      .hl {
+        font-size: calc((100vw - 2 * var(--m)) / 6.3063);
+        bottom: max(0.49140em, calc(18px + env(safe-area-inset-bottom, 0px)));
+      }
+    }
+
+    @media (max-aspect-ratio: 114/100) and (max-width: 679px) {
+      :root {
+        --small-min: 11.5px;
+        --bar-top: calc(var(--m) * .64 + env(safe-area-inset-top, 0px));
+      }
+      .logo {
+        width: 104px;
+      }
+      .actions {
+        gap: 14px;
+      }
+      .tagline {
+        left: var(--m);
+        top: calc(70px + env(safe-area-inset-top, 0px));
+      }
+      .tagline span {
+        display: block;
+      }
+      .contact {
+        left: auto;
+        right: var(--m);
+        top: calc(70px + env(safe-area-inset-top, 0px));
+        text-align: right;
+      }
+    }
+
+    @media (max-aspect-ratio: 114/100) and (max-width: 309px) {
+      .contact {
+        top: calc(70px + 3em + 12px + env(safe-area-inset-top, 0px));
+      }
+      .services li {
+        width: min-content;
+        white-space: normal;
+      }
+      .services li:nth-child(2) {
+        text-align: center;
+      }
+      .services li:nth-child(3) {
+        text-align: right;
+      }
+      :root {
+        --F: calc((100vw - 2 * var(--m)) / 6.3063);
+        --hl-bot: max(0.49140em, calc(18px + env(safe-area-inset-bottom, 0px)));
+        --ptop: max(calc(var(--vh) * 15), min(calc(150px + env(safe-area-inset-top, 0px)), calc(var(--vh) * 71 - var(--hl-bot) - 2.30 * var(--F) - 56px)));
+        --photo-top: var(--ptop);
+      }
+      .services {
+        top: calc(var(--ptop) + var(--vh) * 29);
+      }
+      .rule {
+        top: calc(var(--ptop) + var(--vh) * 29 + 3.1em);
+      }
+    }
+
+    @media (max-height: 479px) and (min-aspect-ratio: 1141/1000) {
+      :root {
+        --small-min: 11.5px;
+        --mL: max(16px, env(safe-area-inset-left, 0px));
+        --mR: max(16px, env(safe-area-inset-right, 0px));
+        --bar-top: calc(16px * .64);
+      }
+      .logo {
+        left: var(--mL);
+        top: var(--bar-top);
+      }
+      .tagline {
+        left: calc(var(--mL) + 96px + 2em);
+        top: var(--bar-top);
+      }
+      .contact {
+        left: auto;
+        right: calc(var(--mR) + 8.83em + 2em);
+        top: var(--bar-top);
+      }
+      .actions {
+        right: var(--mR);
+        top: var(--bar-top);
+      }
+      .services li:nth-child(1) {
+        left: var(--mL) !important;
+      }
+      .services li:nth-child(2) {
+        left: calc(var(--mL) + (100% - var(--mL) - var(--mR)) / 2) !important;
+        transform: translateX(-50%) !important;
+      }
+      .services li:nth-child(3) {
+        right: var(--mR) !important;
+      }
+      .hl {
+        left: calc(var(--mL) + (100% - var(--mL) - var(--mR)) / 2);
+        bottom: max(0.49140em, calc(8px + env(safe-area-inset-bottom, 0px)));
+      }
+    }
+
+    @media (max-height: 479px) and (min-aspect-ratio: 1141/1000) and (max-width: 559px) {
+      .contact {
+        left: auto;
+        right: var(--mR);
+        top: calc(var(--bar-top) + 2.6em);
+        text-align: right;
+      }
+    }
+
+    @media (pointer: coarse) {
+      .lang, .menu, .logo, .contact a {
+        position: relative;
+      }
+      .lang::after, .menu::after, .logo::after, .contact a::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        min-height: 44px;
+      }
+      .lang::after {
+        left: -12px;
+        right: -0.61em;
+      }
+      .menu::after {
+        left: -0.61em;
+        right: -10px;
+      }
+      .logo::after {
+        left: -10px;
+        right: -10px;
+        width: calc(100% + 20px);
+      }
+      .contact a::after {
+        left: -6px;
+        right: -6px;
+        height: max(100%, 32px);
+        min-height: 44px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Ambient Glowing Background Elements -->
-  <div class="bg-ambient-orb orb-1"></div>
-  <div class="bg-ambient-orb orb-2"></div>
-  <div class="bg-ambient-orb orb-3"></div>
-  <div class="bg-grid-overlay"></div>
-
-  <!-- Header / Navigation Bar -->
-    <!-- Header / Navigation Bar -->
-  <header class="site-header">
-    <div class="nav-container">
-      <a href="#" class="logo">
-        <div class="logo-icon">&lt;M&gt;</div>
-        <div class="logo-text">MAGNAT<span>.DEV</span></div>
-      </a>
-
-      <!-- Desktop Nav -->
-      <nav class="desktop-nav">
-        <ul class="nav-menu">
-          <li><a href="#about" class="nav-link">Обо мне</a></li>
-                    <li><a href="#skills" class="nav-link">Стек</a></li>
-          <li><a href="#projects" class="nav-link">Проекты</a></li>
-          <li><a href="#music" class="nav-link">Музыка</a></li>
-          <li><a href="#quotes" class="nav-link">Цитаты</a></li>
-          <li><a href="#goals" class="nav-link">Цели</a></li>
-          <li><a href="#contact" class="nav-link">Связь</a></li>
-        </ul>
-      </nav>
-
-      <div class="nav-actions">
-
-        <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-primary nav-tg-btn">
-          <span>@ggg468q</span>
-          <span>↗</span>
-        </a>
-
-        <button class="hamburger" id="hamburgerBtn" aria-label="Открыть мобильное меню">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+  <div class="hero">
+    <div class="hero__photo" role="presentation">
+      <video src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261005_143740_52dbf3ef-ea20-4594-a1ad-91d6c2970159.mp4" autoplay loop muted playsinline></video>
     </div>
-  </header>
 
-  <!-- Mobile Drawer Menu -->
-  <div class="mobile-nav-overlay" id="mobileNavOverlay">
-    <a href="#about" class="mobile-nav-link">Обо мне</a>
-        <a href="#skills" class="mobile-nav-link">Стек</a>
-    <a href="#projects" class="mobile-nav-link">Проекты</a>
-    <a href="#music" class="mobile-nav-link">Музыка</a>
-    <a href="#quotes" class="mobile-nav-link">Цитаты</a>
-    <a href="#goals" class="mobile-nav-link">Цели</a>
-    <a href="#contact" class="mobile-nav-link">Связь</a>
-        
-    <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 10px; width: 100%;">
-      <span>Telegram: @ggg468q ↗</span>
+    <div class="grid" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+
+    <a href="#" class="logo" aria-label="Atelier Unit — home">
+      <svg viewBox="0 0 142.60 30.00" shape-rendering="geometricPrecision" fill="var(--logo-ink, #ffffff)">
+        <rect x="0.00" y="0.00" width="8.2" height="8.2" />
+        <rect x="19.20" y="0.00" width="8.2" height="8.2" />
+        <rect x="76.80" y="0.00" width="8.2" height="8.2" />
+        <rect x="115.20" y="0.00" width="8.2" height="8.2" />
+        <rect x="57.60" y="10.90" width="8.2" height="8.2" />
+        <rect x="134.40" y="10.90" width="8.2" height="8.2" />
+        <rect x="0.00" y="21.80" width="8.2" height="8.2" />
+      </svg>
     </a>
-  </div>
 
-  <!-- Main Content -->
-  <main>
-
-    <!-- 1. Hero Section -->
-    <section class="hero-section" id="about">
-      <div class="container">
-        <div class="hero-grid">
-          
-          <!-- Hero Information -->
-          <div class="hero-content reveal">
-            <div class="hero-status">
-              <span class="status-indicator"></span>
-              🎧 Кодинг под музыку • В сети 24/7
-            </div>
-
-            <h1 class="hero-title">
-              Я MAGNAT — Разработчик <span class="gradient-text">ботов и WebApp</span>
-            </h1>
-
-            <div class="hero-subtitle">
-              <span>Мне 17 лет, учусь в 11 классе •</span>
-              <strong style="color: #38bdf8;">Python &amp; Bot Developer</strong>
-            </div>
-
-            <p class="hero-bio">
-              Моё главное хобби — кодинг. Всё своё свободное время посвящаю программированию под хорошую музыку 🎧. Разрабатываю многофункциональных Telegram-ботов, платежные решения и строю масштабную экосистему современных цифровых сервисов.
-            </p>
-
-            <div class="hero-buttons">
-              <a href="#projects" class="btn btn-primary">
-                <span>🔥 Мои проекты</span>
-                <span>↓</span>
-              </a>
-              <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-secondary">
-                <span>💬 Написать в Telegram</span>
-                <span>↗</span>
-              </a>
-            </div>
-
-            <!-- Key Metrics -->
-            <div class="hero-stats">
-              <div class="stat-item">
-                <div class="stat-number">17<span>лет</span></div>
-                <div class="stat-label">11 класс • Молодой разработчик</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">MAGNAT<span>⚡</span></div>
-                <div class="stat-label">Собственная экосистема</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">Python<span>&amp;HTML</span></div>
-                <div class="stat-label">Основной технологический стек</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number">100<span>%</span></div>
-                <div class="stat-label">Кодинг под музыку &amp; Дисциплина</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hero Visual: Real User Photo with Floating Tech Badges -->
-          <div class="hero-visual reveal delay-2">
-            <div class="avatar-card-wrapper">
-              
-              <!-- Floating badges -->
-              <div class="float-badge badge-react">
-                <span style="color: #38bdf8;">🐍</span> Python
-              </div>
-              <div class="float-badge badge-js">
-                <span style="color: #f59e0b;">🌐</span> HTML5
-              </div>
-              <div class="float-badge badge-figma">
-                <span style="color: #a855f7;">⚡</span> MAGNAT.DEV
-              </div>
-
-              <!-- Main Card with user photo -->
-              <div class="avatar-main-card">
-                <div class="avatar-img-box">
-                  <img src="assets/images/magnat.jpg" alt="MAGNAT — Разработчик">
-                </div>
-                <div class="avatar-caption">
-                  <div>
-                    <div class="dev-name-label">MAGNAT</div>
-                    <div class="dev-role-label">Developer • MAGNAT.DEV</div>
-                  </div>
-                  <div class="tech-tag" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.3); color: #34d399;">
-                    DEV 2026
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. About Me / Principles -->
-    <section class="about-section">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">Обо мне и моем стиле</div>
-          <h2 class="section-title">Кодинг, музыка и <span class="gradient-text">стремление к масштабу</span></h2>
-          <p class="section-desc">Каждый день я совершенствую навыки и создаю инструменты, которые приносят реальную пользу.</p>
-        </div>
-
-        <div class="about-features-grid">
-          <div class="about-feature-card reveal delay-1">
-            <div class="feature-icon-box">🎧</div>
-            <h3 class="feature-title">Кодинг под музыку</h3>
-            <p class="feature-text">Всё свободное время провожу за кодом. Музыка создает идеальный ритм, фокус и максимальное погружение в разработку алгоритмов.</p>
-          </div>
-
-          <div class="about-feature-card reveal delay-2">
-            <div class="feature-icon-box">🐍</div>
-            <h3 class="feature-title">Python &amp; Telegram API</h3>
-            <p class="feature-text">Создание надежных ботов на Python: асинхронность, базы данных, обработка платежей, мгновенный отклик и защита от сбоев.</p>
-          </div>
-
-          <div class="about-feature-card reveal delay-3">
-            <div class="feature-icon-box">🏰</div>
-            <h3 class="feature-title">Цифровая монополия</h3>
-            <p class="feature-text">Развиваю масштабную сеть ботов: гаранты сделок, выпуск карт, автоматические магазины и собственные IT-сервисы.</p>
-          </div>
-
-          <div class="about-feature-card reveal delay-4">
-            <div class="feature-icon-box">🚀</div>
-            <h3 class="feature-title">17 лет и дисциплина</h3>
-            <p class="feature-text">Учусь в 11 классе, совмещая учебу с практической разработкой коммерческих систем. Результат говорит громче любых слов.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    
-    
-
-    <!-- 3. Skills Section -->
-    <section class="skills-section" id="skills">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">Технологический стек</div>
-          <h2 class="section-title">Инструменты, которые я <span class="gradient-text">использую</span></h2>
-          <p class="section-desc">Практический стек для создания Telegram-ботов, автоматизации и веб-интерфейсов.</p>
-        </div>
-
-        <div class="skills-categories-grid">
-          
-          <!-- Category 1: Python & Bots -->
-          <div class="skill-category-card reveal delay-1">
-            <div class="category-header">
-              <div class="category-icon">🐍</div>
-              <h3 class="category-title">Python &amp; Бот-инженерия</h3>
-            </div>
-            <div class="skills-items-list">
-              <div class="skill-item">
-                <div class="skill-item-info">
-                  <span>Python (Логика &amp; Алгоритмы)</span>
-                  <span>95%</span>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: 95%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-item-info">
-                  <span>Telegram Bot API &amp; Асинхронность</span>
-                  <span>96%</span>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: 96%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-item-info">
-                  <span>Платежные шлюзы &amp; Escrow</span>
-                  <span>90%</span>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: 90%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-item-info">
-                  <span>Базы данных (SQLite / JSON)</span>
-                  <span>88%</span>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: 88%;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Category 2: Web & HTML -->
-          <div class="skill-category-card reveal delay-2">
-            <div class="category-header">
-              <div class="category-icon">🌐</div>
-              <h3 class="category-title">Веб &amp; Вёрстка</h3>
-            </div>
-            <div class="skills-items-list">
-              <div class="skill-item">
-                <div class="skill-item-info">
-                  <span>HTML5 (Семантика &amp; Каркас)</span>
-                  <span>92%</span>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: 92%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-item-info">
-                  <span>CSS3 (Стилизация &amp; Адаптив)</span>
-                  <span>86%</span>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: 86%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-item-info">
-                  <span>Telegram Web Apps (Mini Apps)</span>
-                  <span>85%</span>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: 85%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-item-info">
-                  <span>Адаптивность под мобильные</span>
-                  <span>90%</span>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: 90%;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Category 3: GitHub & Workflow -->
-          <div class="skill-category-card reveal delay-3">
-            <div class="category-header">
-              <div class="category-icon">🐙</div>
-              <h3 class="category-title">GitHub &amp; Рабочий процесс</h3>
-            </div>
-            <div class="skills-items-list">
-              <div class="skill-item">
-                <div class="skill-item-info">
-                  <span>GitHub &amp; Git (Контроль версий)</span>
-                  <span>90%</span>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: 90%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-item-info">
-                  <span>Деплой ботов 24/7 &amp; Uptime</span>
-                  <span>94%</span>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: 94%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-item-info">
-                  <span>Кодинг под музыку (Фокус)</span>
-                  <span>100%</span>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: 100%;"></div>
-                </div>
-              </div>
-
-              <div class="skill-item">
-                <div class="skill-item-info">
-                  <span>Дисциплина &amp; Усердие</span>
-                  <span>99%</span>
-                </div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" style="width: 99%;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. Projects Section -->
-    <section class="projects-section" id="projects">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">Мои проекты</div>
-          <h2 class="section-title">Избранные веб-проекты и <span class="gradient-text">разработки</span></h2>
-          <p class="section-desc">Интерактивные 3D-приложения, веб-порталы и сервисы с открытым исходным кодом на GitHub.</p>
-        </div>
-
-        <!-- Filters Bar -->
-        <div class="projects-filter-bar reveal">
-          <button class="filter-btn active" data-filter="all">Все проекты (2)</button>
-          <button class="filter-btn" data-filter="sites">Сайты</button>
-        </div>
-
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-
-          <!-- Project 1: Крипто Обменник -->
-          <article class="project-card reveal delay-1" data-category="sites">
-            <div class="project-preview">
-              <img src="assets/images/crypto-obmennik.jpg" alt="Крипто Обменник">
-              <span class="project-badge-tag">Сайты</span>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Крипто Обменник</h3>
-              <p class="project-desc">
-                Интерактивный 3D-конвертер криптовалют и фиатных валют на Three.js (WebGL) с реальными курсами Wise API, физическими материалами токенов и звуковым движком Web Audio API.
-              </p>
-              <div class="project-tech-tags">
-                <span class="tech-tag">Three.js</span>
-                <span class="tech-tag">WebGL</span>
-                <span class="tech-tag">Crypto API</span>
-                <span class="tech-tag">Web Audio</span>
-              </div>
-              <div class="project-actions" style="display: flex; gap: 10px;">
-                <a href="https://dima11433.github.io/crypto-3d-converter/" target="_blank" rel="noopener" class="btn btn-primary project-btn" style="flex: 1;">
-                  <span>Демо сайта ↗</span>
-                </a>
-                <a href="https://github.com/Dima11433/crypto-3d-converter" target="_blank" rel="noopener" class="btn btn-secondary project-btn" style="padding: 10px 14px;">
-                  <span>GitHub ↗</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 2: CORTEZ FAMq -->
-          <article class="project-card reveal delay-2" data-category="sites">
-            <div class="project-preview">
-              <img src="assets/images/cortez-famq.jpg" alt="CORTEZ FAMq">
-              <span class="project-badge-tag">Сайты</span>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">CORTEZ FAMq</h3>
-              <p class="project-desc">
-                Кинематографичные игровые порталы синдикатов CORTEZ и FLORY с фоновым Full-Viewport видеорядом, интерактивной статистикой, бонусами и формами заявок.
-              </p>
-              <div class="project-tech-tags">
-                <span class="tech-tag">HTML5</span>
-                <span class="tech-tag">CSS3 / Grid</span>
-                <span class="tech-tag">Video Hero</span>
-                <span class="tech-tag">Interactive</span>
-              </div>
-              <div class="project-actions" style="display: flex; gap: 10px;">
-                <a href="https://dima11433.github.io/cortez-family-site/" target="_blank" rel="noopener" class="btn btn-primary project-btn" style="flex: 1;">
-                  <span>Демо сайта ↗</span>
-                </a>
-                <a href="https://github.com/Dima11433/cortez-family-site" target="_blank" rel="noopener" class="btn btn-secondary project-btn" style="padding: 10px 14px;">
-                  <span>GitHub ↗</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    
-    <!-- Music & Top Tracks Section -->
-    <section class="music-section" id="music">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">🎧 Саундтрек кодинга</div>
-          <h2 class="section-title">Мои топ треки <span class="gradient-text">на репите</span></h2>
-          <p class="section-desc">Музыка, под которую я пишу код, создаю ботов и развиваю свои проекты.</p>
-        </div>
-
-        <div class="tracks-grid">
-          
-          <!-- Track 1: WORKAL -->
-          <div class="track-card reveal delay-1">
-            <div class="track-cover">
-              <img src="assets/images/track-workal.png" alt="WORKAL">
-              <div class="track-spotify-badge">
-                <span>🟢</span> Spotify
-              </div>
-            </div>
-            <div class="track-info">
-              <h3 class="track-title">WORKAL</h3>
-              <div class="track-tagline">
-                <div class="music-wave">
-                  <span></span><span></span><span></span><span></span>
-                </div>
-                <span>Кодинг на максимальном фокусе</span>
-              </div>
-              <a href="https://open.spotify.com/track/01Fnhg9DGs2LfS95lSDoVq?si=070bbc8391cf447b" target="_blank" rel="noopener" class="btn btn-spotify">
-                <span>Слушать в Spotify</span>
-                <span>↗</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Track 2: 1 000 000 ₽ -->
-          <div class="track-card reveal delay-2">
-            <div class="track-cover">
-              <img src="assets/images/track-1000000.png" alt="1 000 000 ₽">
-              <div class="track-spotify-badge">
-                <span>🟢</span> Spotify
-              </div>
-            </div>
-            <div class="track-info">
-              <h3 class="track-title">1 000 000 ₽</h3>
-              <div class="track-tagline">
-                <div class="music-wave">
-                  <span></span><span></span><span></span><span></span>
-                </div>
-                <span>Вайб монополии и дисциплины</span>
-              </div>
-              <a href="https://open.spotify.com/track/2iqXJeFj27ZuRrJvieUpP2?si=6a6a69c2ead74782" target="_blank" rel="noopener" class="btn btn-spotify">
-                <span>Слушать в Spotify</span>
-                <span>↗</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Track 3: Инста модель -->
-          <div class="track-card reveal delay-3">
-            <div class="track-cover">
-              <img src="assets/images/track-instamodel.png" alt="Инста модель">
-              <div class="track-spotify-badge">
-                <span>🟢</span> Spotify
-              </div>
-            </div>
-            <div class="track-info">
-              <h3 class="track-title">Инста модель</h3>
-              <div class="track-tagline">
-                <div class="music-wave">
-                  <span></span><span></span><span></span><span></span>
-                </div>
-                <span>Атмосфера ночного кодинга</span>
-              </div>
-              <a href="https://open.spotify.com/track/1x04RtkJ7OJV1rosXbl75a?si=d543dcdb866c490c" target="_blank" rel="noopener" class="btn btn-spotify">
-                <span>Слушать в Spotify</span>
-                <span>↗</span>
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. Quotes Section (User's Top Quotes + Photo) -->
-    <section class="quotes-section" id="quotes">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">Мои принципы</div>
-          <h2 class="section-title">Цитаты, которые задают <span class="gradient-text">мой вектор</span></h2>
-          <p class="section-desc">Дисциплина, усердие и постоянная работа над собой каждый день.</p>
-        </div>
-
-        <!-- 3 User's Top Quotes -->
-        <div class="quotes-grid">
-          <div class="quote-card reveal delay-1">
-            <div class="quote-mark">“</div>
-            <p class="quote-text">Твой главный актив — твоя голова и твое усердие. Инвестируй в них каждый день.</p>
-            <div class="quote-author">
-              <span>—</span> MAGNAT
-            </div>
-          </div>
-
-          <div class="quote-card reveal delay-2">
-            <div class="quote-mark">“</div>
-            <p class="quote-text">Работай так, чтобы твой кошелек говорил громче любых слов.</p>
-            <div class="quote-author">
-              <span>—</span> MAGNAT
-            </div>
-          </div>
-
-          <div class="quote-card reveal delay-3">
-            <div class="quote-mark">“</div>
-            <p class="quote-text">Хочешь изменить жизнь — начни с дисциплины, а не с понедельника.</p>
-            <div class="quote-author">
-              <span>—</span> MAGNAT
-            </div>
-          </div>
-        </div>
-
-        <!-- Interactive Banner with user's photo instead of David Goggins -->
-        <div class="quotes-banner reveal">
-          <div class="quotes-banner-text">
-            <h3>Дисциплина определяет масштаб</h3>
-            <p>
-              Кодинг под музыку, постоянное движение вперед и создание продуктов, которые работают на тебя 24/7.
-            </p>
-
-            <div class="quote-generator-box">
-              <div class="dynamic-quote-text" id="dynamicQuoteText">
-                "Твой главный актив — твоя голова и твое усердие. Инвестируй в них каждый день."
-              </div>
-              <div class="dynamic-quote-author" id="dynamicQuoteAuthor">
-                — MAGNAT
-              </div>
-            </div>
-
-            <button class="btn btn-primary" id="nextQuoteBtn">
-              <span>⚡ Следующая цитата</span>
-            </button>
-          </div>
-
-          <div class="quotes-banner-img" style="max-height: 380px;">
-            <img src="assets/images/magnat.jpg" alt="MAGNAT" style="width: 100%; height: 380px; object-fit: cover;">
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 6. Goals Section -->
-    <section class="goals-section" id="goals">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">Цели и стратегия</div>
-          <h2 class="section-title">Планы на будущее и <span class="gradient-text">построение монополии</span></h2>
-          <p class="section-desc">Четкий вектор развития и планомерное движение к лидерству в нише.</p>
-        </div>
-
-        <div class="roadmap-timeline">
-          
-          <div class="timeline-item reveal delay-1">
-            <div class="timeline-dot in-progress"></div>
-            <div class="timeline-card">
-              <div class="timeline-header">
-                <h3 class="timeline-title">1. Масштабировать собственные проекты и сервисы</h3>
-                <span class="timeline-badge badge-progress">⚡ В активном процессе</span>
-              </div>
-              <p class="timeline-desc">
-                Развитие авторских Telegram-ботов и сервисов, привлечение аудитории и укрепление личного бренда.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item reveal delay-2">
-            <div class="timeline-dot in-progress"></div>
-            <div class="timeline-card">
-              <div class="timeline-header">
-                <h3 class="timeline-title">2. Сделать большую монополию ботов</h3>
-                <span class="timeline-badge badge-progress">⚡ В процессе</span>
-              </div>
-              <p class="timeline-desc">
-                Создание разветвленной сетки сервисов (гаранты, платежи, магазины, инструменты автоматизации) с взаимным перенаправлением трафика и максимальным охватом потребностей пользователей.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item reveal delay-3">
-            <div class="timeline-dot done"></div>
-            <div class="timeline-card">
-              <div class="timeline-header">
-                <h3 class="timeline-title">3. Стать лучшим в своей сфере</h3>
-                <span class="timeline-badge badge-done">🎯 Главный фокус</span>
-              </div>
-              <p class="timeline-desc">
-                Выйти на топовый уровень мастерства в архитектуре высоконагруженных ботов, разработке на Python и предоставлении качественных онлайн-сервисов.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. Contact Section (ONLY Telegram @ggg468q) -->
-    <section class="contact-section" id="contact">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">Прямая связь</div>
-          <h2 class="section-title">Связаться со мной в <span class="gradient-text">Telegram</span></h2>
-          <p class="section-desc">По всем вопросам сотрудничества, предложениям и проектам пишите напрямую:</p>
-        </div>
-
-        <!-- Clean, Centered Direct Telegram Card -->
-        <div class="contact-box-wrapper reveal">
-          <div class="contact-telegram-card">
-            
-            <div class="contact-telegram-icon">
-              <img src="assets/images/telegram-metal.jpg" alt="Telegram">
-            </div>
-
-            <h3 class="contact-telegram-title">Telegram: @ggg468q</h3>
-            <p class="contact-telegram-desc">
-              Единственный официальный контакт для быстрой связи
-            </p>
-
-            <div class="contact-telegram-btns">
-              <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn btn-primary contact-main-btn">
-                <span>Написать в Telegram (@ggg468q)</span>
-                <span>↗</span>
-              </a>
-              <button class="btn btn-secondary copy-trigger contact-copy-btn" data-copy="@ggg468q">
-                <span>Скопировать юзернейм</span>
-              </button>
-            </div>
-            <div class="contact-channel-link">
-              <span>Статус связи:</span>
-              <span style="color: #38bdf8; font-weight: 600;">В сети 24/7 ⚡</span>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <a href="#" class="logo">
-        <div class="logo-icon">&lt;M&gt;</div>
-        <div class="logo-text">MAGNAT<span>.DEV</span></div>
-      </a>
-
-      <div class="footer-text">
-        © 2026 <strong>MAGNAT</strong> • Все права защищены • <strong>MAGNAT.DEV</strong>
-      </div>
-
-      <div style="font-size: 0.85rem; color: var(--text-dim);">
-        Python • HTML • Telegram Bots • Coding Under Music 🎧
-      </div>
+    <div class="tagline small">
+      <span style="--ls: -0.045em;">Craftwork and brand systems.</span>
+      <span style="--ls: -0.051em;">Shaped by culture. Built with detail</span>
+      <span style="--ls: -0.045em;">and technology.</span>
     </div>
-  </footer>
 
-  <!-- Floating Scroll To Top Button with Circular Progress Ring -->
-  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Вернуться наверх">
-    <svg class="progress-ring">
-      <circle class="progress-ring-circle" stroke="#6366f1" stroke-width="3" fill="transparent" r="25" cx="27" cy="27"/>
-    </svg>
-    <span>↑</span>
-  </button>
+    <address class="contact small">
+      <a href="mailto:hello@atelierunit.com" style="--ls: -0.047em;">hello@atelierunit.com</a>
+      <span style="--ls: -0.069em;">Milano, EST 2013</span>
+    </address>
 
-  <!-- Toast Notification -->
-  <div id="siteToast" class="toast-msg"></div>
-
-  <!-- JavaScript -->
-  <script src="js/main.js"></script>
-
-    <!-- Fullscreen Laser & Shockwave Animation (Pure Visual FX, No Text) -->
-  <div class="screen-laser-fx" id="laserScreenFx" aria-hidden="true">
-    <div class="laser-vignette"></div>
-    <div class="laser-shockwave"></div>
-    <div class="laser-beam"></div>
-  </div>
-      <button class="btn btn-primary" id="easterCloseBtn" style="margin-top: 20px; width: 100%;">
-        <span>Продолжить кодинг 🔥</span>
-      </button>
+    <div class="actions">
+      <button class="lang" type="button" aria-label="Language: English" style="--ls: -0.064em;">EN</button>
+      <button class="menu" type="button" aria-expanded="false" style="--ls: -0.055em;"><span>Menu</span></button>
     </div>
+
+    <ul class="services small" aria-label="Services">
+      <li style="left: calc(20 * var(--u)); --ls: -0.047em;"><span class="rv">Brand Direction</span></li>
+      <li style="left: calc(50% - 3 * var(--u)); transform: translateX(-50%); --ls: -0.0485em;"><span class="rv">Digital Products</span></li>
+      <li style="right: calc(33.25 * var(--u)); --ls: -0.064em;"><span class="rv">Advanced Tech</span></li>
+    </ul>
+
+    <div class="rule" aria-hidden="true"></div>
+
+    <h1 class="hl" aria-label="Craftwork, technology, design">
+      <span class="hl__line" aria-hidden="true" style="--b: 1.56780em; --dy: -0.00275em; --sy: 1.0063;">
+        <span class="hl__clip">
+          <span class="hl__track">
+            <span style="--x: -3.04844em; --sx: 1.0769; --k: 1.0055;">C</span>
+            <span style="--x: -2.35055em; --sx: 1.0093;">R</span>
+            <span style="--x: -1.68881em; --sx: 1.0542;">A</span>
+            <span style="--x: -1.00202em; --sx: 0.9712;">F</span>
+            <span style="--x: -0.41697em; --sx: 0.9516;">T</span>
+            <span style="--x: 0.15715em; --sx: 0.9612;">W</span>
+            <span style="--x: 1.01367em; --sx: 0.9833; --k: 1.0055;">O</span>
+            <span style="--x: 1.69181em; --sx: 1.0093;">R</span>
+            <span style="--x: 2.33501em; --sx: 0.9371;">K</span>
+          </span>
+        </span>
+      </span>
+
+      <span class="hl__line" aria-hidden="true" style="--b: 0.78390em; --dy: 0.00059em; --sy: 0.9950;">
+        <span class="hl__clip">
+          <span class="hl__track">
+            <span style="--x: -3.16648em; --sx: 0.9516;">T</span>
+            <span style="--x: -2.64032em; --sx: 0.9875;">E</span>
+            <span style="--x: -2.06523em; --sx: 1.0678; --k: 1.0055;">C</span>
+            <span style="--x: -1.36691em; --sx: 1.0031;">H</span>
+            <span style="--x: -0.71845em; --sx: 1.0161;">N</span>
+            <span style="--x: -0.05103em; --sx: 0.9833; --k: 1.0055;">O</span>
+            <span style="--x: 0.62228em; --sx: 0.9965;">L</span>
+            <span style="--x: 1.14822em; --sx: 0.9833; --k: 1.0055;">O</span>
+            <span style="--x: 1.85243em; --sx: 1.0231; --k: 1.0055;">G</span>
+            <span style="--x: 2.50618em; --sx: 0.9953;">Y</span>
+          </span>
+        </span>
+      </span>
+
+      <span class="hl__line" aria-hidden="true" style="--b: 0.00000em; --dy: -0.00281em; --sy: 0.9918;">
+        <span class="hl__clip">
+          <span class="hl__track">
+            <span style="--x: -1.77928em; --sx: 1.0751;">D</span>
+            <span style="--x: -1.09091em; --sx: 0.9983;">E</span>
+            <span style="--x: -0.48284em; --sx: 1.0123; --k: 1.0055;">S</span>
+            <span style="--x: 0.11501em; --sx: 1.0530;">I</span>
+            <span style="--x: 0.32558em; --sx: 1.0231; --k: 1.0055;">G</span>
+            <span style="--x: 1.03138em; --sx: 1.0062;">N</span>
+          </span>
+        </span>
+      </span>
+    </h1>
   </div>
 
+  <script>
+    (function () {
+      var doc = document.documentElement;
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) {
+        var video = document.querySelector('.hero__photo video');
+        if (video) {
+          video.removeAttribute('autoplay');
+          video.pause();
+        }
+        return;
+      }
+
+      doc.classList.add('is-entering');
+      var failsafe = setTimeout(cleanup, 4500);
+
+      function cleanup() {
+        clearTimeout(failsafe);
+        doc.classList.remove('is-entering', 'is-playing');
+      }
+
+      function startPlayback() {
+        requestAnimationFrame(function () {
+          doc.classList.add('is-playing');
+          var endTimeout = setTimeout(cleanup, 2200);
+          var animTargets = document.querySelectorAll(
+            '.rule, .hl__track, .services .rv, .logo rect, .tagline span, .contact a, .contact span, .actions .lang, .actions .menu'
+          );
+          var pending = 0;
+          animTargets.forEach(function (el) {
+            var anims = el.getAnimations ? el.getAnimations() : [];
+            anims.forEach(function (anim) {
+              var name = anim.animationName || '';
+              if (name.indexOf('au-') === 0) {
+                pending++;
+                anim.finished.then(function () {
+                  pending--;
+                  if (pending <= 0) {
+                    clearTimeout(endTimeout);
+                    cleanup();
+                  }
+                }).catch(function () {});
+              }
+            });
+          });
+        });
+      }
+
+      var fontTimeout = setTimeout(startPlayback, 1200);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () {
+          clearTimeout(fontTimeout);
+          startPlayback();
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
