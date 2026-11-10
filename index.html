@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0d0905">
+  <meta name="theme-color" content="#000000">
   <title>MAGNAT — Портфолио | Craftwork, Technology, Design</title>
   <style>
     @font-face {
@@ -22,16 +22,16 @@
     :root {
       --vh: 1vh;
       --ink: #ffffff;
-      --ink-dim: #99948e;
-      --ink-muted: #66615b;
-      --base-bot: #130e09;
-      --base-dark: #0a0704;
-      --rule: rgba(255,255,255,0.115);
-      --rule-bold: rgba(255,255,255,0.22);
-      --grid: rgba(255,255,255,0.0265);
-      --menu-bg: #fcfcfc;
-      --menu-ink: #141414;
-      --amber: #e59740;
+      --ink-dim: #a1a1aa;
+      --ink-muted: #71717a;
+      --base-bot: #000000;
+      --base-dark: #000000;
+      --rule: rgba(255,255,255,0.12);
+      --rule-bold: rgba(255,255,255,0.24);
+      --grid: rgba(255,255,255,0.03);
+      --menu-bg: #ffffff;
+      --menu-ink: #000000;
+      --silver: #cccccc;
       --small-min: 10px;
       --u: min(100vw / 1280, var(--vh) * 100 / 800);
       --small: max(var(--small-min), 12.6 * var(--u));
@@ -61,7 +61,7 @@
     html, body {
       margin: 0;
       padding: 0;
-      background: #130e09;
+      background: #000000;
       color: #ffffff;
       font-family: "AU Grotesk", "Helvetica Neue", Helvetica, Arial, "Segoe UI", -apple-system, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -108,7 +108,7 @@
       height: 100vh;
       height: 100dvh;
       min-height: 320px;
-      background: linear-gradient(180deg, #0d0905 0%, #0f0a05 15%, #0d0a05 30%, #0d0905 45%, #0e0a06 60%, #0f0c07 75%, #130e08 90%, #130e09 100%);
+      background: linear-gradient(180deg, #000000 0%, #060606 15%, #0a0a0a 30%, #060606 45%, #0a0a0a 60%, #0d0d0d 75%, #060606 90%, #000000 100%);
     }
 
     .hero__photo {
@@ -133,6 +133,7 @@
       object-position: center center;
       pointer-events: none;
       user-select: none;
+      filter: grayscale(100%) contrast(125%) brightness(0.92);
     }
 
     /* Hairline columns grid */
@@ -208,10 +209,10 @@
       color: #ffffff;
     }
     .actions .btn-top-tg {
-      color: var(--amber);
+      color: #ffffff;
     }
     .actions .btn-top-tg:hover {
-      color: #ffb86c;
+      color: var(--silver);
     }
     .actions .menu {
       letter-spacing: -0.03em;
@@ -353,7 +354,7 @@
     .nav-overlay__backdrop {
       position: absolute;
       inset: 0;
-      background: rgba(10, 7, 4, 0.75);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
     }
@@ -361,7 +362,7 @@
       position: relative;
       width: min(480px, 100vw);
       height: 100%;
-      background: #0f0a05;
+      background: #050505;
       border-left: 1px solid var(--rule-bold);
       padding: 40px 32px;
       display: flex;
@@ -385,7 +386,7 @@
     .nav-overlay__title {
       font-size: var(--small);
       letter-spacing: -0.02em;
-      color: var(--amber);
+      color: #ffffff;
       font-weight: 600;
       text-transform: uppercase;
     }
@@ -421,7 +422,7 @@
     }
     .nav-item__num {
       font-size: 0.72rem;
-      color: var(--amber);
+      color: #ffffff;
       font-weight: 600;
       letter-spacing: 0.05em;
       margin-bottom: 3px;
@@ -452,7 +453,7 @@
       align-items: center;
       gap: 8px;
       background: #ffffff;
-      color: #0d0905;
+      color: #000000;
       font-weight: 700;
       font-size: 0.92rem;
       padding: 14px;
@@ -469,7 +470,7 @@
        ========================================================================== */
     .section-wrap {
       position: relative;
-      background: #130e09;
+      background: #000000;
       color: #ffffff;
       padding: 120px 0 80px 0;
       border-top: 1px solid var(--rule);
@@ -486,7 +487,7 @@
     .section-num {
       font-size: var(--small);
       letter-spacing: -0.02em;
-      color: var(--amber);
+      color: #ffffff;
       margin-bottom: 12px;
       text-transform: uppercase;
       font-weight: 600;
@@ -545,7 +546,7 @@
       margin-bottom: 6px;
     }
     .metric-val span {
-      color: var(--amber);
+      color: #ffffff;
     }
     .metric-label {
       font-size: 0.85rem;
@@ -556,7 +557,7 @@
     .about-card-visual {
       position: relative;
       border: 1px solid var(--rule-bold);
-      background: #0a0704;
+      background: #000000;
       border-radius: 4px;
       overflow: hidden;
     }
@@ -566,18 +567,18 @@
       object-fit: cover;
       object-position: center 25%;
       display: block;
-      filter: grayscale(15%) contrast(105%);
+      filter: grayscale(100%) contrast(115%);
       transition: filter 0.3s;
     }
     .about-card-visual:hover img {
-      filter: grayscale(0%) contrast(105%);
+      filter: grayscale(100%) contrast(125%) brightness(1.05);
     }
     .about-badge {
       position: absolute;
       bottom: 20px;
       left: 20px;
       right: 20px;
-      background: rgba(13, 9, 5, 0.88);
+      background: rgba(0, 0, 0, 0.9);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--rule);
@@ -597,7 +598,7 @@
       align-items: center;
       gap: 8px;
       font-size: 0.8rem;
-      color: #38ef7d;
+      color: #ffffff;
       font-weight: 600;
     }
     .about-badge-status::before {
@@ -605,8 +606,8 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #38ef7d;
-      box-shadow: 0 0 10px #38ef7d;
+      background: #ffffff;
+      box-shadow: 0 0 10px #ffffff;
       animation: pulse 2s infinite;
     }
     @keyframes pulse {
@@ -632,7 +633,7 @@
     }
     .work-card {
       border: 1px solid var(--rule);
-      background: #0d0905;
+      background: #050505;
       border-radius: 4px;
       overflow: hidden;
       display: flex;
@@ -649,7 +650,7 @@
       height: 280px;
       position: relative;
       overflow: hidden;
-      background: #080503;
+      background: #000000;
     }
     .work-thumb img {
       width: 100%;
@@ -658,9 +659,11 @@
       object-position: top center;
       display: block;
       transition: transform 0.45s var(--e-expo);
+      filter: grayscale(100%) contrast(110%);
     }
     .work-card:hover .work-thumb img {
       transform: scale(1.04);
+      filter: grayscale(100%) contrast(125%) brightness(1.05);
     }
     .work-tag {
       position: absolute;
@@ -673,7 +676,7 @@
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: -0.01em;
-      color: var(--amber);
+      color: #ffffff;
       text-transform: uppercase;
       border-radius: 2px;
     }
@@ -720,7 +723,7 @@
     }
     .btn-work-main {
       background: #ffffff;
-      color: #0d0905;
+      color: #000000;
       font-size: 0.9rem;
       font-weight: 600;
       letter-spacing: -0.02em;
@@ -763,7 +766,7 @@
     }
     .stack-col {
       border: 1px solid var(--rule);
-      background: #0d0905;
+      background: #050505;
       padding: 32px;
       border-radius: 4px;
     }
@@ -780,7 +783,7 @@
     }
     .stack-col-title span {
       font-size: 0.8rem;
-      color: var(--amber);
+      color: #ffffff;
       font-weight: 600;
     }
     .stack-item {
@@ -800,7 +803,7 @@
       color: #e6e2dc;
     }
     .stack-item-val {
-      color: var(--amber);
+      color: #ffffff;
       font-weight: 600;
       font-size: 0.85rem;
     }
@@ -813,7 +816,7 @@
     }
     .music-card {
       border: 1px solid var(--rule);
-      background: #0d0905;
+      background: #050505;
       padding: 24px;
       border-radius: 4px;
       display: flex;
@@ -840,6 +843,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      filter: grayscale(100%) contrast(110%);
     }
     .music-title {
       font-size: 1.25rem;
@@ -868,8 +872,8 @@
       transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
     }
     .btn-spotify:hover {
-      background: #1db954;
-      border-color: #1db954;
+      background: #ffffff;
+      border-color: #ffffff;
       color: #000000;
       transform: translateY(-2px);
     }
@@ -882,7 +886,7 @@
     }
     .quote-box {
       border: 1px solid var(--rule);
-      background: #0d0905;
+      background: #050505;
       padding: 36px 32px;
       border-radius: 4px;
       display: flex;
@@ -900,7 +904,7 @@
     .quote-author {
       font-size: 0.85rem;
       letter-spacing: -0.01em;
-      color: var(--amber);
+      color: #ffffff;
       font-weight: 600;
       text-transform: uppercase;
     }
@@ -938,7 +942,7 @@
     }
     .btn-tg-outreach {
       background: #ffffff;
-      color: #0d0905;
+      color: #000000;
       font-size: 1rem;
       font-weight: 700;
       letter-spacing: -0.02em;
@@ -976,7 +980,7 @@
     .footer {
       border-top: 1px solid var(--rule);
       padding: 40px 0;
-      background: #0d0905;
+      background: #050505;
     }
     .footer-inner {
       display: flex;
@@ -1004,7 +1008,7 @@
       bottom: 24px;
       right: 24px;
       background: #ffffff;
-      color: #0d0905;
+      color: #000000;
       padding: 12px 20px;
       font-size: 0.85rem;
       font-weight: 600;
@@ -1307,7 +1311,7 @@
   <!-- ========================================================================
        3. SELECTED WORKS SECTION (САЙТЫ)
        ======================================================================== -->
-  <section class="section-wrap" id="projects" style="background: #0f0a05;">
+  <section class="section-wrap" id="projects" style="background: #050505;">
     <div class="container">
       <div class="section-num">02 / Сайты &amp; Избранные работы</div>
       <h2 class="section-heading">Сайты</h2>
@@ -1481,7 +1485,7 @@
   <!-- ========================================================================
        5. SOUNDTRACK & FOCUS
        ======================================================================== -->
-  <section class="section-wrap" id="music" style="background: #0f0a06;">
+  <section class="section-wrap" id="music" style="background: #000000;">
     <div class="container">
       <div class="section-num">04 / Частота &amp; Аудио</div>
       <h2 class="section-heading">Саундтреки для кода</h2>
@@ -1559,7 +1563,7 @@
   <!-- ========================================================================
        7. CONTACT & DIRECT OUTREACH
        ======================================================================== -->
-  <section class="section-wrap" id="contact" style="background: #0d0905; padding-bottom: 120px;">
+  <section class="section-wrap" id="contact" style="background: #050505; padding-bottom: 120px;">
     <div class="container">
       <div class="section-num">06 / Канал связи</div>
       <h2 class="section-heading">Контакты разработчика</h2>
