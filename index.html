@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0d0905">
-  <title>Atelier Unit — Craftwork, Technology, Design</title>
+  <title>MAGNAT — Craftwork, Technology, Design</title>
   <style>
     @font-face {
       font-family: "AU Grotesk";
@@ -22,11 +22,16 @@
     :root {
       --vh: 1vh;
       --ink: #ffffff;
+      --ink-dim: #99948e;
+      --ink-muted: #66615b;
       --base-bot: #130e09;
+      --base-dark: #0a0704;
       --rule: rgba(255,255,255,0.115);
+      --rule-bold: rgba(255,255,255,0.22);
       --grid: rgba(255,255,255,0.0265);
       --menu-bg: #fcfcfc;
       --menu-ink: #141414;
+      --amber: #e59740;
       --small-min: 10px;
       --u: min(100vw / 1280, var(--vh) * 100 / 800);
       --small: max(var(--small-min), 12.6 * var(--u));
@@ -49,10 +54,13 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       background: #130e09;
       color: #ffffff;
       font-family: "AU Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -80,7 +88,19 @@
       outline-offset: 3px;
     }
 
-    /* Stage */
+    /* Small type utility */
+    .small {
+      font-size: var(--small);
+      line-height: 1;
+      font-weight: 400;
+      margin: 0;
+      -webkit-text-stroke: 0.022em currentColor;
+      letter-spacing: var(--ls, -0.051em);
+    }
+
+    /* ==========================================================================
+       HERO STAGE (ATELIER UNIT SIGNATURE FULL-VIEWPORT HERO)
+       ========================================================================== */
     .hero {
       position: relative;
       isolation: isolate;
@@ -92,7 +112,6 @@
       background: linear-gradient(180deg, #0d0905 0%, #0f0a05 15%, #0d0a05 30%, #0d0905 45%, #0e0a06 60%, #0f0c07 75%, #130e08 90%, #130e09 100%);
     }
 
-    /* Background video */
     .hero__photo {
       position: absolute;
       z-index: -3;
@@ -113,7 +132,7 @@
       object-position: center center;
     }
 
-    /* Grid */
+    /* Hairline columns grid */
     .grid {
       position: absolute;
       inset: 0;
@@ -145,19 +164,12 @@
       top: calc(12.8 * var(--u));
       width: max(calc(142.60 * var(--u)), 96px);
       display: block;
+      z-index: 20;
     }
     .logo svg {
       display: block;
       width: 100%;
       height: auto;
-    }
-
-    .small {
-      font-size: var(--small);
-      line-height: 1;
-      font-weight: 400;
-      margin: 0;
-      -webkit-text-stroke: 0.022em currentColor;
     }
 
     .tagline {
@@ -166,6 +178,7 @@
       top: calc(12.6 * var(--u));
       display: flex;
       flex-direction: column;
+      z-index: 20;
     }
     .tagline span {
       display: block;
@@ -179,10 +192,15 @@
       font-style: normal;
       display: flex;
       flex-direction: column;
+      z-index: 20;
     }
     .contact a, .contact span {
       display: block;
       letter-spacing: var(--ls, -0.051em);
+      transition: color 0.2s;
+    }
+    .contact a:hover {
+      color: var(--amber);
     }
 
     .actions {
@@ -194,12 +212,17 @@
       gap: 1.22em;
       font-size: var(--small);
       -webkit-text-stroke: 0.022em currentColor;
+      z-index: 20;
     }
     .actions .lang {
       letter-spacing: -0.064em;
       line-height: 1;
       transform: translate(0em, 0.139em);
       -webkit-text-stroke-width: 0.01em;
+      transition: opacity 0.2s;
+    }
+    .actions .lang:hover {
+      opacity: 0.7;
     }
     .actions .menu {
       letter-spacing: -0.055em;
@@ -210,7 +233,8 @@
       text-align: left;
       padding-left: 0.33em;
       line-height: 1.508em;
-      transition: background-color 0.15s;
+      transition: background-color 0.15s, transform 0.15s;
+      display: inline-block;
     }
     .actions .menu span {
       display: inline-block;
@@ -219,10 +243,11 @@
     @media (hover: hover) {
       .actions .menu:hover {
         background: #ffffff;
+        transform: translateY(-1px);
       }
     }
 
-    /* Services and rule */
+    /* Services & Hairline Rule */
     .services {
       list-style: none;
       position: absolute;
@@ -232,6 +257,7 @@
       line-height: 1;
       margin: 0;
       padding: 0;
+      z-index: 10;
     }
     .services li {
       position: absolute;
@@ -252,13 +278,13 @@
       top: calc(239 * var(--u));
       height: 1px;
       background: var(--rule);
-      z-index: -1;
+      z-index: 5;
       box-shadow: 0 -1px 0 rgba(255,255,255,.038), 0 1px 0 rgba(255,255,255,.014);
       transform-origin: 0 50%;
       will-change: transform;
     }
 
-    /* Headline */
+    /* Giant Headline */
     .hl {
       position: absolute;
       left: 50%;
@@ -271,6 +297,7 @@
       line-height: 1;
       letter-spacing: 0;
       white-space: nowrap;
+      z-index: 10;
     }
     .hl__line {
       position: absolute;
@@ -294,7 +321,9 @@
       transform: translateY(calc(0.909em + var(--dy, 0em))) scale(var(--sx), var(--sy)) translateY(-0.909em) translateY(0.5445em) scaleY(var(--k, 1)) translateY(-0.5445em);
     }
 
-    /* Entrance animations */
+    /* ==========================================================================
+       HERO ENTRANCE ANIMATIONS
+       ========================================================================== */
     @keyframes au-rise {
       from { translate: 0 var(--rise); }
       to { translate: 0 0; }
@@ -386,7 +415,523 @@
       animation: au-wipe 0.6s cubic-bezier(.25, 1, .5, 1) 1.02s var(--au-state) both;
     }
 
-    /* Responsive */
+    /* ==========================================================================
+       EDITORIAL PORTFOLIO SECTIONS (FULL BRUTALIST AESTHETIC)
+       ========================================================================== */
+    .section-wrap {
+      position: relative;
+      background: #130e09;
+      color: #ffffff;
+      padding: 120px 0 80px 0;
+      border-top: 1px solid var(--rule);
+      overflow: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .section-num {
+      font-size: var(--small);
+      letter-spacing: -0.04em;
+      color: var(--amber);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-num::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      max-width: 80px;
+      background: var(--rule-bold);
+    }
+
+    .section-heading {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.96;
+      margin: 0 0 48px 0;
+      text-transform: uppercase;
+    }
+
+    /* About Grid */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-lead {
+      font-size: clamp(1.15rem, 2vw, 1.6rem);
+      line-height: 1.35;
+      letter-spacing: -0.03em;
+      font-weight: 400;
+      color: #e6e2dc;
+      margin-bottom: 32px;
+    }
+    .about-lead strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .about-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+    }
+    .metric-val {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .metric-val span {
+      color: var(--amber);
+    }
+    .metric-label {
+      font-size: 0.85rem;
+      color: var(--ink-dim);
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+    }
+
+    .about-card-visual {
+      position: relative;
+      border: 1px solid var(--rule);
+      background: rgba(255, 255, 255, 0.02);
+      padding: 16px;
+      border-radius: 4px;
+    }
+    .about-card-visual img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.05) brightness(0.92);
+      border-radius: 2px;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      right: 32px;
+      background: rgba(13, 9, 5, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--rule-bold);
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .about-badge-role {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-size: 0.95rem;
+    }
+    .about-badge-status {
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      color: #34d399;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .about-badge-status::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 8px #34d399;
+    }
+
+    /* Projects Section */
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px;
+    }
+    .work-card {
+      border: 1px solid var(--rule);
+      background: rgba(255, 255, 255, 0.015);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .work-card:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-4px);
+    }
+    .work-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      position: relative;
+      overflow: hidden;
+      background: #090604;
+    }
+    .work-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s var(--e-expo);
+    }
+    .work-card:hover .work-thumb img {
+      transform: scale(1.04);
+    }
+    .work-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      padding: 4px 10px;
+      background: rgba(13, 9, 5, 0.85);
+      border: 1px solid var(--rule);
+      backdrop-filter: blur(8px);
+    }
+    .work-content {
+      padding: 28px 24px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .work-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin: 0 0 12px 0;
+      text-transform: uppercase;
+    }
+    .work-desc {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--ink-dim);
+      margin: 0 0 24px 0;
+      flex: 1;
+      letter-spacing: -0.02em;
+    }
+    .work-tags-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .work-pill {
+      font-size: 0.75rem;
+      color: #cfcac3;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .work-actions {
+      display: flex;
+      gap: 12px;
+      border-top: 1px solid var(--rule);
+      padding-top: 20px;
+    }
+    .btn-work-main {
+      flex: 1;
+      background: #ffffff;
+      color: #0d0905;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      text-align: center;
+      padding: 12px 16px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      transition: background-color 0.2s;
+    }
+    .btn-work-main:hover {
+      background: #f0ebe4;
+    }
+    .btn-work-sub {
+      border: 1px solid var(--rule-bold);
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      padding: 12px 18px;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+    .btn-work-sub:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #ffffff;
+    }
+
+    /* Stack Grid */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .stack-col {
+      border: 1px solid var(--rule);
+      background: rgba(255, 255, 255, 0.015);
+      padding: 32px 24px;
+      border-radius: 4px;
+    }
+    .stack-col-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 20px 0;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 12px;
+    }
+    .stack-col-title span {
+      color: var(--amber);
+      font-size: 0.85rem;
+    }
+    .stack-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.9rem;
+      letter-spacing: -0.02em;
+    }
+    .stack-item-name {
+      color: #e2ddd6;
+    }
+    .stack-item-val {
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: var(--amber);
+    }
+
+    /* Music Grid */
+    .music-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .music-card {
+      border: 1px solid var(--rule);
+      background: rgba(255, 255, 255, 0.015);
+      padding: 16px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+    }
+    .music-cover {
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 2px;
+      margin-bottom: 16px;
+      background: #000;
+      position: relative;
+    }
+    .music-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .music-card:hover .music-cover img {
+      transform: scale(1.05);
+    }
+    .music-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 4px 0;
+    }
+    .music-sub {
+      font-size: 0.8rem;
+      color: var(--ink-dim);
+      margin-bottom: 16px;
+    }
+    .btn-spotify {
+      margin-top: auto;
+      border: 1px solid var(--rule);
+      padding: 10px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    .btn-spotify:hover {
+      background: #1db954;
+      color: #000000;
+      border-color: #1db954;
+    }
+
+    /* Quotes Grid */
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .quote-box {
+      border: 1px solid var(--rule);
+      background: rgba(255, 255, 255, 0.015);
+      padding: 36px 28px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .quote-text {
+      font-size: 1.15rem;
+      line-height: 1.45;
+      letter-spacing: -0.03em;
+      color: #f3eee8;
+      margin: 0 0 24px 0;
+      font-weight: 400;
+    }
+    .quote-author {
+      font-size: 0.85rem;
+      letter-spacing: -0.02em;
+      color: var(--amber);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* Contact / Direct Outreach */
+    .contact-hero {
+      border: 1px solid var(--rule-bold);
+      background: rgba(255, 255, 255, 0.02);
+      padding: 60px 48px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+    .contact-info-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin: 0 0 12px 0;
+      text-transform: uppercase;
+    }
+    .contact-info-sub {
+      font-size: 1.05rem;
+      color: var(--ink-dim);
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .contact-btn-box {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 260px;
+    }
+    .btn-tg-outreach {
+      background: #ffffff;
+      color: #0d0905;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      padding: 16px 24px;
+      text-align: center;
+      border-radius: 2px;
+      transition: background-color 0.2s, transform 0.15s;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-tg-outreach:hover {
+      background: #f0ebe4;
+      transform: translateY(-2px);
+    }
+    .btn-copy-user {
+      border: 1px solid var(--rule-bold);
+      color: #ffffff;
+      font-size: 0.85rem;
+      padding: 12px 18px;
+      text-align: center;
+      letter-spacing: -0.02em;
+      transition: background-color 0.2s;
+    }
+    .btn-copy-user:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--rule);
+      padding: 40px 0;
+      background: #0d0905;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--ink-dim);
+      letter-spacing: -0.02em;
+    }
+    .footer-left strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .footer-right a {
+      color: var(--ink-dim);
+      transition: color 0.2s;
+    }
+    .footer-right a:hover {
+      color: #ffffff;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #ffffff;
+      color: #0d0905;
+      padding: 12px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      border-radius: 2px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 1000;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (PRESERVING ATELIER UNIT SPECIFICATIONS)
+       ========================================================================== */
     @media (max-aspect-ratio: 114/100) {
       :root {
         --small-min: 12px;
@@ -540,6 +1085,25 @@
       }
     }
 
+    /* Responsive for lower sections */
+    @media (max-width: 960px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .works-grid, .stack-grid, .music-grid, .quotes-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 24px;
+      }
+      .contact-btn-box {
+        width: 100%;
+      }
+    }
+
     @media (pointer: coarse) {
       .lang, .menu, .logo, .contact a {
         position: relative;
@@ -574,15 +1138,21 @@
   </style>
 </head>
 <body>
+
+  <!-- ========================================================================
+       1. HERO SECTION (FULL VIEWPORT SIGNATURE ATELIER UNIT EXPERIENCE)
+       ======================================================================== -->
   <div class="hero">
     <div class="hero__photo" role="presentation">
       <video src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261005_143740_52dbf3ef-ea20-4594-a1ad-91d6c2970159.mp4" autoplay loop muted playsinline></video>
     </div>
 
+    <!-- 48-column hairline grid with radial mask -->
     <div class="grid" aria-hidden="true">
       <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
     </div>
 
+    <!-- Logo: Seven white squares geometric mark -->
     <a href="#" class="logo" aria-label="Atelier Unit — home">
       <svg viewBox="0 0 142.60 30.00" shape-rendering="geometricPrecision" fill="var(--logo-ink, #ffffff)">
         <rect x="0.00" y="0.00" width="8.2" height="8.2" />
@@ -595,30 +1165,36 @@
       </svg>
     </a>
 
+    <!-- Top Bar Tagline -->
     <div class="tagline small">
       <span style="--ls: -0.045em;">Craftwork and brand systems.</span>
       <span style="--ls: -0.051em;">Shaped by culture. Built with detail</span>
       <span style="--ls: -0.045em;">and technology.</span>
     </div>
 
+    <!-- Top Bar Contact -->
     <address class="contact small">
-      <a href="mailto:hello@atelierunit.com" style="--ls: -0.047em;">hello@atelierunit.com</a>
-      <span style="--ls: -0.069em;">Milano, EST 2013</span>
+      <a href="https://t.me/ggg468q" target="_blank" rel="noopener" style="--ls: -0.047em;">telegram: @ggg468q ↗</a>
+      <span style="--ls: -0.069em;">MAGNAT.DEV, EST 2026</span>
     </address>
 
+    <!-- Top Bar Actions -->
     <div class="actions">
-      <button class="lang" type="button" aria-label="Language: English" style="--ls: -0.064em;">EN</button>
-      <button class="menu" type="button" aria-expanded="false" style="--ls: -0.055em;"><span>Menu</span></button>
+      <a href="#projects" class="lang" aria-label="Works" style="--ls: -0.064em;">WORKS</a>
+      <a href="#contact" class="menu" aria-expanded="false" style="--ls: -0.055em;"><span>Menu</span></a>
     </div>
 
+    <!-- Services Bar -->
     <ul class="services small" aria-label="Services">
       <li style="left: calc(20 * var(--u)); --ls: -0.047em;"><span class="rv">Brand Direction</span></li>
       <li style="left: calc(50% - 3 * var(--u)); transform: translateX(-50%); --ls: -0.0485em;"><span class="rv">Digital Products</span></li>
       <li style="right: calc(33.25 * var(--u)); --ls: -0.064em;"><span class="rv">Advanced Tech</span></li>
     </ul>
 
+    <!-- Hairline rule -->
     <div class="rule" aria-hidden="true"></div>
 
+    <!-- Micro-calculated letter-by-letter headline -->
     <h1 class="hl" aria-label="Craftwork, technology, design">
       <span class="hl__line" aria-hidden="true" style="--b: 1.56780em; --dy: -0.00275em; --sy: 1.0063;">
         <span class="hl__clip">
@@ -668,6 +1244,324 @@
     </h1>
   </div>
 
+  <!-- ========================================================================
+       2. ABOUT & PHILOSOPHY SECTION
+       ======================================================================== -->
+  <section class="section-wrap" id="about">
+    <div class="container">
+      <div class="section-num">01 / Identity &amp; Discipline</div>
+      <h2 class="section-heading">Architecting Digital Scale</h2>
+
+      <div class="about-layout">
+        <div class="about-text-col">
+          <p class="about-lead">
+            Я <strong>MAGNAT</strong> — разработчик высоконагруженных Telegram-ботов, 3D WebGL веб-сервисов и масштабируемых цифровых протоколов. Мне <strong>17 лет</strong>, учусь в 11 классе.
+          </p>
+          <p class="about-lead" style="font-size: 1.05rem; color: var(--ink-dim);">
+            Всё свободное время посвящаю программированию под музыку 🎧. Дисциплина, внимание к каждой микродетали интерфейса и создание систем, работающих автономно 24/7.
+          </p>
+
+          <div class="about-metrics">
+            <div class="metric-item">
+              <div class="metric-val">17<span>y.o.</span></div>
+              <div class="metric-label">11 класс • Young Developer</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-val">24<span>/7</span></div>
+              <div class="metric-label">Continuous Uptime &amp; Coding</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-val">100<span>%</span></div>
+              <div class="metric-label">Focus Under Soundtracks</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card-visual">
+          <img src="assets/images/magnat.jpg" alt="MAGNAT Developer">
+          <div class="about-badge">
+            <div>
+              <div class="about-badge-role">MAGNAT.DEV</div>
+              <div style="font-size: 0.8rem; color: var(--ink-dim);">Fullstack &amp; Bot Architect</div>
+            </div>
+            <div class="about-badge-status">Online 24/7</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       3. SELECTED WORKS SECTION
+       ======================================================================== -->
+  <section class="section-wrap" id="projects" style="background: #0f0a06;">
+    <div class="container">
+      <div class="section-num">02 / Selected Works</div>
+      <h2 class="section-heading">Featured Deployments</h2>
+
+      <div class="works-grid">
+        <!-- Work 1: Крипто Обменник -->
+        <article class="work-card">
+          <div class="work-thumb">
+            <img src="assets/images/crypto-obmennik.jpg" alt="Крипто Обменник 3D">
+            <span class="work-tag">01 // FINTECH &amp; 3D</span>
+          </div>
+          <div class="work-content">
+            <h3 class="work-title">Крипто Обменник</h3>
+            <p class="work-desc">
+              Интерактивный 3D-конвертер криптовалют и фиатных валют на Three.js (WebGL) с реальными курсами Wise API, физическими материалами токенов и звуковым движком Web Audio API.
+            </p>
+            <div class="work-tags-list">
+              <span class="work-pill">Three.js</span>
+              <span class="work-pill">WebGL</span>
+              <span class="work-pill">Wise API</span>
+              <span class="work-pill">Web Audio</span>
+              <span class="work-pill">ES6+</span>
+            </div>
+            <div class="work-actions">
+              <a href="https://dima11433.github.io/crypto-3d-converter/" target="_blank" rel="noopener" class="btn-work-main">
+                <span>Открыть демо сайта</span>
+                <span>↗</span>
+              </a>
+              <a href="https://github.com/Dima11433/crypto-3d-converter" target="_blank" rel="noopener" class="btn-work-sub">
+                <span>GitHub ↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Work 2: CORTEZ FAMq -->
+        <article class="work-card">
+          <div class="work-thumb">
+            <img src="assets/images/cortez-famq.jpg" alt="CORTEZ FAMq Syndicate Portal">
+            <span class="work-tag">02 // WEB PORTAL</span>
+          </div>
+          <div class="work-content">
+            <h3 class="work-title">CORTEZ FAMq</h3>
+            <p class="work-desc">
+              Кинематографичные игровые порталы синдикатов CORTEZ и FLORY с фоновым Full-Viewport видеорядом, интерактивной статистикой, бонусами и формами подачи заявок.
+            </p>
+            <div class="work-tags-list">
+              <span class="work-pill">HTML5</span>
+              <span class="work-pill">CSS3 Grid</span>
+              <span class="work-pill">Video Hero</span>
+              <span class="work-pill">Interactive</span>
+              <span class="work-pill">Cyber Noir</span>
+            </div>
+            <div class="work-actions">
+              <a href="https://dima11433.github.io/cortez-family-site/" target="_blank" rel="noopener" class="btn-work-main">
+                <span>Открыть демо сайта</span>
+                <span>↗</span>
+              </a>
+              <a href="https://github.com/Dima11433/cortez-family-site" target="_blank" rel="noopener" class="btn-work-sub">
+                <span>GitHub ↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       4. TECH STACK & ARCHITECTURE
+       ======================================================================== -->
+  <section class="section-wrap" id="skills">
+    <div class="container">
+      <div class="section-num">03 / Engineering Stack</div>
+      <h2 class="section-heading">Technical Architecture</h2>
+
+      <div class="stack-grid">
+        <div class="stack-col">
+          <h3 class="stack-col-title">Core &amp; Backend <span>01</span></h3>
+          <div class="stack-item">
+            <span class="stack-item-name">Python 3.12+ (Asyncio)</span>
+            <span class="stack-item-val">98%</span>
+          </div>
+          <div class="stack-item">
+            <span class="stack-item-name">Telegram Bot API (Aiogram)</span>
+            <span class="stack-item-val">97%</span>
+          </div>
+          <div class="stack-item">
+            <span class="stack-item-name">FastAPI &amp; REST Microservices</span>
+            <span class="stack-item-val">90%</span>
+          </div>
+          <div class="stack-item">
+            <span class="stack-item-name">PostgreSQL / SQLite</span>
+            <span class="stack-item-val">88%</span>
+          </div>
+        </div>
+
+        <div class="stack-col">
+          <h3 class="stack-col-title">Web &amp; 3D Graphics <span>02</span></h3>
+          <div class="stack-item">
+            <span class="stack-item-name">Three.js &amp; WebGL Shaders</span>
+            <span class="stack-item-val">92%</span>
+          </div>
+          <div class="stack-item">
+            <span class="stack-item-name">Modern CSS &amp; Glassmorphism</span>
+            <span class="stack-item-val">95%</span>
+          </div>
+          <div class="stack-item">
+            <span class="stack-item-name">HTML5 Semantic Architecture</span>
+            <span class="stack-item-val">96%</span>
+          </div>
+          <div class="stack-item">
+            <span class="stack-item-name">Web Audio API Synthesis</span>
+            <span class="stack-item-val">89%</span>
+          </div>
+        </div>
+
+        <div class="stack-col">
+          <h3 class="stack-col-title">Infrastructure <span>03</span></h3>
+          <div class="stack-item">
+            <span class="stack-item-name">Git &amp; GitHub Actions CI/CD</span>
+            <span class="stack-item-val">94%</span>
+          </div>
+          <div class="stack-item">
+            <span class="stack-item-name">Linux Server Deployment 24/7</span>
+            <span class="stack-item-val">92%</span>
+          </div>
+          <div class="stack-item">
+            <span class="stack-item-name">Performance &amp; Asset Tuning</span>
+            <span class="stack-item-val">95%</span>
+          </div>
+          <div class="stack-item">
+            <span class="stack-item-name">Deep Focus Under Soundtracks</span>
+            <span class="stack-item-val">100%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       5. SOUNDTRACK & FOCUS
+       ======================================================================== -->
+  <section class="section-wrap" id="music" style="background: #0f0a06;">
+    <div class="container">
+      <div class="section-num">04 / Frequency &amp; Audio</div>
+      <h2 class="section-heading">Coding Soundtracks</h2>
+
+      <div class="music-grid">
+        <div class="music-card">
+          <div class="music-cover">
+            <img src="assets/images/track-workal.png" alt="WORKAL">
+          </div>
+          <h3 class="music-title">WORKAL</h3>
+          <div class="music-sub">Maximum Focus State 🎧</div>
+          <a href="https://open.spotify.com/track/01Fnhg9DGs2LfS95lSDoVq?si=070bbc8391cf447b" target="_blank" rel="noopener" class="btn-spotify">
+            <span>Spotify ↗</span>
+          </a>
+        </div>
+
+        <div class="music-card">
+          <div class="music-cover">
+            <img src="assets/images/track-1000000.png" alt="1 000 000 ₽">
+          </div>
+          <h3 class="music-title">1 000 000 ₽</h3>
+          <div class="music-sub">Scale &amp; Ambition Rhythm ⚡</div>
+          <a href="https://open.spotify.com/track/2iqXJeFj27ZuRrJvieUpP2?si=6a6a69c2ead74782" target="_blank" rel="noopener" class="btn-spotify">
+            <span>Spotify ↗</span>
+          </a>
+        </div>
+
+        <div class="music-card">
+          <div class="music-cover">
+            <img src="assets/images/track-instamodel.png" alt="Инста модель">
+          </div>
+          <h3 class="music-title">Инста модель</h3>
+          <div class="music-sub">Late Night Production Atmosphere 🌃</div>
+          <a href="https://open.spotify.com/track/1x04RtkJ7OJV1rosXbl75a?si=d543dcdb866c490c" target="_blank" rel="noopener" class="btn-spotify">
+            <span>Spotify ↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       6. MANIFESTO & QUOTES
+       ======================================================================== -->
+  <section class="section-wrap" id="quotes">
+    <div class="container">
+      <div class="section-num">05 / Principles &amp; Mindset</div>
+      <h2 class="section-heading">Manifesto</h2>
+
+      <div class="quotes-grid">
+        <div class="quote-box">
+          <p class="quote-text">
+            “Твой главный актив — твоя голова и твое усердие. Инвестируй в них каждый день без компромиссов.”
+          </p>
+          <div class="quote-author">— MAGNAT</div>
+        </div>
+
+        <div class="quote-box">
+          <p class="quote-text">
+            “Работай так, чтобы твой результат и твои продукты говорили громче любых слов и обещаний.”
+          </p>
+          <div class="quote-author">— MAGNAT</div>
+        </div>
+
+        <div class="quote-box">
+          <p class="quote-text">
+            “Хочешь изменить жизнь — начни с железной дисциплины и чистого кода, а не с понедельника.”
+          </p>
+          <div class="quote-author">— MAGNAT</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       7. CONTACT & DIRECT OUTREACH
+       ======================================================================== -->
+  <section class="section-wrap" id="contact" style="background: #0d0905; padding-bottom: 120px;">
+    <div class="container">
+      <div class="section-num">06 / Communication Channel</div>
+      <h2 class="section-heading">Direct Outreach</h2>
+
+      <div class="contact-hero">
+        <div class="contact-info">
+          <h3 class="contact-info-title">Let's Build Scale</h3>
+          <p class="contact-info-sub">
+            По всем вопросам сотрудничества, разработке высоконагруженных ботов или веб-сервисов — пишите напрямую в Telegram.
+          </p>
+        </div>
+
+        <div class="contact-btn-box">
+          <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn-tg-outreach">
+            <span>Написать в Telegram (@ggg468q)</span>
+            <span>↗</span>
+          </a>
+          <button type="button" class="btn-copy-user" id="copyUsernameBtn">
+            Скопировать @ggg468q
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       8. FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        © 2026 <strong>MAGNAT.DEV</strong> — Craftwork, Technology &amp; Digital Scale.
+      </div>
+      <div class="footer-right">
+        <a href="#">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast notification -->
+  <div class="toast" id="siteToast">Скопировано в буфер обмена!</div>
+
+  <!-- ========================================================================
+       SCRIPTS: PLAYBACK, ANIMATIONS & INTERACTIONS
+       ======================================================================== -->
   <script>
     (function () {
       var doc = document.documentElement;
@@ -721,6 +1615,21 @@
         document.fonts.ready.then(function () {
           clearTimeout(fontTimeout);
           startPlayback();
+        });
+      }
+
+      // Copy username action
+      var copyBtn = document.getElementById('copyUsernameBtn');
+      var toast = document.getElementById('siteToast');
+      if (copyBtn && toast) {
+        copyBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText('@ggg468q').then(function () {
+            toast.textContent = 'Скопировано: @ggg468q ✓';
+            toast.classList.add('show');
+            setTimeout(function () {
+              toast.classList.remove('show');
+            }, 2400);
+          });
         });
       }
     })();
