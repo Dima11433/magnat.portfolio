@@ -236,44 +236,6 @@
       box-shadow: 0 4px 16px rgba(255,255,255,0.18);
     }
 
-    /* Services & Hairline Rule */
-    .services {
-      list-style: none;
-      position: absolute;
-      width: 100%;
-      top: calc(211.75 * var(--u));
-      font-size: max(calc(var(--small-min) * 1.06), calc(13.3 * var(--u)));
-      line-height: 1;
-      margin: 0;
-      padding: 0;
-      z-index: 10;
-    }
-    .services li {
-      position: absolute;
-      white-space: nowrap;
-      letter-spacing: -0.02em;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.85);
-      clip-path: inset(-0.25em -0.4em -0.35em -0.4em);
-    }
-    .services .rv {
-      display: inline-block;
-      will-change: translate, transform;
-    }
-
-    .rule {
-      position: absolute;
-      width: 100%;
-      left: 0;
-      top: calc(239 * var(--u));
-      height: 1px;
-      background: var(--rule);
-      z-index: 5;
-      box-shadow: 0 -1px 0 rgba(255,255,255,.038), 0 1px 0 rgba(255,255,255,.014);
-      transform-origin: 0 50%;
-      will-change: transform;
-    }
-
     /* Giant Kinetic Headline: MAGNAT PORTFOLIO */
     .hl {
       position: absolute;
@@ -345,9 +307,6 @@
       --au-state: running;
     }
 
-    html.is-entering .rule {
-      animation: au-draw 0.85s var(--e-sweep) 0.24s var(--au-state) both;
-    }
     html.is-entering .hl__line:nth-child(1) .hl__track {
       --rise: 1.1em;
       animation: au-rise 1.05s var(--e-expo) 0.10s var(--au-state) both;
@@ -355,18 +314,6 @@
     html.is-entering .hl__line:nth-child(2) .hl__track {
       --rise: 1.1em;
       animation: au-rise 1.05s var(--e-expo) 0.18s var(--au-state) both;
-    }
-    html.is-entering .services li:nth-child(1) .rv {
-      --rise: calc(100% + 0.6em);
-      animation: au-rise 0.8s var(--e-quint) 0.56s var(--au-state) both;
-    }
-    html.is-entering .services li:nth-child(2) .rv {
-      --rise: calc(100% + 0.6em);
-      animation: au-rise 0.8s var(--e-quint) 0.62s var(--au-state) both;
-    }
-    html.is-entering .services li:nth-child(3) .rv {
-      --rise: calc(100% + 0.6em);
-      animation: au-rise 0.8s var(--e-quint) 0.68s var(--au-state) both;
     }
     html.is-entering .logo rect:nth-child(1) { animation: au-on 0.14s ease-out 0.700s var(--au-state) both; }
     html.is-entering .logo rect:nth-child(2) { animation: au-on 0.14s ease-out 0.735s var(--au-state) both; }
@@ -1085,23 +1032,11 @@
         mask-image: linear-gradient(to bottom, transparent 0, #000 11%);
         -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 11%);
       }
-      .services {
-        top: calc(var(--vh) * 44);
-      }
-      .services li:nth-child(1) {
-        left: var(--m) !important;
-      }
-      .services li:nth-child(2) {
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-      }
-      .services li:nth-child(3) {
-        right: var(--m) !important;
-      }
-      .rule {
-        top: calc(var(--vh) * 44 + 2.1em);
-        font-size: var(--small);
-      }
+      
+      
+      
+      
+      
       .hl {
         font-size: calc((100vw - 2 * var(--m)) / 5.8);
         bottom: max(0.49140em, calc(18px + env(safe-area-inset-bottom, 0px)));
@@ -1125,28 +1060,17 @@
     }
 
     @media (max-aspect-ratio: 114/100) and (max-width: 309px) {
-      .services li {
-        width: min-content;
-        white-space: normal;
-      }
-      .services li:nth-child(2) {
-        text-align: center;
-      }
-      .services li:nth-child(3) {
-        text-align: right;
-      }
+      
+      
+      
       :root {
         --F: calc((100vw - 2 * var(--m)) / 5.8);
         --hl-bot: max(0.49140em, calc(18px + env(safe-area-inset-bottom, 0px)));
         --ptop: max(calc(var(--vh) * 15), min(calc(150px + env(safe-area-inset-top, 0px)), calc(var(--vh) * 71 - var(--hl-bot) - 2.30 * var(--F) - 56px)));
         --photo-top: var(--ptop);
       }
-      .services {
-        top: calc(var(--ptop) + var(--vh) * 29);
-      }
-      .rule {
-        top: calc(var(--ptop) + var(--vh) * 29 + 3.1em);
-      }
+      
+      
     }
 
     @media (max-height: 479px) and (min-aspect-ratio: 1141/1000) {
@@ -1161,16 +1085,9 @@
         right: var(--mR);
         top: var(--bar-top);
       }
-      .services li:nth-child(1) {
-        left: var(--mL) !important;
-      }
-      .services li:nth-child(2) {
-        left: calc(var(--mL) + (100% - var(--mL) - var(--mR)) / 2) !important;
-        transform: translateX(-50%) !important;
-      }
-      .services li:nth-child(3) {
-        right: var(--mR) !important;
-      }
+      
+      
+      
       .hl {
         left: calc(var(--mL) + (100% - var(--mL) - var(--mR)) / 2);
         bottom: max(0.49140em, calc(8px + env(safe-area-inset-bottom, 0px)));
@@ -1261,15 +1178,7 @@
       </nav>
     </header>
 
-    <!-- Services Bar (Russian & Clean) -->
-    <ul class="services small" aria-label="Направления">
-      <li style="left: calc(20 * var(--u));"><span class="rv">Telegram Боты</span></li>
-      <li style="left: calc(50% - 3 * var(--u)); transform: translateX(-50%);"><span class="rv">Веб-платформы &amp; 3D</span></li>
-      <li style="right: calc(33.25 * var(--u));"><span class="rv">Высокие технологии</span></li>
-    </ul>
-
-    <!-- Hairline rule -->
-    <div class="rule" aria-hidden="true"></div>
+    
 
     <!-- Kinetic Giant Headline: MAGNAT PORTFOLIO -->
     <h1 class="hl" aria-label="MAGNAT PORTFOLIO">
@@ -1682,7 +1591,7 @@
           doc.classList.add('is-playing');
           var endTimeout = setTimeout(cleanup, 2200);
           var animTargets = document.querySelectorAll(
-            '.rule, .hl__track, .services .rv, .logo rect, .actions .btn-top-link, .actions .menu'
+            '.hl__track, .logo rect, .actions .btn-top-link, .actions .menu'
           );
           var pending = 0;
           animTargets.forEach(function (el) {
