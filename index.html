@@ -617,8 +617,18 @@
     /* Selected Works Grid */
     .works-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 32px;
+    }
+    @media (max-width: 1080px) {
+      .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 720px) {
+      .works-grid {
+        grid-template-columns: 1fr;
+      }
     }
     .work-card {
       border: 1px solid var(--rule);
@@ -1215,7 +1225,7 @@
         <a href="#projects" class="nav-overlay__item">
           <span class="nav-item__num">02 // САЙТЫ</span>
           <span class="nav-item__title">Избранные проекты</span>
-          <span class="nav-item__sub">Крипто Обменник • CORTEZ FAMq</span>
+          <span class="nav-item__sub">Крипто Обменник • CORTEZ FAMq • Diana Nails</span>
         </a>
         <a href="#skills" class="nav-overlay__item">
           <span class="nav-item__num">03 // СТЕК</span>
@@ -1357,6 +1367,36 @@
                 <span>↗</span>
               </a>
               <a href="https://github.com/Dima11433/cortez-family-site" target="_blank" rel="noopener" class="btn-work-sub">
+                <span>GitHub ↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Work 3: Diana Nails -->
+        <article class="work-card">
+          <div class="work-thumb">
+            <img src="assets/images/diana-nails.jpg" alt="Diana Nails — Портфолио мастера">
+            <span class="work-tag">03 // САЙТ-ПОРТФОЛИО</span>
+          </div>
+          <div class="work-content">
+            <h3 class="work-title">Diana Nails</h3>
+            <p class="work-desc">
+              Элегантный адаптивный сайт-портфолио мастера маникюра с интерактивной галереей выполненных работ, прайс-листом услуг, эффектом Liquid Glass и быстрой онлайн-записью.
+            </p>
+            <div class="work-tags-list">
+              <span class="work-pill">React 18</span>
+              <span class="work-pill">Tailwind CSS</span>
+              <span class="work-pill">Framer Motion</span>
+              <span class="work-pill">Liquid Glass</span>
+              <span class="work-pill">Mobile First</span>
+            </div>
+            <div class="work-actions">
+              <a href="https://dima11433.github.io/diana-nails/" target="_blank" rel="noopener" class="btn-work-main">
+                <span>Открыть демо сайта</span>
+                <span>↗</span>
+              </a>
+              <a href="https://github.com/Dima11433/diana-nails" target="_blank" rel="noopener" class="btn-work-sub">
                 <span>GitHub ↗</span>
               </a>
             </div>
