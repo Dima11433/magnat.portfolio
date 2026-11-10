@@ -88,14 +88,13 @@
       outline-offset: 3px;
     }
 
-    /* Small type utility */
+    /* Clean typography utility without smearing */
     .small {
       font-size: var(--small);
-      line-height: 1.15;
-      font-weight: 400;
+      line-height: 1.2;
+      font-weight: 500;
       margin: 0;
-      -webkit-text-stroke: 0.022em currentColor;
-      letter-spacing: var(--ls, -0.051em);
+      letter-spacing: var(--ls, -0.02em);
     }
 
     /* ==========================================================================
@@ -123,6 +122,8 @@
       aspect-ratio: 16 / 10;
       mask-image: linear-gradient(to right, transparent, black var(--fade), black calc(100% - var(--fade)), transparent);
       -webkit-mask-image: linear-gradient(to right, transparent, black var(--fade), black calc(100% - var(--fade)), transparent);
+      pointer-events: none;
+      user-select: none;
     }
     .hero__photo video {
       display: block;
@@ -130,6 +131,8 @@
       height: 100%;
       object-fit: cover;
       object-position: center center;
+      pointer-events: none;
+      user-select: none;
     }
 
     /* Hairline columns grid */
@@ -158,13 +161,26 @@
     }
 
     /* Top bar */
-    .logo {
+    .top-bar {
       position: absolute;
-      left: calc(20.65 * var(--u));
-      top: calc(12.8 * var(--u));
-      width: max(calc(142.60 * var(--u)), 96px);
-      display: block;
+      top: calc(14 * var(--u));
+      left: calc(24 * var(--u));
+      right: calc(32 * var(--u));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       z-index: 20;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      width: max(calc(142.60 * var(--u)), 100px);
+      transition: opacity 0.2s;
+    }
+    .logo:hover {
+      opacity: 0.85;
     }
     .logo svg {
       display: block;
@@ -172,82 +188,52 @@
       height: auto;
     }
 
-    .tagline {
-      position: absolute;
-      left: calc(100% * 386.5 / 1280);
-      top: calc(12.6 * var(--u));
-      display: flex;
-      flex-direction: column;
-      z-index: 20;
-    }
-    .tagline span {
-      display: block;
-      letter-spacing: var(--ls, -0.051em);
-    }
-
-    .contact {
-      position: absolute;
-      left: calc(100% * 798.5 / 1280);
-      top: calc(12.5 * var(--u));
-      font-style: normal;
-      display: flex;
-      flex-direction: column;
-      z-index: 20;
-    }
-    .contact a, .contact span {
-      display: block;
-      letter-spacing: var(--ls, -0.051em);
-      transition: color 0.2s;
-    }
-    .contact a:hover {
-      color: var(--amber);
-    }
-
     .actions {
-      position: absolute;
-      right: calc(32 * var(--u));
-      top: calc(13 * var(--u));
       display: flex;
       align-items: center;
-      gap: 1.1em;
+      gap: 1.4em;
       font-size: var(--small);
       z-index: 20;
     }
     .actions .btn-top-link {
-      letter-spacing: -0.055em;
+      letter-spacing: -0.02em;
       line-height: 1;
       font-weight: 600;
-      padding: 6px 10px;
-      border-radius: 2px;
-      transition: color 0.2s, background-color 0.2s;
+      color: rgba(255, 255, 255, 0.75);
+      padding: 6px 4px;
+      transition: color 0.2s;
       display: inline-block;
     }
     .actions .btn-top-link:hover {
+      color: #ffffff;
+    }
+    .actions .btn-top-tg {
       color: var(--amber);
-      background: rgba(255, 255, 255, 0.05);
+    }
+    .actions .btn-top-tg:hover {
+      color: #ffb86c;
     }
     .actions .menu {
-      letter-spacing: -0.045em;
-      height: 1.85em;
-      padding: 0 0.9em;
+      letter-spacing: -0.03em;
+      height: 2em;
+      padding: 0 1.1em;
       background: #fcfcfc;
       color: #141414;
       text-align: center;
-      line-height: 1.85em;
+      line-height: 2em;
       font-weight: 700;
       border-radius: 2px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
       transition: background-color 0.15s, transform 0.15s, box-shadow 0.15s;
     }
     .actions .menu:hover {
       background: #ffffff;
       transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(255,255,255,0.15);
+      box-shadow: 0 4px 16px rgba(255,255,255,0.18);
     }
 
     /* Services & Hairline Rule */
@@ -265,8 +251,9 @@
     .services li {
       position: absolute;
       white-space: nowrap;
-      -webkit-text-stroke-width: 0.008em;
-      letter-spacing: var(--ls, -0.051em);
+      letter-spacing: -0.02em;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
       clip-path: inset(-0.25em -0.4em -0.35em -0.4em);
     }
     .services .rv {
@@ -389,32 +376,12 @@
     html.is-entering .logo rect:nth-child(6) { animation: au-on 0.14s ease-out 0.945s var(--au-state) both; }
     html.is-entering .logo rect:nth-child(7) { animation: au-on 0.14s ease-out 0.700s var(--au-state) both; }
 
-    html.is-entering .tagline span:nth-child(1) {
-      --rise: 0.55em;
-      animation: au-soft 0.75s var(--e-quint) 0.78s var(--au-state) both;
-    }
-    html.is-entering .tagline span:nth-child(2) {
-      --rise: 0.55em;
-      animation: au-soft 0.75s var(--e-quint) 0.83s var(--au-state) both;
-    }
-    html.is-entering .tagline span:nth-child(3) {
-      --rise: 0.55em;
-      animation: au-soft 0.75s var(--e-quint) 0.88s var(--au-state) both;
-    }
-    html.is-entering .contact a {
-      --rise: 0.55em;
-      animation: au-soft 0.75s var(--e-quint) 0.88s var(--au-state) both;
-    }
-    html.is-entering .contact span {
-      --rise: 0.55em;
-      animation: au-soft 0.75s var(--e-quint) 0.93s var(--au-state) both;
-    }
     html.is-entering .actions .btn-top-link {
       --rise: 0.55em;
-      animation: au-soft 0.6s var(--e-quint) 0.98s var(--au-state) both;
+      animation: au-soft 0.6s var(--e-quint) 0.85s var(--au-state) both;
     }
     html.is-entering .actions .menu {
-      animation: au-wipe 0.6s cubic-bezier(.25, 1, .5, 1) 1.02s var(--au-state) both;
+      animation: au-wipe 0.6s cubic-bezier(.25, 1, .5, 1) 0.95s var(--au-state) both;
     }
 
     /* ==========================================================================
@@ -470,7 +437,7 @@
     }
     .nav-overlay__title {
       font-size: var(--small);
-      letter-spacing: -0.04em;
+      letter-spacing: -0.02em;
       color: var(--amber);
       font-weight: 600;
       text-transform: uppercase;
@@ -571,7 +538,7 @@
 
     .section-num {
       font-size: var(--small);
-      letter-spacing: -0.04em;
+      letter-spacing: -0.02em;
       color: var(--amber);
       margin-bottom: 12px;
       text-transform: uppercase;
@@ -606,8 +573,8 @@
     }
     .about-lead {
       font-size: clamp(1.15rem, 2vw, 1.6rem);
-      line-height: 1.35;
-      letter-spacing: -0.03em;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
       font-weight: 400;
       color: #e6e2dc;
       margin-bottom: 32px;
@@ -626,7 +593,7 @@
     .metric-val {
       font-size: clamp(2rem, 3.5vw, 2.8rem);
       font-weight: 700;
-      letter-spacing: -0.05em;
+      letter-spacing: -0.04em;
       line-height: 1;
       margin-bottom: 6px;
     }
@@ -634,8 +601,8 @@
       color: var(--amber);
     }
     .metric-label {
-      font-size: 0.82rem;
-      letter-spacing: -0.02em;
+      font-size: 0.85rem;
+      letter-spacing: -0.01em;
       color: var(--ink-dim);
     }
 
@@ -676,7 +643,7 @@
     .about-badge-role {
       font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
     }
     .about-badge-status {
       display: flex;
@@ -748,7 +715,7 @@
       padding: 6px 12px;
       font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       color: var(--amber);
       text-transform: uppercase;
       border-radius: 2px;
@@ -762,7 +729,7 @@
     .work-title {
       font-size: 1.8rem;
       font-weight: 700;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.03em;
       line-height: 1.1;
       margin: 0 0 16px 0;
     }
@@ -770,7 +737,7 @@
       font-size: 0.98rem;
       color: var(--ink-dim);
       line-height: 1.5;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       margin: 0 0 24px 0;
       flex: 1;
     }
@@ -787,7 +754,7 @@
       border-radius: 2px;
       color: #c9c4be;
       background: rgba(255, 255, 255, 0.02);
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
     }
     .work-actions {
       display: flex;
@@ -799,7 +766,7 @@
       color: #0d0905;
       font-size: 0.9rem;
       font-weight: 600;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       padding: 12px 20px;
       border-radius: 2px;
       display: inline-flex;
@@ -817,7 +784,7 @@
       color: var(--ink-dim);
       font-size: 0.9rem;
       font-weight: 500;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       padding: 12px 18px;
       border-radius: 2px;
       display: inline-flex;
@@ -846,7 +813,7 @@
     .stack-col-title {
       font-size: 1.15rem;
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       margin: 0 0 24px 0;
       display: flex;
       justify-content: space-between;
@@ -866,7 +833,7 @@
       padding: 14px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       font-size: 0.95rem;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
     }
     .stack-item:last-child {
       border-bottom: none;
@@ -927,7 +894,7 @@
       font-size: 0.82rem;
       color: var(--ink-dim);
       margin-bottom: 20px;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
     }
     .btn-spotify {
       display: inline-flex;
@@ -938,7 +905,7 @@
       padding: 10px 18px;
       font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       color: #ffffff;
       border-radius: 2px;
       transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
@@ -968,14 +935,14 @@
     .quote-text {
       font-size: 1.15rem;
       line-height: 1.45;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       color: #f3eee8;
       margin: 0 0 24px 0;
       font-weight: 400;
     }
     .quote-author {
       font-size: 0.85rem;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       color: var(--amber);
       font-weight: 600;
       text-transform: uppercase;
@@ -995,16 +962,16 @@
     .contact-info-title {
       font-size: clamp(1.8rem, 3.5vw, 2.6rem);
       font-weight: 700;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.03em;
       margin: 0 0 12px 0;
       text-transform: uppercase;
     }
     .contact-info-sub {
       font-size: 1.05rem;
       color: var(--ink-dim);
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       margin: 0;
-      line-height: 1.4;
+      line-height: 1.45;
     }
     .contact-btn-box {
       display: flex;
@@ -1017,7 +984,7 @@
       color: #0d0905;
       font-size: 1rem;
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       padding: 16px 28px;
       text-align: center;
       border-radius: 2px;
@@ -1038,7 +1005,7 @@
       font-size: 0.85rem;
       padding: 14px 20px;
       text-align: center;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       border-radius: 2px;
       transition: background-color 0.2s, border-color 0.2s;
       cursor: pointer;
@@ -1060,7 +1027,7 @@
       align-items: center;
       font-size: 0.85rem;
       color: var(--ink-dim);
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
     }
     .footer-left strong {
       color: #ffffff;
@@ -1108,17 +1075,8 @@
         --pw: calc(var(--vh) * 138.6);
         --photo-top: calc(var(--vh) * 15);
       }
-      .logo {
+      .top-bar {
         left: var(--m);
-        top: var(--bar-top);
-      }
-      .tagline {
-        top: var(--bar-top);
-      }
-      .contact {
-        top: var(--bar-top);
-      }
-      .actions {
         right: var(--m);
         top: var(--bar-top);
       }
@@ -1159,27 +1117,14 @@
         width: 104px;
       }
       .actions {
-        gap: 10px;
+        gap: 12px;
       }
-      .tagline {
-        left: var(--m);
-        top: calc(70px + env(safe-area-inset-top, 0px));
-      }
-      .tagline span {
-        display: block;
-      }
-      .contact {
-        left: auto;
-        right: var(--m);
-        top: calc(70px + env(safe-area-inset-top, 0px));
-        text-align: right;
+      .actions .btn-top-link:not(.btn-top-tg) {
+        display: none;
       }
     }
 
     @media (max-aspect-ratio: 114/100) and (max-width: 309px) {
-      .contact {
-        top: calc(70px + 3em + 12px + env(safe-area-inset-top, 0px));
-      }
       .services li {
         width: min-content;
         white-space: normal;
@@ -1211,20 +1156,8 @@
         --mR: max(16px, env(safe-area-inset-right, 0px));
         --bar-top: calc(16px * .64);
       }
-      .logo {
+      .top-bar {
         left: var(--mL);
-        top: var(--bar-top);
-      }
-      .tagline {
-        left: calc(var(--mL) + 96px + 2em);
-        top: var(--bar-top);
-      }
-      .contact {
-        left: auto;
-        right: calc(var(--mR) + 8.83em + 2em);
-        top: var(--bar-top);
-      }
-      .actions {
         right: var(--mR);
         top: var(--bar-top);
       }
@@ -1241,15 +1174,6 @@
       .hl {
         left: calc(var(--mL) + (100% - var(--mL) - var(--mR)) / 2);
         bottom: max(0.49140em, calc(8px + env(safe-area-inset-bottom, 0px)));
-      }
-    }
-
-    @media (max-height: 479px) and (min-aspect-ratio: 1141/1000) and (max-width: 559px) {
-      .contact {
-        left: auto;
-        right: var(--mR);
-        top: calc(var(--bar-top) + 2.6em);
-        text-align: right;
       }
     }
 
@@ -1273,10 +1197,10 @@
     }
 
     @media (pointer: coarse) {
-      .menu, .logo, .contact a, .btn-top-link {
+      .menu, .logo, .btn-top-link {
         position: relative;
       }
-      .menu::after, .logo::after, .contact a::after, .btn-top-link::after {
+      .menu::after, .logo::after, .btn-top-link::after {
         content: "";
         position: absolute;
         top: 50%;
@@ -1292,12 +1216,6 @@
         right: -10px;
         width: calc(100% + 20px);
       }
-      .contact a::after {
-        left: -6px;
-        right: -6px;
-        height: max(100%, 32px);
-        min-height: 44px;
-      }
     }
   </style>
 </head>
@@ -1308,7 +1226,7 @@
        ======================================================================== -->
   <div class="hero">
     <div class="hero__photo" role="presentation">
-      <video src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261005_143740_52dbf3ef-ea20-4594-a1ad-91d6c2970159.mp4" autoplay loop muted playsinline></video>
+      <video src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261005_143740_52dbf3ef-ea20-4594-a1ad-91d6c2970159.mp4" autoplay loop muted playsinline disablepictureinpicture controlslist="nodownload noplaybackrate nofullscreen"></video>
     </div>
 
     <!-- 48-column hairline grid with radial mask -->
@@ -1316,46 +1234,38 @@
       <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
     </div>
 
-    <!-- Logo: Seven white squares geometric mark -->
-    <a href="#" class="logo" aria-label="MAGNAT — Главная">
-      <svg viewBox="0 0 142.60 30.00" shape-rendering="geometricPrecision" fill="var(--logo-ink, #ffffff)">
-        <rect x="0.00" y="0.00" width="8.2" height="8.2" />
-        <rect x="19.20" y="0.00" width="8.2" height="8.2" />
-        <rect x="76.80" y="0.00" width="8.2" height="8.2" />
-        <rect x="115.20" y="0.00" width="8.2" height="8.2" />
-        <rect x="57.60" y="10.90" width="8.2" height="8.2" />
-        <rect x="134.40" y="10.90" width="8.2" height="8.2" />
-        <rect x="0.00" y="21.80" width="8.2" height="8.2" />
-      </svg>
-    </a>
+    <!-- Top Bar: Clean, uncluttered & premium -->
+    <header class="top-bar">
+      <!-- Logo: Seven white squares geometric mark -->
+      <a href="#" class="logo" aria-label="MAGNAT — Главная">
+        <svg viewBox="0 0 142.60 30.00" shape-rendering="geometricPrecision" fill="var(--logo-ink, #ffffff)">
+          <rect x="0.00" y="0.00" width="8.2" height="8.2" />
+          <rect x="19.20" y="0.00" width="8.2" height="8.2" />
+          <rect x="76.80" y="0.00" width="8.2" height="8.2" />
+          <rect x="115.20" y="0.00" width="8.2" height="8.2" />
+          <rect x="57.60" y="10.90" width="8.2" height="8.2" />
+          <rect x="134.40" y="10.90" width="8.2" height="8.2" />
+          <rect x="0.00" y="21.80" width="8.2" height="8.2" />
+        </svg>
+      </a>
 
-    <!-- Top Bar Tagline (Russian) -->
-    <div class="tagline small">
-      <span style="--ls: -0.045em;">Разработка и дизайн систем.</span>
-      <span style="--ls: -0.051em;">Внимание к деталям, культуре</span>
-      <span style="--ls: -0.045em;">и высоким технологиям.</span>
-    </div>
+      <!-- Actions Navigation -->
+      <nav class="actions">
+        <a href="#about" class="btn-top-link" aria-label="Обо мне">ОБО МНЕ</a>
+        <a href="#projects" class="btn-top-link" aria-label="Сайты">САЙТЫ</a>
+        <a href="#skills" class="btn-top-link" aria-label="Стек">СТЕК</a>
+        <a href="https://t.me/ggg468q" target="_blank" rel="noopener" class="btn-top-link btn-top-tg" aria-label="Telegram">TELEGRAM ↗</a>
+        <button type="button" class="menu" id="menuToggleBtn" aria-expanded="false" aria-label="Открыть навигацию">
+          <span>Меню</span>
+        </button>
+      </nav>
+    </header>
 
-    <!-- Top Bar Contact -->
-    <address class="contact small">
-      <a href="https://t.me/ggg468q" target="_blank" rel="noopener" style="--ls: -0.047em;">telegram: @ggg468q ↗</a>
-      <span style="--ls: -0.069em;">MAGNAT.DEV, EST 2026</span>
-    </address>
-
-    <!-- Top Bar Actions (Russian & Polished) -->
-    <div class="actions">
-      <a href="#projects" class="btn-top-link" aria-label="Сайты">САЙТЫ</a>
-      <a href="#contact" class="btn-top-link" aria-label="Контакты">СВЯЗЬ</a>
-      <button type="button" class="menu" id="menuToggleBtn" aria-expanded="false" aria-label="Открыть навигацию">
-        <span>Меню</span>
-      </button>
-    </div>
-
-    <!-- Services Bar (Russian) -->
+    <!-- Services Bar (Russian & Clean) -->
     <ul class="services small" aria-label="Направления">
-      <li style="left: calc(20 * var(--u)); --ls: -0.047em;"><span class="rv">Telegram Боты</span></li>
-      <li style="left: calc(50% - 3 * var(--u)); transform: translateX(-50%); --ls: -0.0485em;"><span class="rv">Веб-платформы &amp; 3D</span></li>
-      <li style="right: calc(33.25 * var(--u)); --ls: -0.064em;"><span class="rv">Высокие технологии</span></li>
+      <li style="left: calc(20 * var(--u));"><span class="rv">Telegram Боты</span></li>
+      <li style="left: calc(50% - 3 * var(--u)); transform: translateX(-50%);"><span class="rv">Веб-платформы &amp; 3D</span></li>
+      <li style="right: calc(33.25 * var(--u));"><span class="rv">Высокие технологии</span></li>
     </ul>
 
     <!-- Hairline rule -->
@@ -1772,7 +1682,7 @@
           doc.classList.add('is-playing');
           var endTimeout = setTimeout(cleanup, 2200);
           var animTargets = document.querySelectorAll(
-            '.rule, .hl__track, .services .rv, .logo rect, .tagline span, .contact a, .contact span, .actions .btn-top-link, .actions .menu'
+            '.rule, .hl__track, .services .rv, .logo rect, .actions .btn-top-link, .actions .menu'
           );
           var pending = 0;
           animTargets.forEach(function (el) {
