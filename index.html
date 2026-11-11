@@ -1673,6 +1673,27 @@
         height: 120px !important;
       }
 
+      /* Memecoin banner & CA on small screens */
+      .about-coin-banner {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+      }
+      .about-coin-btn {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center !important;
+      }
+      .work-ca-box {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+      }
+      .btn-copy-ca {
+        width: 100% !important;
+        text-align: center !important;
+      }
+
       /* Contact buttons */
       .contact-btn-box {
         flex-direction: column !important;
@@ -1697,6 +1718,118 @@
       .nav-item__title {
         font-size: 1.1rem !important;
       }
+    }
+
+  
+    /* ------------------------------------------------------------------------
+       MEMECOIN $MAGNAT & CA STYLES
+       ------------------------------------------------------------------------ */
+    .about-coin-banner {
+      margin: 0 0 28px 0;
+      padding: 14px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+    .about-coin-banner:hover {
+      border-color: rgba(255, 255, 255, 0.4);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 100%);
+    }
+    .about-coin-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .about-coin-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+    .about-coin-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+    .about-coin-sub {
+      font-size: 0.76rem;
+      color: var(--ink-dim);
+      font-family: var(--font-mono, monospace);
+      letter-spacing: 0.02em;
+      margin-top: 2px;
+    }
+    .about-coin-btn {
+      border: 1px solid #ffffff;
+      background: #ffffff;
+      color: #000000;
+      padding: 8px 16px;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: -0.01em;
+      transition: background-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .about-coin-btn:hover {
+      background: #e6e2dc;
+      transform: translateY(-1px);
+    }
+
+    .work-ca-box {
+      margin-bottom: 20px;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      transition: border-color 0.2s;
+    }
+    .work-ca-box:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .work-ca-text {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.74rem;
+      color: #a1a1aa;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .work-ca-text strong {
+      color: #ffffff;
+    }
+    .btn-copy-ca {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--rule-bold);
+      color: #ffffff;
+      padding: 5px 10px;
+      border-radius: 2px;
+      font-size: 0.74rem;
+      font-family: var(--font-mono, monospace);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .btn-copy-ca:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
     }
 
   </style>
@@ -1738,6 +1871,7 @@
       <nav class="actions">
         <a href="#about" class="btn-top-link" aria-label="Обо мне">ОБО МНЕ</a>
         <a href="#services" class="btn-top-link" aria-label="Услуги">УСЛУГИ</a>
+        <a href="#projects" class="btn-top-link nav-filter-link" data-filter="crypto" aria-label="Крипта">КРИПТА</a>
         <a href="#projects" class="btn-top-link nav-filter-link" data-filter="sites" aria-label="Сайты">САЙТЫ</a>
         <a href="#projects" class="btn-top-link nav-filter-link" data-filter="shops" aria-label="Магазины">МАГАЗИНЫ</a>
         <a href="#skills" class="btn-top-link" aria-label="Стек">СТЕК</a>
@@ -1780,42 +1914,52 @@
         <a href="#about" class="nav-overlay__item">
           <span class="nav-item__num">01 // ОБО МНЕ</span>
           <span class="nav-item__title">Личность &amp; Дисциплина</span>
-          <span class="nav-item__sub">Разработчик • 17 y.o. • Focus</span>
+          <span class="nav-item__sub">Разработчик • 17 y.o. • Владелец мемкоина $MAGNAT</span>
+        </a>
+        <a href="https://pump.fun/coin/27u4W2moLHsVXruLqJiDQyqd6H6qFfKXx4zPVFQxpump" target="_blank" rel="noopener" class="nav-overlay__item" style="border-left: 2px solid #ffffff;">
+          <span class="nav-item__num">SOLANA // PUMP.FUN</span>
+          <span class="nav-item__title">Мемкоин $MAGNAT ↗</span>
+          <span class="nav-item__sub">Официальный токен экосистемы MAGNAT • Fair Launch</span>
         </a>
         <a href="#services" class="nav-overlay__item">
           <span class="nav-item__num">02 // УСЛУГИ</span>
           <span class="nav-item__title">Спектр услуг &amp; Преимущества</span>
-          <span class="nav-item__sub">Боты • Web • Автоматизация • Гарантии</span>
+          <span class="nav-item__sub">Боты • Web • Автоматизация • Web3</span>
+        </a>
+        <a href="#projects" class="nav-overlay__item nav-filter-link" data-filter="crypto">
+          <span class="nav-item__num">03 // КРИПТА &amp; WEB3</span>
+          <span class="nav-item__title">Мемкоин &amp; Обменник</span>
+          <span class="nav-item__sub">Мемкоин $MAGNAT • 3D Крипто Обменник</span>
         </a>
         <a href="#projects" class="nav-overlay__item nav-filter-link" data-filter="sites">
-          <span class="nav-item__num">03 // САЙТЫ</span>
+          <span class="nav-item__num">04 // САЙТЫ</span>
           <span class="nav-item__title">Веб-разработка &amp; 3D</span>
           <span class="nav-item__sub">Крипто Обменник • CORTEZ FAMq • Diana Nails</span>
         </a>
         <a href="#projects" class="nav-overlay__item nav-filter-link" data-filter="shops">
-          <span class="nav-item__num">04 // МАГАЗИНЫ</span>
+          <span class="nav-item__num">05 // МАГАЗИНЫ</span>
           <span class="nav-item__title">Telegram Шопы &amp; Боты</span>
           <span class="nav-item__sub">MAGNAT [GMT] • MAGNAT SHOP • MAGNAT VPN</span>
         </a>
         <a href="#skills" class="nav-overlay__item">
-          <span class="nav-item__num">05 // СТЕК</span>
-          <span class="nav-item__title">Технологический стек</span>
-          <span class="nav-item__sub">Python 3 • aiogram 3.x • HTML5/CSS3/JS • SQL</span>
+          <span class="nav-item__num">06 // СТЕК</span>
+          <span class="nav-item__title">Стек &amp; Архитектура</span>
+          <span class="nav-item__sub">Python, aiogram, Three.js, Asyncio</span>
         </a>
         <a href="#music" class="nav-overlay__item">
-          <span class="nav-item__num">06 // АУДИО</span>
-          <span class="nav-item__title">Саундтреки для кода</span>
-          <span class="nav-item__sub">WORKAL • 1 000 000 ₽ • Инста модель</span>
+          <span class="nav-item__num">07 // МУЗЫКА</span>
+          <span class="nav-item__title">Музыкальный ритм</span>
+          <span class="nav-item__sub">Фокус-треки ночной разработки</span>
         </a>
         <a href="#quotes" class="nav-overlay__item">
-          <span class="nav-item__num">07 // МАНИФЕСТ</span>
-          <span class="nav-item__title">Принципы &amp; Мышление</span>
-          <span class="nav-item__sub">Философия продуктивности</span>
+          <span class="nav-item__num">08 // ПРИНЦИПЫ</span>
+          <span class="nav-item__title">Философия &amp; Цитаты</span>
+          <span class="nav-item__sub">Дисциплина, характер и точность</span>
         </a>
         <a href="#contact" class="nav-overlay__item">
-          <span class="nav-item__num">08 // СВЯЗЬ</span>
-          <span class="nav-item__title">Канал коммуникации</span>
-          <span class="nav-item__sub">Прямой диалог в Telegram @ggg468q</span>
+          <span class="nav-item__num">09 // СВЯЗЬ</span>
+          <span class="nav-item__title">Контакты &amp; Гарант</span>
+          <span class="nav-item__sub">@ggg468q • @GrdGarant_Bot</span>
         </a>
       </nav>
 
@@ -1838,8 +1982,23 @@
       <div class="about-layout">
         <div class="about-text-col">
           <p class="about-lead">
-            Я <strong>MAGNAT</strong> — разработчик высоконагруженных Telegram-ботов, 3D WebGL веб-сервисов и масштабируемых цифровых протоколов. Мне <strong>17 лет</strong>, учусь в 11 классе.
+            Я <strong>MAGNAT</strong> — разработчик высоконагруженных Telegram-ботов, 3D WebGL веб-сервисов, создатель и владелец мемкоина <strong>$MAGNAT</strong> на Solana (pump.fun). Мне <strong>17 лет</strong>, учусь в 11 классе.
           </p>
+
+          <!-- Memecoin Owner Banner -->
+          <div class="about-coin-banner">
+            <div class="about-coin-banner-left">
+              <img src="assets/images/magnat-coin.webp" alt="MAGNAT Coin Keycap" class="about-coin-icon">
+              <div>
+                <div class="about-coin-title">Владелец мемкоина $MAGNAT</div>
+                <div class="about-coin-sub">Solana • pump.fun • Fair Launch • CA: 27u4...pump</div>
+              </div>
+            </div>
+            <a href="https://pump.fun/coin/27u4W2moLHsVXruLqJiDQyqd6H6qFfKXx4zPVFQxpump" target="_blank" rel="noopener" class="about-coin-btn">
+              <span>Купить токен</span>
+              <span style="font-size: 1.1em;">↗</span>
+            </a>
+          </div>
           <p class="about-lead" style="font-size: 1.05rem; color: var(--ink-dim);">
             Всё свободное время посвящаю программированию под музыку. Дисциплина, внимание к каждой микродетали интерфейса и создание систем, работающих автономно 24/7.
           </p>
@@ -1870,7 +2029,7 @@
           <div class="about-badge">
             <div>
               <div class="about-badge-role">MAGNAT.DEV</div>
-              <div style="font-size: 0.8rem; color: var(--ink-dim);">Fullstack &amp; Bot Архитектор</div>
+              <div style="font-size: 0.8rem; color: var(--ink-dim);">Fullstack • Владелец $MAGNAT Coin</div>
             </div>
             <div class="about-badge-status">В сети 24/7</div>
           </div>
@@ -1889,17 +2048,57 @@
 
       <!-- Category Filter Tabs -->
       <div class="project-filters">
-        <button type="button" class="filter-btn is-active" data-filter="all">Все проекты (6)</button>
+        <button type="button" class="filter-btn is-active" data-filter="all">Все проекты (7)</button>
+        <button type="button" class="filter-btn" data-filter="crypto">Крипта &amp; Web3 (2)</button>
         <button type="button" class="filter-btn" data-filter="sites">Сайты (3)</button>
         <button type="button" class="filter-btn" data-filter="shops">Магазины (3)</button>
       </div>
 
       <div class="works-grid">
-        <!-- Work 1: Крипто Обменник -->
-        <article class="work-card" data-category="sites">
+        <!-- Work 1: Мемкоин MAGNAT ($MAGNAT) -->
+        <article class="work-card" data-category="crypto">
+          <div class="work-thumb">
+            <img src="assets/images/magnat-coin.webp" loading="lazy" decoding="async" alt="MAGNAT Memecoin ($MAGNAT) on Solana pump.fun">
+            <span class="work-tag">01 // СОБСТВЕННЫЙ МЕМКОИН • SOLANA</span>
+          </div>
+          <div class="work-content">
+            <h3 class="work-title">MAGNAT Memecoin ($MAGNAT)</h3>
+            <p class="work-desc">
+              Официальный мемкоин создателя MAGNAT на блокчейне Solana, запущенный на платформе <strong>pump.fun</strong>. Собственная криптовалюта экосистемы, 100% fair launch, ликвидность на bonding curve и прямое комьюнити владельцев.
+            </p>
+            <div class="work-tags-list">
+              <span class="work-pill">Solana</span>
+              <span class="work-pill">pump.fun</span>
+              <span class="work-pill">Memecoin</span>
+              <span class="work-pill">Fair Launch</span>
+              <span class="work-pill">Token Mint</span>
+            </div>
+
+            <!-- Contract Address Box with 1-click Copy -->
+            <div class="work-ca-box">
+              <div class="work-ca-text">
+                <strong>CA:</strong> 27u4W2moLHsVXruLqJiDQyqd6H6qFfKXx4zPVFQxpump
+              </div>
+              <button type="button" class="btn-copy-ca" data-ca="27u4W2moLHsVXruLqJiDQyqd6H6qFfKXx4zPVFQxpump" title="Скопировать Contract Address">Копировать CA</button>
+            </div>
+
+            <div class="work-actions">
+              <a href="https://pump.fun/coin/27u4W2moLHsVXruLqJiDQyqd6H6qFfKXx4zPVFQxpump" target="_blank" rel="noopener" class="btn-work-main">
+                <span>Купить на pump.fun</span>
+                <span style="font-size: 1.1em;">↗</span>
+              </a>
+              <a href="https://solscan.io/token/27u4W2moLHsVXruLqJiDQyqd6H6qFfKXx4zPVFQxpump" target="_blank" rel="noopener" class="btn-work-sub">
+                <span>Solscan ↗</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Work 2: Крипто Обменник -->
+        <article class="work-card" data-category="crypto sites">
           <div class="work-thumb">
             <img src="assets/images/crypto-obmennik.jpg" loading="lazy" decoding="async" alt="Крипто Обменник 3D">
-            <span class="work-tag">01 // ФИНТЕХ &amp; 3D</span>
+            <span class="work-tag">02 // ФИНТЕХ &amp; 3D</span>
           </div>
           <div class="work-content">
             <h3 class="work-title">Крипто Обменник</h3>
@@ -1925,11 +2124,11 @@
           </div>
         </article>
 
-        <!-- Work 2: CORTEZ FAMq -->
+        <!-- Work 3: CORTEZ FAMq -->
         <article class="work-card" data-category="sites">
           <div class="work-thumb">
             <img src="assets/images/cortez-famq.jpg" loading="lazy" decoding="async" alt="CORTEZ FAMq Syndicate Portal">
-            <span class="work-tag">02 // ВЕБ-ПОРТАЛ</span>
+            <span class="work-tag">03 // ВЕБ-ПОРТАЛ</span>
           </div>
           <div class="work-content">
             <h3 class="work-title">CORTEZ FAMq</h3>
@@ -1955,11 +2154,11 @@
           </div>
         </article>
 
-        <!-- Work 3: Diana Nails -->
+        <!-- Work 4: Diana Nails -->
         <article class="work-card" data-category="sites">
           <div class="work-thumb">
             <img src="assets/images/diana-nails-preview.jpg?v=3" loading="lazy" decoding="async" alt="Diana Nails — Портфолио мастера">
-            <span class="work-tag">03 // САЙТ-ПОРТФОЛИО</span>
+            <span class="work-tag">04 // САЙТ-ПОРТФОЛИО</span>
           </div>
           <div class="work-content">
             <h3 class="work-title">Diana Nails</h3>
@@ -1984,11 +2183,11 @@
             </div>
           </div>
         </article>
-        <!-- Work 4: MAGNAT [GMT] -->
+        <!-- Work 5: MAGNAT [GMT] -->
         <article class="work-card" data-category="shops">
           <div class="work-thumb">
             <img src="assets/images/shop-magnat-gmt.jpg" loading="lazy" decoding="async" alt="MAGNAT [GMT] — Telegram-аккаунты">
-            <span class="work-tag">МАГАЗИН // TELEGRAM-АККАУНТЫ</span>
+            <span class="work-tag">05 // TELEGRAM-АККАУНТЫ</span>
           </div>
           <div class="work-content">
             <h3 class="work-title">MAGNAT [GMT]</h3>
@@ -2014,11 +2213,11 @@
           </div>
         </article>
 
-        <!-- Work 5: MAGNAT SHOP -->
+        <!-- Work 6: MAGNAT SHOP -->
         <article class="work-card" data-category="shops">
           <div class="work-thumb">
             <img src="assets/images/shop-magnat-stars.jpg" loading="lazy" decoding="async" alt="MAGNAT SHOP — Цифровые товары">
-            <span class="work-tag">МАГАЗИН // ЦИФРОВЫЕ ТОВАРЫ</span>
+            <span class="work-tag">06 // ЦИФРОВЫЕ ТОВАРЫ</span>
           </div>
           <div class="work-content">
             <h3 class="work-title">MAGNAT SHOP</h3>
@@ -2044,11 +2243,11 @@
           </div>
         </article>
 
-        <!-- Work 6: MAGNAT VPN -->
+        <!-- Work 7: MAGNAT VPN -->
         <article class="work-card" data-category="shops">
           <div class="work-thumb">
             <img src="assets/images/shop-magnat-vpn.jpg" loading="lazy" decoding="async" alt="MAGNAT VPN — Proxy & VPN">
-            <span class="work-tag">МАГАЗИН // PROXY &amp; VPN</span>
+            <span class="work-tag">07 // PROXY &amp; VPN</span>
           </div>
           <div class="work-content">
             <h3 class="work-title">MAGNAT VPN</h3>
@@ -2154,16 +2353,16 @@
               <span class="service-card-num">04 // INTEGRATIONS &amp; PAYMENTS</span>
               <span class="service-card-badge">SQL • REST API</span>
             </div>
-            <h3 class="service-card-title">Интеграции &amp; Эквайринг</h3>
+            <h3 class="service-card-title">Интеграции &amp; Web3 Эквайринг</h3>
             <p class="service-card-desc">
-              Базы данных, сторонние API, эквайринг и криптоэквайринг. Бесшовная связка внешних сервисов, прием фиатных платежей и крипты (CryptoBot, Stars, P2P).
+              Базы данных, сторонние API, эквайринг, криптоэквайринг и Web3-интеграции (Solana, pump.fun, смарт-контракты, CryptoBot, Stars, P2P). Бесшовная связка внешних протоколов.
             </p>
           </div>
           <div class="service-card-tags">
             <span class="service-tag">Базы данных (SQL)</span>
             <span class="service-tag">Сторонние API</span>
-            <span class="service-tag">Эквайринг</span>
             <span class="service-tag">Криптоэквайринг</span>
+            <span class="service-tag">Solana &amp; pump.fun</span>
           </div>
         </div>
       </div>
@@ -2540,8 +2739,9 @@
         });
 
         workCards.forEach(function (card) {
-          var cardCat = card.getAttribute('data-category');
-          if (category === 'all' || cardCat === category) {
+          var cardCat = card.getAttribute('data-category') || '';
+          var cats = cardCat.split(' ');
+          if (category === 'all' || cats.indexOf(category) !== -1) {
             card.classList.remove('is-hidden');
           } else {
             card.classList.add('is-hidden');
@@ -2581,6 +2781,24 @@
           });
         });
       }
+
+      // Copy Contract Address (CA)
+      var copyCaBtns = document.querySelectorAll('.btn-copy-ca');
+      copyCaBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          var ca = btn.getAttribute('data-ca');
+          if (ca && navigator.clipboard && toast) {
+            navigator.clipboard.writeText(ca).then(function () {
+              toast.textContent = 'CA скопирован: ' + ca.slice(0, 6) + '...' + ca.slice(-4) + ' ✓';
+              toast.classList.add('show');
+              setTimeout(function () {
+                toast.classList.remove('show');
+              }, 2500);
+            });
+          }
+        });
+      });
     })();
   </script>
 </body>
