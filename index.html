@@ -22,16 +22,18 @@
     :root {
       --vh: 1vh;
       --ink: #ffffff;
-      --ink-dim: #a1a1aa;
-      --ink-muted: #71717a;
-      --base-bot: #000000;
-      --base-dark: #000000;
-      --rule: rgba(255,255,255,0.12);
-      --rule-bold: rgba(255,255,255,0.24);
-      --grid: rgba(255,255,255,0.03);
+      --ink-dim: #bda8ab;
+      --ink-muted: #8a7074;
+      --base-bot: #090102;
+      --base-dark: #090102;
+      --rule: rgba(255, 45, 75, 0.18);
+      --rule-bold: rgba(255, 45, 75, 0.35);
+      --grid: rgba(255, 45, 75, 0.04);
       --menu-bg: #ffffff;
       --menu-ink: #000000;
-      --silver: #cccccc;
+      --silver: #e2dcdb;
+      --crimson-accent: #ff2a4b;
+      --crimson-glow: rgba(230, 20, 50, 0.3);
       --small-min: 10px;
       --u: min(100vw / 1280, var(--vh) * 100 / 800);
       --small: max(var(--small-min), 12.6 * var(--u));
@@ -61,13 +63,44 @@
     html, body {
       margin: 0;
       padding: 0;
-      background: #000000;
+      background-color: #080102;
       color: #ffffff;
       font-family: "AU Grotesk", "Helvetica Neue", Helvetica, Arial, "Segoe UI", -apple-system, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: geometricPrecision;
       font-kerning: normal;
+      overflow-x: hidden;
+    }
+
+    /* Fixed Atmospheric Background matching MAGNAT_banner.gif */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background: 
+        radial-gradient(circle 900px at 50% 0%, rgba(160, 10, 25, 0.28) 0%, transparent 70%),
+        radial-gradient(circle 800px at 10% 28%, rgba(120, 8, 20, 0.22) 0%, transparent 65%),
+        radial-gradient(circle 850px at 90% 50%, rgba(180, 15, 30, 0.24) 0%, transparent 65%),
+        radial-gradient(circle 750px at 15% 72%, rgba(130, 10, 22, 0.20) 0%, transparent 65%),
+        radial-gradient(circle 900px at 85% 92%, rgba(160, 12, 28, 0.26) 0%, transparent 70%),
+        linear-gradient(180deg, #120204 0%, #080102 20%, #0d0204 40%, #070102 60%, #0c0204 80%, #050001 100%);
+    }
+
+    /* Subtle Cyber Tech Scanlines matching the banner texture */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: 
+        repeating-linear-gradient(0deg, rgba(255, 35, 60, 0.016) 0px, rgba(255, 35, 60, 0.016) 1px, transparent 1px, transparent 3px),
+        linear-gradient(to right, rgba(255, 35, 60, 0.012) 1px, transparent 1px);
+      background-size: 100% 3px, 60px 60px;
+      opacity: 0.95;
     }
 
     a, button {
@@ -459,7 +492,8 @@
       position: relative;
       width: min(480px, 100vw);
       height: 100%;
-      background: #050505;
+      background: linear-gradient(180deg, #180306 0%, #090102 100%);
+      border-left: 1px solid rgba(255, 45, 75, 0.28);
       border-left: 1px solid var(--rule-bold);
       padding: 40px 32px;
       display: flex;
@@ -567,11 +601,21 @@
        ========================================================================== */
     .section-wrap {
       position: relative;
-      background: #000000;
+      background: transparent;
       color: #ffffff;
       padding: 120px 0 80px 0;
       border-top: 1px solid var(--rule);
       overflow: hidden;
+    }
+    .section-wrap::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(180deg, rgba(255, 35, 60, 0.035) 0%, transparent 100%);
+      pointer-events: none;
     }
 
     .container {
@@ -584,7 +628,7 @@
     .section-num {
       font-size: var(--small);
       letter-spacing: -0.02em;
-      color: #ffffff;
+      color: #ff3352;
       margin-bottom: 12px;
       text-transform: uppercase;
       font-weight: 600;
@@ -721,9 +765,9 @@
       flex-wrap: wrap;
     }
     .filter-btn {
-      background: transparent;
-      color: #a1a1aa;
-      border: 1px solid var(--rule);
+      background: rgba(22, 3, 6, 0.7);
+      color: #c4b0b2;
+      border: 1px solid rgba(255, 45, 75, 0.22);
       padding: 10px 22px;
       border-radius: 2px;
       font-size: 0.88rem;
@@ -734,13 +778,15 @@
     }
     .filter-btn:hover {
       color: #ffffff;
-      border-color: var(--rule-bold);
+      border-color: rgba(255, 60, 90, 0.55);
+      background: rgba(255, 40, 65, 0.12);
       transform: translateY(-1px);
     }
     .filter-btn.is-active {
-      background: #ffffff;
-      color: #000000;
-      border-color: #ffffff;
+      background: linear-gradient(135deg, #d6132f 0%, #ff2a4b 100%);
+      color: #ffffff;
+      border-color: #ff2a4b;
+      box-shadow: 0 0 18px rgba(255, 42, 75, 0.45);
     }
     .work-card.is-hidden {
       display: none !important;
@@ -763,18 +809,21 @@
       }
     }
     .work-card {
-      border: 1px solid var(--rule);
-      background: #050505;
+      border: 1px solid rgba(255, 45, 75, 0.22);
+      background: linear-gradient(145deg, rgba(28, 4, 8, 0.78) 0%, rgba(12, 2, 4, 0.90) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-radius: 4px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(220, 20, 50, 0.08);
     }
     .work-card:hover {
-      border-color: var(--rule-bold);
+      border-color: rgba(255, 60, 90, 0.55);
       transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(0,0,0,0.45);
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 35, 65, 0.25);
     }
     .work-thumb {
       width: 100%;
@@ -894,8 +943,10 @@
       gap: 32px;
     }
     .stack-col {
-      border: 1px solid var(--rule);
-      background: #050505;
+      border: 1px solid rgba(255, 45, 75, 0.22);
+      background: linear-gradient(145deg, rgba(26, 4, 8, 0.75) 0%, rgba(12, 2, 4, 0.88) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 32px;
       border-radius: 4px;
     }
@@ -944,8 +995,10 @@
       gap: 32px;
     }
     .music-card {
-      border: 1px solid var(--rule);
-      background: #050505;
+      border: 1px solid rgba(255, 45, 75, 0.22);
+      background: linear-gradient(145deg, rgba(26, 4, 8, 0.75) 0%, rgba(12, 2, 4, 0.88) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 24px;
       border-radius: 4px;
       display: flex;
@@ -1014,8 +1067,10 @@
       gap: 32px;
     }
     .quote-box {
-      border: 1px solid var(--rule);
-      background: #050505;
+      border: 1px solid rgba(255, 45, 75, 0.22);
+      background: linear-gradient(145deg, rgba(26, 4, 8, 0.75) 0%, rgba(12, 2, 4, 0.88) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 36px 32px;
       border-radius: 4px;
       display: flex;
@@ -1040,8 +1095,10 @@
 
     /* Contact / Direct Outreach with 3D Card */
     .contact-hero {
-      border: 1px solid var(--rule-bold);
-      background: #060606;
+      border: 1px solid rgba(255, 45, 75, 0.3);
+      background: linear-gradient(145deg, rgba(32, 5, 10, 0.82) 0%, rgba(14, 2, 5, 0.92) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 48px;
       border-radius: 4px;
       display: grid;
@@ -1362,8 +1419,10 @@
       margin-bottom: 48px;
     }
     .service-card {
-      border: 1px solid var(--rule);
-      background: #050505;
+      border: 1px solid rgba(255, 45, 75, 0.22);
+      background: linear-gradient(145deg, rgba(26, 4, 8, 0.75) 0%, rgba(12, 2, 4, 0.88) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 36px 32px;
       border-radius: 4px;
       display: flex;
@@ -1450,8 +1509,10 @@
       gap: 20px;
     }
     .advantage-card {
-      border: 1px solid var(--rule);
-      background: #060606;
+      border: 1px solid rgba(255, 45, 75, 0.22);
+      background: linear-gradient(145deg, rgba(26, 4, 8, 0.75) 0%, rgba(12, 2, 4, 0.88) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 28px 24px;
       border-radius: 4px;
       transition: border-color 0.2s ease;
@@ -1518,7 +1579,7 @@
 
     /* Content-visibility for below-the-fold sections — skips painting/layout until approached */
     #about, #projects, #services, #skills, #music, #quotes, #contact {
-      content-visibility: auto;
+      /* content-visibility removed for seamless rendering */
       contain-intrinsic-size: auto 650px;
     }
 
@@ -2095,7 +2156,7 @@
   <!-- ========================================================================
        3. SELECTED WORKS SECTION (САЙТЫ & МАГАЗИНЫ)
        ======================================================================== -->
-  <section class="section-wrap" id="projects" style="background: #050505;">
+  <section class="section-wrap" id="projects">
     <div class="container">
       <div class="section-num">02 / Проекты &amp; Разработки</div>
       <h2 class="section-heading">Проекты</h2>
@@ -2541,7 +2602,7 @@
   <!-- ========================================================================
        5. SOUNDTRACK & FOCUS
        ======================================================================== -->
-  <section class="section-wrap" id="music" style="background: #000000;">
+  <section class="section-wrap" id="music">
     <div class="container">
       <div class="section-num">05 / Частота &amp; Аудио</div>
       <h2 class="section-heading">Саундтреки для кода</h2>
@@ -2619,7 +2680,7 @@
   <!-- ========================================================================
        7. CONTACT & DIRECT OUTREACH
        ======================================================================== -->
-  <section class="section-wrap" id="contact" style="background: #050505; padding-bottom: 120px;">
+  <section class="section-wrap" id="contact" style="padding-bottom: 120px;">
     <div class="container">
       <div class="section-num">07 / Канал связи</div>
       <h2 class="section-heading">Контакты разработчика</h2>
