@@ -107,8 +107,107 @@
       width: 100%;
       height: 100vh;
       height: 100dvh;
-      min-height: 320px;
-      background: linear-gradient(180deg, #000000 0%, #060606 15%, #0a0a0a 30%, #060606 45%, #0a0a0a 60%, #0d0d0d 75%, #060606 90%, #000000 100%);
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(ellipse 90% 70% at 50% 50%, #240408 0%, #120204 45%, #070102 75%, #000000 100%), #000000;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 22%;
+      transform: translate(50%, -50%);
+      width: 580px;
+      height: 580px;
+      background: radial-gradient(circle, rgba(230, 20, 50, 0.28) 0%, rgba(160, 0, 30, 0.08) 45%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      filter: blur(55px);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, transparent 25%, transparent 75%, #000000 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-brand-center {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      max-width: 1080px;
+      padding: 0 24px;
+      margin-top: calc(20 * var(--u));
+    }
+    .hero-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: monospace;
+      font-size: 0.72rem;
+      color: #e6a8af;
+      background: rgba(220, 20, 50, 0.12);
+      border: 1px solid rgba(220, 20, 50, 0.28);
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .hero-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ff2a4b;
+      box-shadow: 0 0 10px #ff2a4b;
+      flex-shrink: 0;
+      animation: pulse-dot 2s infinite ease-in-out;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 10px #ff2a4b; }
+      50% { opacity: 0.5; transform: scale(0.85); box-shadow: 0 0 4px #ff2a4b; }
+    }
+    .hero-banner-frame {
+      width: 100%;
+      max-width: 980px;
+      position: relative;
+      margin-bottom: 22px;
+      filter: drop-shadow(0 20px 50px rgba(0,0,0,0.95)) drop-shadow(0 0 45px rgba(220, 20, 50, 0.35));
+    }
+    .hero-banner-img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 70, 90, 0.25);
+      box-sizing: border-box;
+    }
+    .hero-portfolio-tag {
+      font-size: clamp(1.4rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: 0.45em;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin: 0 0 12px 0;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.95), 0 0 40px rgba(220, 20, 50, 0.5);
+      padding-left: 0.45em;
+    }
+    .hero-meta-sub {
+      font-family: monospace;
+      font-size: clamp(0.72rem, 1.4vw, 0.92rem);
+      color: #a8a09e;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
     }
 
     .hero__photo {
@@ -328,36 +427,7 @@
       to { opacity: 1; }
     }
 
-    html.is-entering {
-      --au-state: paused;
-    }
-    html.is-entering.is-playing {
-      --au-state: running;
-    }
-
-    html.is-entering .hl__line:nth-child(1) .hl__track {
-      --rise: 1.1em;
-      animation: au-rise 1.05s var(--e-expo) 0.10s var(--au-state) both;
-    }
-    html.is-entering .hl__line:nth-child(2) .hl__track {
-      --rise: 1.1em;
-      animation: au-rise 1.05s var(--e-expo) 0.18s var(--au-state) both;
-    }
-    html.is-entering .logo rect:nth-child(1) { animation: au-on 0.14s ease-out 0.700s var(--au-state) both; }
-    html.is-entering .logo rect:nth-child(2) { animation: au-on 0.14s ease-out 0.735s var(--au-state) both; }
-    html.is-entering .logo rect:nth-child(3) { animation: au-on 0.14s ease-out 0.840s var(--au-state) both; }
-    html.is-entering .logo rect:nth-child(4) { animation: au-on 0.14s ease-out 0.910s var(--au-state) both; }
-    html.is-entering .logo rect:nth-child(5) { animation: au-on 0.14s ease-out 0.805s var(--au-state) both; }
-    html.is-entering .logo rect:nth-child(6) { animation: au-on 0.14s ease-out 0.945s var(--au-state) both; }
-    html.is-entering .logo rect:nth-child(7) { animation: au-on 0.14s ease-out 0.700s var(--au-state) both; }
-
-    html.is-entering .actions .btn-top-link {
-      --rise: 0.55em;
-      animation: au-soft 0.6s var(--e-quint) 0.85s var(--au-state) both;
-    }
-    html.is-entering .actions .menu {
-      animation: au-wipe 0.6s cubic-bezier(.25, 1, .5, 1) 0.95s var(--au-state) both;
-    }
+    /* Clean instant top-bar display */
 
     /* ==========================================================================
        NAVIGATION OVERLAY (DRAWER)
@@ -1486,55 +1556,38 @@
       /* Hero adaptation: fit mobile screens with perfect centering and zero overflow */
       .hero {
         height: 100dvh;
-        min-height: 540px;
-      }
-
-      .hero__photo {
-        left: 0 !important;
-        top: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        max-width: none !important;
-        aspect-ratio: auto !important;
-        mask-image: none !important;
-        -webkit-mask-image: none !important;
-      }
-
-      .hero__photo .hero__video,
-      .hero__photo img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center 36% !important;
-      }
-
-      .hero__photo::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, 
-          rgba(0, 0, 0, 0.45) 0%, 
-          rgba(0, 0, 0, 0.15) 20%, 
-          rgba(0, 0, 0, 0.40) 50%, 
-          rgba(0, 0, 0, 0.85) 75%, 
-          #000000 95%, 
-          #000000 100%
-        ) !important;
-        pointer-events: none;
-      }
-
-      .hl {
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: 100% !important;
-        max-width: 100vw !important;
+        min-height: 520px;
         padding: 0 16px !important;
-        box-sizing: border-box !important;
-        bottom: calc(28px + env(safe-area-inset-bottom, 0px)) !important;
-        font-size: clamp(2.2rem, 11vw, 3.8rem) !important;
-        line-height: 0.9 !important;
-        letter-spacing: -0.04em !important;
-        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95), 0 12px 50px #000000 !important;
+      }
+      .hero::before {
+        right: 15% !important;
+        width: 380px !important;
+        height: 380px !important;
+        filter: blur(40px) !important;
+      }
+      .hero-brand-center {
+        padding: 0 8px !important;
+        margin-top: 40px !important;
+      }
+      .hero-status-pill {
+        font-size: 0.65rem !important;
+        padding: 4px 10px !important;
+        margin-bottom: 16px !important;
+        letter-spacing: 0.08em !important;
+      }
+      .hero-banner-frame {
+        margin-bottom: 16px !important;
+        filter: drop-shadow(0 10px 30px rgba(0,0,0,0.95)) drop-shadow(0 0 25px rgba(220, 20, 50, 0.3)) !important;
+      }
+      .hero-portfolio-tag {
+        font-size: clamp(1.15rem, 5.5vw, 1.8rem) !important;
+        letter-spacing: 0.35em !important;
+        padding-left: 0.35em !important;
+        margin-bottom: 8px !important;
+      }
+      .hero-meta-sub {
+        font-size: 0.68rem !important;
+        letter-spacing: 0.12em !important;
       }
 
       /* Section headings & paddings */
@@ -1837,17 +1890,10 @@
 <body>
 
   <!-- ========================================================================
-       1. HERO SECTION (FULL VIEWPORT SIGNATURE ATELIER UNIT EXPERIENCE)
+       1. HERO SECTION (MAGNAT OFFICIAL BRAND HERO EXPERIENCE)
        ======================================================================== -->
   <div class="hero">
-    <div class="hero__photo" role="presentation">
-      <video class="hero__video" autoplay loop muted playsinline webkit-playsinline disablepictureinpicture controlslist="nodownload noplaybackrate nofullscreen" poster="assets/images/clean_perfect_f25.jpg">
-        <source src="assets/videos/magnat_hero.mp4?v=20261110_clean2" type="video/mp4">
-        <img src="assets/images/clean_perfect_f25.jpg" alt="MAGNAT Visual" class="hero__img">
-      </video>
-    </div>
-
-    <!-- 48-column hairline grid with radial mask -->
+    <!-- Hairline grid with radial mask -->
     <div class="grid" aria-hidden="true">
       <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
     </div>
@@ -1882,21 +1928,23 @@
       </nav>
     </header>
 
-    
-
-    <!-- Kinetic Giant Headline: MAGNAT PORTFOLIO -->
-    <h1 class="hl" aria-label="MAGNAT PORTFOLIO">
-      <span class="hl__line" aria-hidden="true">
-        <span class="hl__clip">
-          <span class="hl__track">MAGNAT</span>
-        </span>
-      </span>
-      <span class="hl__line" aria-hidden="true">
-        <span class="hl__clip">
-          <span class="hl__track">PORTFOLIO</span>
-        </span>
-      </span>
-    </h1>
+    <!-- Center Brand Showcase: Red Metallic MAGNAT Demon Banner -->
+    <div class="hero-brand-center">
+      <div class="hero-status-pill">
+        <span class="hero-status-dot"></span>
+        <span>MAGNAT // OFFICIAL PORTFOLIO • ACTIVE</span>
+      </div>
+      <div class="hero-banner-frame">
+        <picture>
+          <source srcset="assets/images/magnat_red_banner.webp" type="image/webp">
+          <img src="assets/images/magnat_red_banner.png" alt="MAGNAT" class="hero-banner-img" width="1024" height="131" fetchpriority="high">
+        </picture>
+      </div>
+      <h1 class="hero-portfolio-tag" aria-label="MAGNAT PORTFOLIO">
+        PORTFOLIO
+      </h1>
+      <div class="hero-meta-sub">FULLSTACK &amp; BOT DEVELOPER • 17 Y.O. • WEB3</div>
+    </div>
   </div>
 
   <!-- ========================================================================
